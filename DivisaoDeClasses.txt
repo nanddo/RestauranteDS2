@@ -1,0 +1,26 @@
+- Elton
+	ControleDeFornecedor
+	Fornecedor
+	
+- Melo
+	ControleDeItem
+	ControleDeCompra
+	Compra
+	
+- Messias
+	ControleDeFuncionario
+	Funcionario
+	Gerente
+	Garcom
+	Endereco
+	
+- Rodrigo
+	ControleDeProduto
+	Produto
+	Item
+
+- Thales
+	ControleDeAtendimento
+	Mesa
+	Comando
+	Pedido
