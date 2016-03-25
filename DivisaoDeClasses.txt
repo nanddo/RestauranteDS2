@@ -20,7 +20,7 @@
 	Item
 
 - Thales
-	ControleDeAtendimento
-	Mesa
-	Comando
-	Pedido
+	ControleDeAtendimento (Falta métodos de relatório, acesso a BD e tal)
+	Mesa  OK
+	Comanda OK
+	Pedido OK
