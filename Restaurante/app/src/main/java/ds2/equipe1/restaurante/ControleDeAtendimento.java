@@ -22,7 +22,7 @@ public class ControleDeAtendimento {
     public void imprimirPedido(Pedido pedido){
         ArrayList< Produto > listaDeProdutos = pedido.getProdutos();
         for(int i = 0; i < listaDeProdutos.size(); i++){
-            System.out.println(listaDeProdutos.get(i).toString());
+            System.out.println(listaDeProdutos.get(i).getNome());
             //substituir essa função por impressão na impressora da cozinha
         }
     }
@@ -34,7 +34,7 @@ public class ControleDeAtendimento {
             for(int j = 0; j < listaDeProdutos.size(); j++) {
                 //aqui vai imprimir num pdf, num papelzinho, numa impressora térmica
                 //qqr coisa dessas aí
-                System.out.println(listaDeProdutos.get(i).toString() + " " + listaDeProdutos.get(i).getPreco());
+                System.out.println(listaDeProdutos.get(i).getNome() + " " + listaDeProdutos.get(i).getPreco());
             }
         }
         float total = comanda.getTotal();
