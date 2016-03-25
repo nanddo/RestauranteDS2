@@ -13,11 +13,13 @@ public class Comanda {
     private String data;
     private boolean ativa = false;
     private float total = 0;
+    private String cliente;
 
-    public Comanda(Pedido primeiro){
+    public Comanda(String nome, Pedido primeiro){
         Date agora = new Date();
         pedidos.add(primeiro);
         data = agora.toString();
+        cliente = nome;
         ativa = true;
         total += primeiro.getCusto();
     }
