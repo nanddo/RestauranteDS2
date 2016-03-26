@@ -5,7 +5,7 @@ package ds2.equipe1.restaurante;
  */
 public class ControleDeItem {
 	
-	private ArrayList <Item> itens = new ArrayList <Item>();
+	private ArrayList <Item> itens;
 	
 	public Item consultarItem (String nome){
 		for (int i = 0; i < itens.size(); i++) {
