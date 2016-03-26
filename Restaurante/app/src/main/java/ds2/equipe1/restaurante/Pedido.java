@@ -19,6 +19,10 @@ public class Pedido {
         entregue = false;
     }
 
+    public Pedido(int id){
+        //carregar do banco
+    }
+
     public float getCusto(){
         float custo = 0;
         for (int i =0;i< produtos.size();i++) {

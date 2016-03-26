@@ -7,12 +7,19 @@ import java.util.ArrayList;
  */
 public class ControleDeAtendimento {
 
-    public ControleDeAtendimento(){
+    private ArrayList < Mesa > mesas = new ArrayList < Mesa >();
+    int numeroDeMesas;
 
+    public ControleDeAtendimento(){
+        //inserir comando sql pra saber numero de mesas
+        numeroDeMesas = 20; //puxar número do sql
+        for(int i = 1; i <= numeroDeMesas; i++) {
+            mesas.add(i, new Mesa(i));
+        }
     }
 
-    public void criarComanda(Mesa mesa, Pedido pedido){
-        mesa.addComanda(new Comanda(pedido));
+    public void criarComanda(Mesa mesa, Pedido pedido, String nome){
+        mesa.addComanda(new Comanda(nome, pedido));
     }
 
     public void encerrarComanda(Comanda comanda){

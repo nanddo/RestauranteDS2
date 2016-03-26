@@ -1,7 +1,6 @@
 package ds2.equipe1.restaurante;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by Th on 24/03/2016.
@@ -13,6 +12,7 @@ public class Mesa {
     private ArrayList< Comanda > comandas = new ArrayList< Comanda >();
 
     public Mesa(int id){
+        //inserir chamada do SQL para carregar comandas ativas
         this.id = id;
     }
 
@@ -39,7 +39,4 @@ public class Mesa {
         return comandas.get(indice);
     }
 
-    public void apagarComanda(Comanda comanda){
-        comandas.remove(comanda);
-    }
 }

@@ -24,6 +24,10 @@ public class Comanda {
         total += primeiro.getCusto();
     }
 
+    public Comanda(int id){
+        //carrega do banco
+    }
+
     public void addPedido(Pedido outro){
         pedidos.add(outro);
         total += outro.getCusto();
