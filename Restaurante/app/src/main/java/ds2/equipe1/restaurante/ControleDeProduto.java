@@ -1,18 +1,21 @@
 package ds2.equipe1.restaurante;
 
+import java.util.ArrayList;
+
 /**
  * Created by Th on 24/03/2016.
  */
-public static class ControleDeProduto {
+public class ControleDeProduto {
 	
-	private ArrayList <Item> produtos;
+	private ArrayList <Produto> produtos;
 	
 	public ControleDeProduto(){
 		//classe estatica tem construtor?
+		// Fernando Melo: deixei a classe sem ser estática por enquanto
     }
     
     public void carregarProdutosDoBanco(){
-		produtos = new ArrayList <Item>();
+		produtos = new ArrayList <Produto>();
 		int tamanhoDoCardapio = 5; //Ler o tamanho do banco
 		
 		for (int i = 0; i < tamanhoDoCardapio; i++) {
@@ -22,7 +25,7 @@ public static class ControleDeProduto {
 	}
     
     public void cadastrarProduto(String nome, float preco, /*int id,*/ ArrayList <Item> ingredientes){
-		produtos.add(new Produto(nome, preco, ingredientes);
+		produtos.add(new Produto(nome, preco, ingredientes));
     }
     
     public void excluirProduto(String nome){
@@ -49,6 +52,7 @@ public static class ControleDeProduto {
 				return produtos.get(i);
 			}
         }
+        return null;
     }
     
 	public void relatorioProdutos(){

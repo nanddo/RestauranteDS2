@@ -1,5 +1,7 @@
 package ds2.equipe1.restaurante;
 
+import java.util.ArrayList;
+
 /**
  * Created by Th on 24/03/2016.
  */
@@ -46,7 +48,7 @@ public class Produto {
     */
     
     public ArrayList <Item> getItens(){
-        return itens;
+        return ingredientes;
     }
     
     /* Nome deve ser imutavel
