@@ -14,10 +14,10 @@
 	Garcom
 	Endereco
 	
-- Rodrigo
-	ControleDeProduto
-	Produto
-	Item
+- Rodrigo (Temos que discutir alguma coisas. Alterei parte de ControleDeItem)
+	ControleDeProduto OK
+	Produto OK
+	Item OK
 
 - Thales
 	ControleDeAtendimento (Falta métodos de relatório, acesso a BD e tal)
