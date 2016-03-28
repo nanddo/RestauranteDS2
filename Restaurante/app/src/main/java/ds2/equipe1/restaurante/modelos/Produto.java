@@ -9,24 +9,32 @@ import ds2.equipe1.restaurante.controles.ControleDeItem;
  */
 public class Produto {
 
+	private int id;
 	private String nome;
-    private float preco;
-    //private int id;
-    private ArrayList <Item> ingredientes;
-    private boolean emUso;
+	private float preco;
+    private ArrayList<Ingrediente> ingredientes;
     
-	public Produto(String nome, float preco, /*int id,*/ ArrayList <Item> ingredientes){
+	public Produto(String nome, float preco, int id, ArrayList<Ingrediente> ingredientes) {
+		this.id = id;
 		this.nome = nome;
 		this.preco = preco;
-		//this.id = id;
 		this.ingredientes = ingredientes;
     }
-    
-    public Produto(String nome){
-		//criar objeto baseado nos dados do banco
+
+	public static ArrayList<Produto> carrgarProdutos() {
+		ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
+
+		ArrayList<Produto> lista = new ArrayList<Produto>();
+
+		//conexao com o banco estabelecida
+		for (int i = 0; i < lista.count(); i++) {
+			listaDeProdutos.add(i, new Produto(lista.nome, lista.preco, lista.id, ...));
+		}
+
+		return listaDeProdutos; //(???)
 	}
     
-	public boolean validarProduto(){
+	public boolean validarProduto() {
 		for (int i = 0; i < ingredientes.size(); i++) {
             if (ingredientes.get(i).getQuantidade() > ControleDeItem.consultarItem(ingredientes.get(i).getNome()).getQuantidade()) {
 				return false;
@@ -74,17 +82,4 @@ public class Produto {
 		this.itens = itens;
     }
     */
-    
-	public boolean solicitarUso(){
-		if (emUso) {
-			return false;
-		} else {
-			emUso = true;
-			return true;
-		}
-	}
-	
-	public void liberarUso(){
-		emUso = false;
-	}
 }
