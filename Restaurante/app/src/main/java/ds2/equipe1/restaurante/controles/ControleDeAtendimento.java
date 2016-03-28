@@ -16,13 +16,12 @@ public class ControleDeAtendimento {
     private ControleDeImpressao controleDeImpressao;
 
     private ArrayList<Mesa> mesas = new ArrayList<Mesa>();
-    private int numeroDeMesas;
 
     public ControleDeAtendimento(Context context){
         controleDeImpressao = new ControleDeImpressao(context);
 
         //inserir comando sql pra saber numero de mesas
-        numeroDeMesas = 20; //puxar número do sql
+        int numeroDeMesas = 20; //puxar número do sql
         for(int i = 1; i <= numeroDeMesas; i++) {
             mesas.add(i, new Mesa(i));
         }

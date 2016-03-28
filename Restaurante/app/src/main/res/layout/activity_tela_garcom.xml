@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context="com.ds2.restaurante.TelaGarcom">
+    tools:context="ds2.equipe1.restaurante.TelaGarcom">
 
     <ScrollView
-        android:layout_width="120dp"
+        style="@style/menuLateralFixo"
         android:layout_height="match_parent"
         android:background="@color/primary">
 

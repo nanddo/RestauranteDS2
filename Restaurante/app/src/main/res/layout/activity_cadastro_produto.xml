@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ds2.restaurante.CadastroFuncionario">
+    tools:context="ds2.equipe1.restaurante.CadastroFuncionario">
 
 
     <ScrollView
@@ -21,21 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                style="@style/editFormSpan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ID:" />
-
-            <EditText
-                android:id="@+id/edtID"
-                style="@style/editForm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:focusable="false"
-                android:text="1" />
 
             <TextView
                 style="@style/editFormSpan"
@@ -265,3 +250,21 @@
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+
+
+    <!--
+                <TextView
+                    style="@style/editFormSpan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ID:" />
+
+                <EditText
+                    android:id="@+id/edtID"
+                    style="@style/editForm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:text="1" />
+    -->

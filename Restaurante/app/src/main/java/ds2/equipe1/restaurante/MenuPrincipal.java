@@ -26,7 +26,7 @@ public class MenuPrincipal extends AppCompatActivity {
         findViewById(R.id.menu_garcom).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                open(MenuGarcom.class);
+                open(TelaGarcom.class);
             }
         });
 
