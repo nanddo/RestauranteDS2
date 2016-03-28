@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.ds2.restaurante.MenuPrincipal">
+
+    <ScrollView
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:background="@color/primary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/menu_fornecedores"
+                style="@style/menuPrincipalContainer"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    style="@style/menuPrincipalIcon"
+                    android:src="@drawable/ic_industry" />
+
+                <TextView
+                    android:text="Fornecedores"
+                    style="@style/menuPrincipalSpan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/menuPrincipalDivisor"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_garcom"
+                style="@style/menuPrincipalContainer"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    style="@style/menuPrincipalIcon"
+                    android:src="@drawable/ic_waiter" />
+
+                <TextView
+                    android:text="Garçom"
+                    style="@style/menuPrincipalSpan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/menuPrincipalDivisor"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_produto"
+                style="@style/menuPrincipalContainer"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    style="@style/menuPrincipalIcon"
+                    android:src="@drawable/ic_ingredients" />
+
+                <TextView
+                    android:text="Produtos"
+                    style="@style/menuPrincipalSpan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/menuPrincipalDivisor"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_itens"
+                style="@style/menuPrincipalContainer"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    style="@style/menuPrincipalIcon"
+                    android:src="@drawable/ic_ingredients" />
+
+                <TextView
+                    android:text="Itens"
+                    style="@style/menuPrincipalSpan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/menuPrincipalDivisor"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_relatorios"
+                style="@style/menuPrincipalContainer"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    style="@style/menuPrincipalIcon"
+                    android:src="@drawable/ic_report" />
+
+                <TextView
+                    android:text="Relatórios"
+                    style="@style/menuPrincipalSpan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

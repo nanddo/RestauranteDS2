@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/formColor"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ds2.restaurante.CadastroFuncionario">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome:" />
+
+            <EditText
+                android:id="@+id/edtNome"
+                style="@style/editForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Elton Moreira Carvalho" />
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginHintFormTop"
+                android:text="CPF:" />
+
+            <EditText
+                android:id="@+id/editCNPJ"
+                style="@style/editForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="999.999.999-99" />
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginHintFormTop"
+                android:text="Endereço:" />
+
+            <EditText
+                android:id="@+id/editEndereco"
+                style="@style/editForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rua do Centro, 123" />
+
+            <TextView
+            style="@style/editFormSpan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginHintFormTop"
+            android:text="Telefone:" />
+
+            <EditText
+                android:id="@+id/editTelefone"
+                style="@style/editForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="(79) 99999-9999" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="right"
+                android:layout_height="wrap_content">
+
+                <Button
+                    style="@style/buttonForm"
+                    android:layout_marginRight="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Demitir" />
+
+                <Button
+                    android:id="@+id/btnCadastrar"
+                    style="@style/buttonForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cadastrar" />
+            </LinearLayout>
+            <TextView
+                style="@style/requisito_funcional"
+                android:text="RF32. Inclusão de garçons\nRF33. Alteração de garçons\nRF34. Demissão de garçons" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

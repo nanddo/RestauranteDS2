@@ -4,20 +4,64 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_ingredients"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"></activity>
         <activity
-            android:name=".Inicial"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".CadastroFornecedor"
+            android:label="@string/cadastro_de_fornecedor" />
+        <activity
+            android:name=".CadastroFuncionario"
+            android:label="@string/cadastro_de_funcionario" />
+        <activity
+            android:name=".BuscaFornecedor"
+            android:label="@string/busca_fornecedores" />
+        <activity
+            android:name=".MenuFornecedores"
+            android:label="@string/fornecedores" />
+        <activity
+            android:name=".CadastroItem"
+            android:label="Cadastro de itens" />
+        <activity
+            android:name=".BuscaItem"
+            android:label="Buscar itens" />
+        <activity
+            android:name=".MenuItens"
+            android:label="Itens" />
+        <activity
+            android:name=".CriacaoComanda"
+            android:label="Comanda" />
+        <activity
+            android:name=".MenuGarcom"
+            android:label="Menu principal - Garçom" />
+        <activity
+            android:name=".Pedido"
+            android:label="Pedido" />
+        <activity
+            android:name=".MenuProdutos"
+            android:label="Produtos" />
+        <activity
+            android:name=".CadastroProduto"
+            android:label="Cadastro de produto" />
+        <activity
+            android:name=".BuscaProduto"
+            android:label="Buscar produtos" />
+        <activity
+            android:name=".MenuRelatorio"
+            android:label="Relatórios" />
+        <activity
+            android:name=".BuscaFuncionario"
+            android:label="Buscar funcionários" />
+        <activity android:name=".MenuPrincipal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TelaGarcom"></activity>
     </application>
 
 </manifest>

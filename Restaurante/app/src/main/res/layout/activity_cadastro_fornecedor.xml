@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/formColor"
+    android:orientation="vertical"
+    tools:context="com.ds2.restaurante.CadastroFornecedor">
+
+    <ScrollView
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome:" />
+
+            <EditText
+                android:id="@+id/edtNome"
+                style="@style/editForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fernandos LTDA." />
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginHintFormTop"
+                android:text="CNPJ:" />
+
+            <EditText
+                android:id="@+id/editCNPJ"
+                style="@style/editForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="66.589.023/0001-91" />
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginHintFormTop"
+                android:text="Endereço:" />
+
+            <EditText
+                android:id="@+id/editEndereco"
+                style="@style/editForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rua do Centro, 123" />
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginHintFormTop"
+                android:text="E-mail:" />
+
+            <EditText
+                android:id="@+id/editEmail"
+                style="@style/editForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="contato@empresa.com" />
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginHintFormTop"
+                android:text="Telefone:" />
+
+            <EditText
+                android:id="@+id/editTelefone"
+                style="@style/editForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="(79) 99999-9999" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="right"
+                android:layout_height="wrap_content">
+
+                <Button
+                    style="@style/buttonForm"
+                    android:layout_marginRight="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Excluir" />
+
+                <Button
+                    android:id="@+id/btnCadastrar"
+                    style="@style/buttonForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cadastrar" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        style="@style/requisito_funcional"
+        android:text="RF1. Inclusão de fornecedores\nRF2. Alteração de fornecedores\nRF3. Exclusão de fornecedores" />
+</LinearLayout>
