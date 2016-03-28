@@ -23,7 +23,7 @@ public class ControleDeCompra {
 	}
 	
 	public static void comprarItem(Item item, int quantidade, float preco, String data) {
-		Compra compra = new Compra(item.getNome(), quantidade, preco, data);
+		Compra compra = new Compra(item, quantidade, preco, data);
 		
 		comprarItem(compra);
 	}

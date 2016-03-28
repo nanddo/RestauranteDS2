@@ -1,5 +1,7 @@
 package ds2.equipe1.restaurante.controles;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.modelos.Comanda;
@@ -11,11 +13,14 @@ import ds2.equipe1.restaurante.modelos.Produto;
  * Created by Th on 24/03/2016.
  */
 public class ControleDeAtendimento {
+    private ControleDeImpressao controleDeImpressao;
 
     private ArrayList<Mesa> mesas = new ArrayList<Mesa>();
     private int numeroDeMesas;
 
-    public ControleDeAtendimento(){
+    public ControleDeAtendimento(Context context){
+        controleDeImpressao = new ControleDeImpressao(context);
+
         //inserir comando sql pra saber numero de mesas
         numeroDeMesas = 20; //puxar número do sql
         for(int i = 1; i <= numeroDeMesas; i++) {
@@ -40,17 +45,20 @@ public class ControleDeAtendimento {
     }
 
     public void imprimirConta(Comanda comanda){
+        String saida = "";
         ArrayList < Pedido > listaDePedidos = comanda.getPedidos();
         for(int i = 0; i < listaDePedidos.size(); i++) {
             ArrayList < Produto > listaDeProdutos = listaDePedidos.get(i).getProdutos();
             for(int j = 0; j < listaDeProdutos.size(); j++) {
                 //aqui vai imprimir num pdf, num papelzinho, numa impressora térmica
                 //qqr coisa dessas aí
-                System.out.println(listaDeProdutos.get(i).getNome() + " " + listaDeProdutos.get(i).getPreco());
+                saida += listaDeProdutos.get(i).getNome() + " " + listaDeProdutos.get(i).getPreco();
             }
         }
         float total = comanda.getTotal();
-        System.out.println("Total de Pedidos" + total + "\n 10% = " + 0.1*total + "\n Total " + 1.1*total);
+        saida += "Total de Pedidos" + total + "\n 10% = " + 0.1*total + "\n Total " + 1.1*total;
+
+        controleDeImpressao.imprimir(saida);
     }
 
     public ArrayList < Produto > consultarPedido(Pedido pedido){

@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ds2.equipe1.restaurante">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_ingredients"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".CadastroFornecedor"
             android:label="@string/cadastro_de_fornecedor" />
@@ -61,7 +63,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TelaGarcom"></activity>
+        <activity android:name=".TelaGarcom" />
+        <activity android:name=".TelaRelatorios"></activity>
     </application>
 
 </manifest>
