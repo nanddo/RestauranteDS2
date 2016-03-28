@@ -4,16 +4,17 @@ import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.modelos.Item;
 import ds2.equipe1.restaurante.modelos.Produto;
+import java.sql.*;
 
 /**
  * Created by Th on 24/03/2016.
  */
 public class ControleDeProduto {
-	
+
 	private ArrayList <Produto> produtos;
 	
 	public ControleDeProduto(){
-		//classe estatica tem construtor?
+        //classe estatica tem construtor?
 		// Fernando Melo: deixei a classe sem ser est�tica por enquanto
     }
     
