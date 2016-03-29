@@ -13,15 +13,22 @@ public class Produto {
 	private String nome;
 	private float preco;
     private ArrayList<Ingrediente> ingredientes;
-    
-	public Produto(String nome, float preco, int id, ArrayList<Ingrediente> ingredientes) {
-		this.id = id;
+
+    public Produto(int id, String nome, float preco, ArrayList<Ingrediente> ingredientes) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.ingredientes = ingredientes;
+    }
+
+    public Produto(String nome, float preco, ArrayList<Ingrediente> ingredientes) {
 		this.nome = nome;
 		this.preco = preco;
 		this.ingredientes = ingredientes;
+        //TODO: criar no banco e gerar id
     }
 
-	public static ArrayList<Produto> carrgarProdutos() {
+	/*public static ArrayList<Produto> carrgarProdutos() {
 		ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
 
 		ArrayList<Produto> lista = new ArrayList<Produto>();
@@ -32,11 +39,11 @@ public class Produto {
 		}
 
 		return listaDeProdutos; //(???)
-	}
+	}*/
     
 	public boolean validarProduto() {
 		for (int i = 0; i < ingredientes.size(); i++) {
-            if (ingredientes.get(i).getQuantidade() > ControleDeItem.consultarItem(ingredientes.get(i).getNome()).getQuantidade()) {
+            if (ingredientes.get(i).getQuantidade() > ControleDeItem.consultarItem(ingredientes.get(i).getItem().getNome()).getQuantidade()) {
 				return false;
 			}
         }
@@ -57,7 +64,7 @@ public class Produto {
     }
     */
     
-    public ArrayList <Item> getItens(){
+    public ArrayList <Ingrediente> getItens(){
         return ingredientes;
     }
     

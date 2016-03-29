@@ -2,6 +2,7 @@ package ds2.equipe1.restaurante.controles;
 
 import java.util.ArrayList;
 
+import ds2.equipe1.restaurante.modelos.Ingrediente;
 import ds2.equipe1.restaurante.modelos.Item;
 import ds2.equipe1.restaurante.modelos.Produto;
 import java.sql.*;
@@ -24,11 +25,11 @@ public class ControleDeProduto {
 		
 		for (int i = 0; i < tamanhoDoCardapio; i++) {
 			String nome = "teste"; //Ler o nome do banco
-            produtos.add(new Produto(nome));
+            //produtos.add(new Produto(nome));
         }
 	}
-    
-    public void cadastrarProduto(String nome, float preco, /*int id,*/ ArrayList <Item> ingredientes){
+
+    public void cadastrarProduto(String nome, float preco, ArrayList <Ingrediente> ingredientes){
 		produtos.add(new Produto(nome, preco, ingredientes));
     }
     
