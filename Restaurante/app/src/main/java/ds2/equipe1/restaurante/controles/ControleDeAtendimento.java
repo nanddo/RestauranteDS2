@@ -13,22 +13,24 @@ import ds2.equipe1.restaurante.modelos.Produto;
  * Created by Th on 24/03/2016.
  */
 public class ControleDeAtendimento {
+    private Context context;
     private ControleDeImpressao controleDeImpressao;
 
     private ArrayList<Mesa> mesas = new ArrayList<Mesa>();
 
     public ControleDeAtendimento(Context context){
-        controleDeImpressao = new ControleDeImpressao(context);
+        this.context = context;
+        this.controleDeImpressao = new ControleDeImpressao(context);
 
         //inserir comando sql pra saber numero de mesas
         int numeroDeMesas = 20; //puxar número do sql
         for(int i = 1; i <= numeroDeMesas; i++) {
-            mesas.add(i, new Mesa(i));
+            mesas.add(i, new Mesa(context, i));
         }
     }
 
     public void criarComanda(Mesa mesa, Pedido pedido, String nome){
-        mesa.addComanda(new Comanda(nome, pedido));
+        mesa.addComanda(new Comanda(context, nome, pedido));
     }
 
     public void encerrarComanda(Comanda comanda){

@@ -9,14 +9,15 @@ import ds2.equipe1.restaurante.controles.ControleDeFuncionario;
 
 public class BuscaFuncionario extends AppCompatActivity {
 
-    private ControleDeFuncionario controleDeFuncionario;
+    public static ControleDeFuncionario controleDeFuncionario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busca_funcionario);
 
-        controleDeFuncionario = new ControleDeFuncionario(this);
+        if (controleDeFuncionario == null)
+            controleDeFuncionario = new ControleDeFuncionario(this);
     }
 
     public void onItemClick(View v){

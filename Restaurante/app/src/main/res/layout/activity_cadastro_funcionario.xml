@@ -43,7 +43,7 @@
                 android:text="CPF:" />
 
             <EditText
-                android:id="@+id/editCNPJ"
+                android:id="@+id/edtCNPJ"
                 style="@style/editForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -1,5 +1,7 @@
 package ds2.equipe1.restaurante.modelos;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,7 +9,7 @@ import java.util.Date;
  * Created by Th on 24/03/2016.
  */
 
-public class Comanda {
+public class Comanda extends Model<Comanda> {
 
     private ArrayList< Pedido > pedidos = new ArrayList< Pedido >();
     private String data;
@@ -15,17 +17,14 @@ public class Comanda {
     private float total = 0;
     private String cliente;
 
-    public Comanda(String nome, Pedido primeiro){
+    public Comanda(Context context, String nome, Pedido primeiro){
+        super(context);
         Date agora = new Date();
         pedidos.add(primeiro);
         data = agora.toString();
         cliente = nome;
         ativa = true;
         total += primeiro.getCusto();
-    }
-
-    public Comanda(int id){
-        //carrega do banco
     }
 
     public void addPedido(Pedido outro){

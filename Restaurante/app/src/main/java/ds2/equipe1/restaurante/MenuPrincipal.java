@@ -5,10 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
 import ds2.equipe1.restaurante.controles.ControleDeImpressao;
-import ds2.equipe1.restaurante.helpers.BD;
 
 public class MenuPrincipal extends AppCompatActivity {
+    private static ControleDeFornecedor controleDeFornecedor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,9 @@ public class MenuPrincipal extends AppCompatActivity {
 
         ControleDeImpressao controleDeImpressao = new ControleDeImpressao(this);
 
+        if (controleDeFornecedor == null){
+            controleDeFornecedor = new ControleDeFornecedor();
+        }
 
         findViewById(R.id.menu_fornecedores).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +56,10 @@ public class MenuPrincipal extends AppCompatActivity {
                 open(MenuRelatorio.class);
             }
         });
+    }
+
+    public static ControleDeFornecedor getControleDeFornecedor(){
+        return controleDeFornecedor;
     }
 
     public void open(Class activity){

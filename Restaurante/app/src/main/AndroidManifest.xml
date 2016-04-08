@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_ingredients"
+        android:icon="@drawable/ic_ingredients_red"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -64,7 +64,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TelaGarcom" />
-        <activity android:name=".TelaRelatorios"></activity>
+        <activity android:name=".TelaRelatorios" />
+        <activity android:name=".CadastroEndereco"></activity>
     </application>
 
 </manifest>

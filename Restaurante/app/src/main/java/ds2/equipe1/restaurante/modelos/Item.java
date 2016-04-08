@@ -1,23 +1,23 @@
 package ds2.equipe1.restaurante.modelos;
 
+import android.content.Context;
+
+import ds2.equipe1.restaurante.controles.ControleDeAtendimento;
+
 /**
  * Created by Th on 24/03/2016.
  */
-public class Item {
-	private int id;
+public class Item extends Model<Item> {
 	private String nome;
 	private int quantidade;
 	private int limiteMinimo;
 	
-	public Item(String nome, int quantidade, int limiteMinimo){
+	public Item(Context context, String nome, int quantidade, int limiteMinimo){
+		super(context);
 		this.nome = nome;
 		this.quantidade = quantidade;
 		this.limiteMinimo = limiteMinimo;
     }
-    
-    public Item (String nome){
-		//criar objeto baseado nos dados do banco
-	}
     
     public boolean AlertarItemAbaixoDoLimite(){
         if (quantidade < limiteMinimo) {

@@ -1,25 +1,24 @@
 package ds2.equipe1.restaurante.modelos;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 /**
  * Created by Th on 24/03/2016.
  */
 
-public class Pedido {
+public class Pedido extends Model<Pedido> {
 
     int quantidadeDeProdutos;
     boolean entregue;
     ArrayList <Produto> produtos = new  ArrayList <Produto>();
 
-    public Pedido(ArrayList <Produto> produtos){
+    public Pedido(Context context, ArrayList<Produto> produtos){
+        super(context);
         this.produtos = produtos;
         quantidadeDeProdutos = produtos.size();
         entregue = false;
-    }
-
-    public Pedido(int id){
-        //carregar do banco
     }
 
     public float getCusto(){

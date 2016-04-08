@@ -13,11 +13,6 @@ import java.sql.*;
 public class ControleDeProduto {
 
 	private ArrayList <Produto> produtos;
-	
-	public ControleDeProduto(){
-        //classe estatica tem construtor?
-		// Fernando Melo: deixei a classe sem ser est�tica por enquanto
-    }
     
     public void carregarProdutosDoBanco(){
 		produtos = new ArrayList <Produto>();

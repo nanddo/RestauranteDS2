@@ -1,15 +1,18 @@
 package ds2.equipe1.restaurante.modelos;
 
+import android.content.Context;
+
 /**
  * Created by Th on 24/03/2016.
  */
-public class Compra {
+public class Compra extends Model<Compra> {
 	private Item item;
 	private int quantidade;
 	private float preco;
 	private String data;
 	
-	public Compra(Item item, int quantidade, float preco, String data) {
+	public Compra(Context context, Item item, int quantidade, float preco, String data) {
+		super(context);
 		this.item = item;
 		this.quantidade = quantidade;
 		this.preco = preco;

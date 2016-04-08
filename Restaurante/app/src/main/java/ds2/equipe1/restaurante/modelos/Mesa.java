@@ -1,19 +1,21 @@
 package ds2.equipe1.restaurante.modelos;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 /**
  * Created by Th on 24/03/2016.
  */
 
-public class Mesa {
+public class Mesa extends Model<Mesa> {
+    private int numero;
+    private ArrayList<Comanda> comandas = new ArrayList< Comanda >();
 
-    int id;
-    private ArrayList< Comanda > comandas = new ArrayList< Comanda >();
-
-    public Mesa(int id){
+    public Mesa(Context context, int numero){
+        super(context);
         //inserir chamada do SQL para carregar comandas ativas
-        this.id = id;
+        this.numero = numero;
     }
 
     public void addComanda(Comanda nova){

@@ -8,7 +8,6 @@ import ds2.equipe1.restaurante.controles.ControleDeItem;
  * Created by Th on 24/03/2016.
  */
 public class Produto {
-
 	private int id;
 	private String nome;
 	private float preco;
@@ -58,35 +57,11 @@ public class Produto {
         return preco;
     }
     
-    /*
-	public int getId(){
-        return id;
-    }
-    */
-    
     public ArrayList <Ingrediente> getItens(){
         return ingredientes;
     }
     
-    /* Nome deve ser imutavel
-	public void setNome(String nome){
-		this.nome = nome;
-    }
-    */
-    
     public void setPreco(float preco){
 		this.preco = preco;
     }
-    
-    /*
-    public void setId(int id){
-		this.id = id;
-    }
-    */
-    
-    /*
-    public void setItens(ArrayList <Item> itens){
-		this.itens = itens;
-    }
-    */
 }

@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
+
 public class MenuFornecedores extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_fornecedores);
+
 
         findViewById(R.id.menu_cadastrar_fornecedor).setOnClickListener(new View.OnClickListener() {
             @Override

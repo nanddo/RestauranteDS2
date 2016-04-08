@@ -8,7 +8,6 @@
     tools:context="com.ds2.restaurante.CadastroFornecedor">
 
     <ScrollView
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -16,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 style="@style/editFormSpan"
@@ -39,7 +39,7 @@
                 android:text="CNPJ:" />
 
             <EditText
-                android:id="@+id/editCNPJ"
+                android:id="@+id/edtCNPJ"
                 style="@style/editForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,12 +52,27 @@
                 android:layout_marginTop="@dimen/marginHintFormTop"
                 android:text="Endereço:" />
 
-            <EditText
-                android:id="@+id/editEndereco"
-                style="@style/editForm"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Rua do Centro, 123" />
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edtEndereco"
+                    style="@style/editForm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:hint="Rua do Centro, 123" />
+
+                <Button
+                    android:id="@+id/btnCadastrarEndereco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cadastrar" />
+
+            </LinearLayout>
 
             <TextView
                 style="@style/editFormSpan"
@@ -67,7 +82,7 @@
                 android:text="E-mail:" />
 
             <EditText
-                android:id="@+id/editEmail"
+                android:id="@+id/edtEmail"
                 style="@style/editForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,23 +96,23 @@
                 android:text="Telefone:" />
 
             <EditText
-                android:id="@+id/editTelefone"
+                android:id="@+id/edtTelefone"
                 style="@style/editForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="(79) 99999-9999" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="right"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
 
                 <Button
                     style="@style/buttonForm"
-                    android:layout_marginRight="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
                     android:text="Excluir" />
 
                 <Button
@@ -105,6 +120,7 @@
                     style="@style/buttonForm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="onCadastrarClick"
                     android:text="Cadastrar" />
             </LinearLayout>
         </LinearLayout>

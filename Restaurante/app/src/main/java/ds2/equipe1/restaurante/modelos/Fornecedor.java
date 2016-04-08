@@ -1,16 +1,18 @@
 package ds2.equipe1.restaurante.modelos;
 
+import android.content.Context;
+
 /**
  * Created by Th on 24/03/2016.
  */
-public class Fornecedor {
-
+public class Fornecedor extends Model<Fornecedor> {
     private String nome;
     private String telefone;
     private String cnpj;
     private String email;
 
-    public Fornecedor(String nome, String telefone, String cnpj, String email){
+    public Fornecedor(Context context, String nome, String telefone, String cnpj, String email){
+        super(context);
         this.nome = nome;
         this.telefone = telefone;
         this.cnpj = cnpj;
