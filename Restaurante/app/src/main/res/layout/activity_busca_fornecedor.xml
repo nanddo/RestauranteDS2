@@ -18,13 +18,15 @@
             android:layout_height="wrap_content">
 
             <EditText
-                style="@style/editForm"
+                android:id="@+id/edtProcurar"
+                style="@style/edtForm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Nome ou CNPJ" />
 
             <ImageView
+                android:id="@+id/ivProcurar"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"

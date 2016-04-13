@@ -30,7 +30,7 @@
 
             <EditText
                 android:id="@+id/edtNome"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Farinha de trigo" />
@@ -43,7 +43,7 @@
 
             <EditText
                 android:id="@+id/edtQuantidade"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="1" />
@@ -56,7 +56,7 @@
 
             <EditText
                 android:id="@+id/edtUnidade"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="KG" />
@@ -69,7 +69,7 @@
 
             <EditText
                 android:id="@+id/edtLimiteMinimo"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="10" />

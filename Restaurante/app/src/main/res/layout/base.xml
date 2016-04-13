@@ -30,7 +30,7 @@
 
             <EditText
                 android:id="@+id/edtID"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
@@ -45,7 +45,7 @@
 
             <EditText
                 android:id="@+id/edtNome"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Farinha de trigo" />

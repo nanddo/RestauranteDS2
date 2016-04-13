@@ -12,7 +12,7 @@
         <item name="android:textColor">@color/editFormSpan</item>
     </style>
 
-    <style name="editForm">
+    <style name="edtForm">
         <item name="android:textColor">@color/editForm</item>
         <item name="android:textColorHint">@color/editFormHint</item>
     </style>

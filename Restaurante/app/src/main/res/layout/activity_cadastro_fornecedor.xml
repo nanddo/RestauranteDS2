@@ -26,7 +26,7 @@
 
             <EditText
                 android:id="@+id/edtNome"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Fernandos LTDA." />
@@ -40,7 +40,7 @@
 
             <EditText
                 android:id="@+id/edtCNPJ"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="66.589.023/0001-91" />
@@ -59,7 +59,7 @@
 
                 <EditText
                     android:id="@+id/edtEndereco"
-                    style="@style/editForm"
+                    style="@style/edtForm"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -83,7 +83,7 @@
 
             <EditText
                 android:id="@+id/edtEmail"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="contato@empresa.com" />
@@ -97,7 +97,7 @@
 
             <EditText
                 android:id="@+id/edtTelefone"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="(79) 99999-9999" />
@@ -120,7 +120,6 @@
                     style="@style/buttonForm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="onCadastrarClick"
                     android:text="Cadastrar" />
             </LinearLayout>
         </LinearLayout>

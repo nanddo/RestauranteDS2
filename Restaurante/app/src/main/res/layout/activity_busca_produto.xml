@@ -24,7 +24,7 @@
                 android:layout_marginBottom="20dp">
 
                 <EditText
-                    style="@style/editForm"
+                    style="@style/edtForm"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

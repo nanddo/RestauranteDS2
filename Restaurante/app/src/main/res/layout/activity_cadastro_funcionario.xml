@@ -30,7 +30,7 @@
 
             <EditText
                 android:id="@+id/edtNome"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Elton Moreira Carvalho" />
@@ -44,7 +44,7 @@
 
             <EditText
                 android:id="@+id/edtCNPJ"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="999.999.999-99" />
@@ -58,7 +58,7 @@
 
             <EditText
                 android:id="@+id/editEndereco"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Rua do Centro, 123" />
@@ -72,7 +72,7 @@
 
             <EditText
                 android:id="@+id/editTelefone"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="(79) 99999-9999" />

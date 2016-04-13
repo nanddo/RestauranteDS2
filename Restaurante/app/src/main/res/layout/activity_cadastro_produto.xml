@@ -30,7 +30,7 @@
 
             <EditText
                 android:id="@+id/edtNome"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Pizza" />
@@ -43,7 +43,7 @@
 
             <EditText
                 android:id="@+id/edtPreco"
-                style="@style/editForm"
+                style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="R$ 10,00" />
