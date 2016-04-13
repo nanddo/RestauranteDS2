@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.helpers.ServerRequest;
 import ds2.equipe1.restaurante.helpers.Utils;
 
@@ -27,20 +28,28 @@ public class Model<T> {
     }
 
     public void save(){
-        /*serverRequest.send(this.getClass().getName(), ServerRequest.Action.SAVE, new Gson().toJson(this), new AjaxCallback<Object>(){
+        save(null);
+    }
+
+    public void save(final RequestCallback requestCallback){
+        serverRequest.send(this.getClass().getName(), ServerRequest.Action.SAVE, new Gson().toJson(this), new AjaxCallback<Object>(){
             @Override
             public void callback(String url, Object object, AjaxStatus status) {
                 if (object != null) {
                     try {
                         JSONObject json = (JSONObject) object;
                         setId(json.getInt("id"));
+
+                        if (requestCallback != null) {
+                            requestCallback.execute();
+                        }
                     } catch (Exception e){
                         Log.d(Utils.TAG, "Falha ao setar ID: ", e);
                     }
                 }
                 super.callback(url, object, status);
             }
-        });*/
+        });
     }
 
     public void delete(){

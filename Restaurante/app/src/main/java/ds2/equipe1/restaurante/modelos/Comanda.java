@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class Comanda extends Model<Comanda> {
 
-    private ArrayList< Pedido > pedidos = new ArrayList< Pedido >();
+    private ArrayList<Pedido> pedidos = new ArrayList<>();
     private String data;
     private boolean ativa = false;
     private float total = 0;
