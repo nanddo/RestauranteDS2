@@ -14,6 +14,7 @@ import com.androidquery.callback.AjaxCallback;
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
+import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.listas.FornecedorAdapter;
 import ds2.equipe1.restaurante.modelos.Fornecedor;
 
@@ -38,9 +39,10 @@ public class BuscaFornecedor extends AppCompatActivity {
         controleDeFornecedor = new ControleDeFornecedor(this);
 
         fornecedores = new ArrayList<>();
-        fornecedores.addAll(controleDeFornecedor.consultarFornecedor(""));
-        adapter = new FornecedorAdapter(this, fornecedores);
+        adapter = new FornecedorAdapter(BuscaFornecedor.this, BuscaFornecedor.this.fornecedores);
         lvFornecedores.setAdapter(adapter);
+
+        consultar("");
     }
 
     private void init(){
@@ -50,15 +52,12 @@ public class BuscaFornecedor extends AppCompatActivity {
         ivProcurar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String procurar = edtProcurar.getText().toString();
+                String texto = edtProcurar.getText().toString();
 
-                fornecedores.clear();
-                fornecedores.addAll(controleDeFornecedor.consultarFornecedor(procurar));
-
-                adapter.notifyDataSetChanged();
+                consultar(texto);
 
                 if (fornecedores.size() == 0){
-                    Toast.makeText(BuscaFornecedor.this, "Nenhum resultado para \"" + procurar + "\"", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BuscaFornecedor.this, "Nenhum resultado para \"" + texto + "\"", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -66,5 +65,17 @@ public class BuscaFornecedor extends AppCompatActivity {
 
     public void onItemClick(View v){
         startActivity(new Intent(this, CadastroFornecedor.class));
+    }
+
+    private void consultar(String consulta){
+        controleDeFornecedor.consultarFornecedor(consulta, new RequestCallback<Fornecedor>(){
+            @Override
+            public void execute(ArrayList<Fornecedor> fornecedores) {
+                BuscaFornecedor.this.fornecedores.addAll(fornecedores);
+                adapter.notifyDataSetChanged();
+
+                super.execute(fornecedores);
+            }
+        });
     }
 }

@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.helpers.RequestCallback;
@@ -32,7 +33,9 @@ public class Model<T> {
     }
 
     public void save(final RequestCallback requestCallback){
-        serverRequest.send(this.getClass().getName(), ServerRequest.Action.SAVE, new Gson().toJson(this), new AjaxCallback<Object>(){
+        serverRequest.send(getTableName(), this, requestCallback);
+
+        /*serverRequest.send(this.getClass().getName(), ServerRequest.Action.SAVE, new Gson().toJson(this), new AjaxCallback<Object>(){
             @Override
             public void callback(String url, Object object, AjaxStatus status) {
                 if (object != null) {
@@ -49,20 +52,26 @@ public class Model<T> {
                 }
                 super.callback(url, object, status);
             }
-        });
+        });*/
     }
 
     public void delete(){
-        serverRequest.send(this.getClass().getName(), ServerRequest.Action.DELETE, new Gson().toJson(this), null);
+        serverRequest.send(getTableName(), ServerRequest.Action.DELETE, new Gson().toJson(this), null);
     }
 
-    public static <T> void find(Context context, Class<T> klass, AjaxCallback<T> ajaxCallback){
-        find(context, klass, ajaxCallback, null);
+    public static <T> void find(Context context, Class<?> klass, RequestCallback callback){
+        String controller = ((Class<T>) ((ParameterizedType) klass.getGenericSuperclass()).getActualTypeArguments()[0]).getSimpleName();
+
+        if (callback != null){
+            callback.execute(ServerRequest.find(controller));
+        }
+
+        //find(context, klass, ajaxCallback, null);
     }
 
-    public static <T> void find(Context context, Class<T> klass, AjaxCallback<T> ajaxCallback, Integer id){
-        ServerRequest server = new ServerRequest(context);
-    }
+//    public static <T> void find(Context context, Class<T> klass, AjaxCallback<T> ajaxCallback, Integer id){
+//        ServerRequest server = new ServerRequest(context);
+//    }
 
     public int getId() {
         return id;
@@ -70,5 +79,9 @@ public class Model<T> {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    protected String getTableName(){
+        return this.getClass().getSimpleName();
     }
 }

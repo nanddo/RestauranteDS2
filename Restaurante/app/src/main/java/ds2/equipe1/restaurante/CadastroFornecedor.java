@@ -66,13 +66,16 @@ public class CadastroFornecedor extends AppCompatActivity {
         final String email = edtEmail.getText().toString();
         final String telefone = edtTelefone.getText().toString();
 
-        endereco.save(new RequestCallback() {
+/*        endereco.save(new RequestCallback() {
             @Override
             public void execute() {
                 Fornecedor fornecedor = new Fornecedor(CadastroFornecedor.this, nome, telefone, CNPJ, email);
                 controleDeFornecedor.cadastrarFornecedor(fornecedor);
             }
-        });
+        });*/
+
+        Fornecedor fornecedor = new Fornecedor(CadastroFornecedor.this, nome, telefone, CNPJ, email);
+        controleDeFornecedor.cadastrarFornecedor(fornecedor);
 
         new Utils(this).toast("Fornecedor cadastrado!");
 
@@ -84,8 +87,9 @@ public class CadastroFornecedor extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK){
-            String enderecoSerializado = data.getStringExtra("endereco");
-            this.endereco = new Gson().fromJson(enderecoSerializado, Endereco.class);
+            edtEndereco.setText(data.getStringExtra("rua"));
+            //String enderecoSerializado = data.getStringExtra("endereco");
+            //this.endereco = new Gson().fromJson(enderecoSerializado, Endereco.class);
         }
     }
 }
