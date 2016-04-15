@@ -51,6 +51,15 @@ public class MenuPrincipal extends AppCompatActivity {
                 open(MenuRelatorio.class);
             }
         });
+
+        findViewById(R.id.menu_funcionarios).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                open(MenuFuncionarios.class);
+            }
+        });
+
+
     }
 
     public void open(Class activity){

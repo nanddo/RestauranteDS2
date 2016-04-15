@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Restaurante</string>
     <string name="cadastro_de_fornecedor">Cadastro de fornecedor</string>
-    <string name="cadastro_de_funcionario">Cadastro de garçom</string>
+    <string name="cadastro_de_funcionario">Cadastro de Funcionário</string>
     <string name="busca_fornecedores">Buscar Fornecedores</string>
     <string name="fornecedores">Fornecedores</string>
     <string name="title_activity_cadastro_produtos">Cadastro de produtos</string>

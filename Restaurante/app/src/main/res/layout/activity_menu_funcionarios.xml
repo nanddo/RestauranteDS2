@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    android:orientation="vertical"
+    tools:context="com.ds2.restaurante.MenuFuncionario">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/containerHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/menu_cadastrar_funcionario"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/menuIcon"
+                        android:src="@drawable/ic_profile" />
+
+                    <TextView
+                        style="@style/menuSpan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cadastrar Funcionário" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_buscar_funcionario"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/menuIcon"
+                        android:src="@drawable/ic_profile" />
+
+                    <TextView
+                        style="@style/menuSpan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Buscar Funcionário" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/containerHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/menu_alterar_funcionario"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/menuIcon"
+                        android:src="@drawable/ic_profile" />
+
+                    <TextView
+                        style="@style/menuSpan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alterar/Excluir Funcionario" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/containerHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/requisito_funcional"
+                android:text="RF1. Inclusão de fornecedores\nRF2. Alteração de fornecedores\nRF3. Exclusão de fornecedores\nRF4. Consulta de fornecedores\nRF5. Geração de relatório de fornecedores\nRF6. Geração de relatórios de itens por fornecedor." />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

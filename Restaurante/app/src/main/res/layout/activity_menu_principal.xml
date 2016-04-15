@@ -128,6 +128,33 @@
                     style="@style/menuPrincipalSpan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/menuPrincipalDivisor"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_funcionarios"
+                style="@style/menuPrincipalContainer"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    style="@style/menuPrincipalIcon"
+                    android:src="@drawable/ic_profile" />
+
+                <TextView
+                    android:text="Funcionários"
+                    style="@style/menuPrincipalSpan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
             </LinearLayout>
 
         </LinearLayout>

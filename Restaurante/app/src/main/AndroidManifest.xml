@@ -65,7 +65,8 @@
         </activity>
         <activity android:name=".TelaGarcom" />
         <activity android:name=".TelaRelatorios" />
-        <activity android:name=".CadastroEndereco"></activity>
+        <activity android:name=".CadastroEndereco" />
+        <activity android:name=".MenuFuncionarios"></activity>
     </application>
 
 </manifest>
