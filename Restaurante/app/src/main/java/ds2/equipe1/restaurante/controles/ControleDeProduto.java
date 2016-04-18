@@ -1,5 +1,7 @@
 package ds2.equipe1.restaurante.controles;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.modelos.Ingrediente;
@@ -13,7 +15,13 @@ import java.sql.*;
 public class ControleDeProduto {
 
 	private ArrayList <Produto> produtos;
-    
+    private Context context;
+
+    public ControleDeProduto(Context context){
+        this.context = context;
+    }
+
+
     public void carregarProdutosDoBanco(){
 		produtos = new ArrayList <Produto>();
 		int tamanhoDoCardapio = 5; //Ler o tamanho do banco

@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ds2.equipe1.restaurante.CadastroFuncionario">
+    tools:context="ds2.equipe1.restaurante.CadastroProduto">
 
 
     <ScrollView
@@ -33,7 +33,7 @@
                 style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Pizza" />
+                android:hint="Digite o nome" />
 
             <TextView
                 style="@style/editFormSpan"
@@ -46,7 +46,7 @@
                 style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="R$ 10,00" />
+                android:hint="Digite o preço em reais" />
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -55,131 +55,10 @@
                 android:layout_height="wrap_content"
                 android:text="Ingredientes:" />
 
-            <LinearLayout
+            <ListView
+                android:id="@+id/lvIngredientes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_ingredients_red" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginTop="4dp"
-                        android:text="Farinha de trigo"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Estoque: 120 KG"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_cancel" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_ingredients_red" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginTop="4dp"
-                        android:text="Queijo"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Estoque: 80 KG"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_cancel" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_ingredients_red" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:layout_marginTop="4dp"
-                        android:text="Sal"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Estoque: 45 KG"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_cancel" />
-            </LinearLayout>
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -215,11 +94,13 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <ImageView
+                <Button
+                    android:id="@+id/btnAddIngrediente"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_add" />
+                    style="@style/buttonForm"
+                    android:text="+" />
             </LinearLayout>
 
             <LinearLayout
@@ -230,11 +111,12 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnCancelar"
                     style="@style/buttonForm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="16dp"
-                    android:text="Excluir" />
+                    android:text="Cancelar" />
 
                 <Button
                     android:id="@+id/btnCadastrar"

@@ -57,7 +57,7 @@ public class CadastroFornecedor extends AppCompatActivity {
 
     private void onCadastrarEnderecoClick(){
         Intent intent = new Intent(this, CadastroEndereco.class);
-        startActivityForResult(intent, 1);
+        startActivityForResult(intent,1);
     }
 
     private void onCadastrarClick(){

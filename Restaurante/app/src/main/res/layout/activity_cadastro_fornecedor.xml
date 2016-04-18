@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/formColor"
     android:orientation="vertical"
-    tools:context="com.ds2.restaurante.CadastroFornecedor">
+    tools:context="ds2.equipe1.restaurante.CadastroFornecedor">
 
     <ScrollView
         android:layout_width="match_parent"
