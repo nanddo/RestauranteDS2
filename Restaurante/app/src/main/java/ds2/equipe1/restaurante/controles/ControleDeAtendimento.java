@@ -40,8 +40,7 @@ public class ControleDeAtendimento {
     public void imprimirPedido(Pedido pedido){
         ArrayList<Produto> listaDeProdutos = pedido.getProdutos();
         for(int i = 0; i < listaDeProdutos.size(); i++){
-            System.out.println(listaDeProdutos.get(i).getNome());
-            //substituir essa função por impressão na impressora da cozinha
+            controleDeImpressao.imprimir(listaDeProdutos.get(i).getNome());
         }
     }
 
@@ -51,9 +50,7 @@ public class ControleDeAtendimento {
         for(int i = 0; i < listaDePedidos.size(); i++) {
             ArrayList < Produto > listaDeProdutos = listaDePedidos.get(i).getProdutos();
             for(int j = 0; j < listaDeProdutos.size(); j++) {
-                //aqui vai imprimir num pdf, num papelzinho, numa impressora térmica
-                //qqr coisa dessas aí
-                saida += listaDeProdutos.get(i).getNome() + " " + listaDeProdutos.get(i).getPreco();
+                saida += listaDeProdutos.get(i).getNome() + " " + listaDeProdutos.get(i).getPreco() + "\n";
             }
         }
         float total = comanda.getTotal();
