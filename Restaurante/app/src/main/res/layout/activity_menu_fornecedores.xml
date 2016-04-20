@@ -70,25 +70,6 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/menu_alterar_fornecedor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        style="@style/menuIcon"
-                        android:src="@drawable/ic_industry" />
-
-                    <TextView
-                        style="@style/menuSpan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Alterar/Excluir Fornecedor" />
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/menu_relatorio_fornecedores"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -106,13 +87,6 @@
                         android:layout_height="wrap_content"
                         android:text="Relatório de fornecedores cadastrados" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/containerHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/menu_relatorio_itens_fornecedor"
@@ -131,15 +105,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Relatório de itens por fornecedor" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
                 </LinearLayout>
             </LinearLayout>
 

@@ -7,6 +7,8 @@ import android.view.View;
 
 import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
 import ds2.equipe1.restaurante.controles.ControleDeImpressao;
+import ds2.equipe1.restaurante.modelos.Fornecedor;
+import ds2.equipe1.restaurante.modelos.Funcionario;
 
 public class MenuPrincipal extends AppCompatActivity {
 
@@ -15,7 +17,7 @@ public class MenuPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
-        ControleDeImpressao controleDeImpressao = new ControleDeImpressao(this);
+        preCadastroDeDados();
 
         findViewById(R.id.menu_fornecedores).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,5 +66,12 @@ public class MenuPrincipal extends AppCompatActivity {
 
     public void open(Class activity){
         this.startActivity(new Intent(this, activity));
+    }
+
+    public void preCadastroDeDados(){
+        ControleDeFornecedor controleDeFornecedor = new ControleDeFornecedor(this);
+        controleDeFornecedor.cadastrarFornecedor(new Fornecedor(this, "Fernando LTDA.", "79 99999-9999", "00.000.000/0000-0", "contato@fernandos.cc"));
+        controleDeFornecedor.cadastrarFornecedor(new Fornecedor(this, "Arquimago Tecnology", "79 99999-9999", "00.000.000/0000-0", "contato@arquimago.cc"));
+        controleDeFornecedor.cadastrarFornecedor(new Fornecedor(this, "Padaria Jõao Ferreira.", "79 99999-9999", "00.000.000/0000-0", "contato@padaria.cc"));
     }
 }

@@ -1,6 +1,7 @@
 package ds2.equipe1.restaurante.modelos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.androidquery.callback.AjaxCallback;
@@ -59,26 +60,22 @@ public class Model<T> {
         serverRequest.send(getTableName(), ServerRequest.Action.DELETE, new Gson().toJson(this), null);
     }
 
-    public static <T> void find(Context context, Class<?> klass, RequestCallback callback){
+    public static <T> void find(Context context, Class<?> klass, RequestCallback callback, Integer id){
         String controller = ((Class<T>) ((ParameterizedType) klass.getGenericSuperclass()).getActualTypeArguments()[0]).getSimpleName();
-
-        if (callback != null){
-            callback.execute(ServerRequest.find(controller));
-        }
-
-        //find(context, klass, ajaxCallback, null);
+        ServerRequest.find(callback, controller, id);
     }
 
-//    public static <T> void find(Context context, Class<T> klass, AjaxCallback<T> ajaxCallback, Integer id){
-//        ServerRequest server = new ServerRequest(context);
-//    }
+    public static <T> void find(Context context, Class<?> klass, RequestCallback callback){
+        find(context, klass, callback, null);
+    }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public T setId(int id) {
         this.id = id;
+        return (T) this;
     }
 
     protected String getTableName(){

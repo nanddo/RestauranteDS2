@@ -10,4 +10,5 @@ import ds2.equipe1.restaurante.modelos.Model;
 public abstract class RequestCallback<T> {
     public void execute(){}
     public void execute(ArrayList<T> lista){}
+    public void execute(T model){}
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -46,9 +47,12 @@ public class BuscaFornecedor extends AppCompatActivity {
     }
 
     private void init(){
+        //pegar referências dos componentes xml
         lvFornecedores = (ListView) findViewById(R.id.lvFornecedores);
         edtProcurar = (EditText) findViewById(R.id.edtProcurar);
         ivProcurar = (ImageView) findViewById(R.id.ivProcurar);
+
+        //atribuir funcionalidades para alguns componentes
         ivProcurar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,16 +65,25 @@ public class BuscaFornecedor extends AppCompatActivity {
                 }
             }
         });
-    }
 
-    public void onItemClick(View v){
-        startActivity(new Intent(this, CadastroFornecedor.class));
+        lvFornecedores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            //no clique do item o android nos dá a view, a posição do item na lista e o ID do item (que nós configuramos)
+            //então passamos esse ID para
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(BuscaFornecedor.this, CadastroFornecedor.class);
+                Toast.makeText(BuscaFornecedor.this, "" + id, Toast.LENGTH_SHORT).show();
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
     }
 
     private void consultar(String consulta){
         controleDeFornecedor.consultarFornecedor(consulta, new RequestCallback<Fornecedor>(){
             @Override
             public void execute(ArrayList<Fornecedor> fornecedores) {
+                BuscaFornecedor.this.fornecedores.clear();
                 BuscaFornecedor.this.fornecedores.addAll(fornecedores);
                 adapter.notifyDataSetChanged();
 

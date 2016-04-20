@@ -28,13 +28,6 @@ public class MenuFornecedores extends AppCompatActivity {
                 open(BuscaFornecedor.class);
             }
         });
-
-        findViewById(R.id.menu_alterar_fornecedor).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                open(CadastroFornecedor.class);
-            }
-        });
     }
 
     public void open(Class activity){

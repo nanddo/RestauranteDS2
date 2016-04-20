@@ -30,6 +30,11 @@ public class CadastroFornecedor extends AppCompatActivity {
         init();
 
         controleDeFornecedor = new ControleDeFornecedor(this);
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("id")){
+            carregarFuncionario(intent.getIntExtra("id", -1));
+        }
     }
 
     private void init(){
@@ -80,6 +85,18 @@ public class CadastroFornecedor extends AppCompatActivity {
         new Utils(this).toast("Fornecedor cadastrado!");
 
         finish();
+    }
+
+    public void carregarFuncionario(int id){
+        Toast.makeText(CadastroFornecedor.this, "" + id, Toast.LENGTH_SHORT).show();
+        if (id > -1){
+            controleDeFornecedor.consultarFornecedor(id, new RequestCallback<Fornecedor>() {
+                @Override
+                public void execute(Fornecedor model) {
+                    Toast.makeText(CadastroFornecedor.this, "Fornecedor para editar: " + model.getNome(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
     @Override

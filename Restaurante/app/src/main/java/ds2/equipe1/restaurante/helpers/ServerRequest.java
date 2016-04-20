@@ -1,6 +1,7 @@
 package ds2.equipe1.restaurante.helpers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.androidquery.AQuery;
@@ -35,7 +36,7 @@ public class ServerRequest {
         this.context = context;
     }
 
-    public void send(String controller, Model model, RequestCallback callback){
+    public void save(String controller, Model model, RequestCallback callback){
         Log.d(TAG, "SAVE: " + controller);
 
         if (!bancoSimulado.containsKey(controller)) {
@@ -50,13 +51,39 @@ public class ServerRequest {
         }
     }
 
-    public static ArrayList<Model> find(String controller){
+    public void find(RequestCallback callback, String controller, Integer id){
+        //modo correto quando tiver php
+        //find(callback, controller, id.toString());
+
         Log.d(TAG, "FIND: " + controller);
 
         if (!bancoSimulado.containsKey(controller)){
             bancoSimulado.put(controller, new ArrayList<Model>());
         }
-        return bancoSimulado.get(controller);
+
+        ArrayList<Model> dados = bancoSimulado.get(controller);
+
+        if (id == null) {
+            if (callback != null) {
+                callback.execute(dados);
+            }
+        } else {
+            for (Model model : dados) {
+                if (model.getId() == id) {
+                    callback.execute(model);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void find(RequestCallback callback, String controller, String where){
+        if (!bancoSimulado.containsKey(controller)){
+            bancoSimulado.put(controller, new ArrayList<Model>());
+        }
+
+        ArrayList<Model> dados = bancoSimulado.get(controller);
+        callback.execute(dados);
     }
 
     public void send(String controller, Action action, String data, AjaxCallback<Object> ajaxCallback){
