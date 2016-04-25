@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ds2.restaurante.MenuRelatorio">
+    tools:context="ds2.equipe1.restaurante.MenuRelatorio">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -43,5 +43,5 @@
 
     <TextView
         style="@style/requisito_funcional"
-        android:text="RF4. Consulta de fornecedores" />
+        android:text="RF4. Consulta de produtos" />
 </LinearLayout>

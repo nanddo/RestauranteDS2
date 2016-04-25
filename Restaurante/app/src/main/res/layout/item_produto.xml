@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onItemClick"
         android:paddingBottom="8dp"
         android:paddingTop="8dp">
 
@@ -27,19 +28,21 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:layout_marginTop="4dp"
-                android:text="Sal"
+                android:text="Pizza Brotinho"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvPreco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Estoque: 45 KG"
+                android:text="R$ 15,00 / UN"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -47,7 +50,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_cancel" />
+            android:src="@drawable/ic_arrow_forward_white_24px" />
     </LinearLayout>
 
 </LinearLayout>

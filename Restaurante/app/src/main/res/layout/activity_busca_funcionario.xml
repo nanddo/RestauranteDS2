@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ds2.restaurante.BuscaFuncionario">
+    tools:context="ds2.equipe1.restaurante.BuscaFuncionario">
 
     <LinearLayout
         android:padding="16dp"

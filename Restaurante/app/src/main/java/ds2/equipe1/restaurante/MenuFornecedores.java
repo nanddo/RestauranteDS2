@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
-
 public class MenuFornecedores extends AppCompatActivity {
 
     @Override

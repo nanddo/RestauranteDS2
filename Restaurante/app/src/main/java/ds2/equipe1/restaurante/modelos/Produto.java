@@ -1,5 +1,7 @@
 package ds2.equipe1.restaurante.modelos;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.controles.ControleDeItem;
@@ -7,21 +9,23 @@ import ds2.equipe1.restaurante.controles.ControleDeItem;
 /**
  * Created by Th on 24/03/2016.
  */
-public class Produto {
+public class Produto extends Model<Produto> {
 	private int id;
 	private String nome;
 	private float preco;
     private ArrayList<Ingrediente> ingredientes;
 
-    public Produto(int id, String nome, float preco, ArrayList<Ingrediente> ingredientes) {
+    public Produto(Context context, int id, String nome, float preco, ArrayList<Ingrediente> ingredientes) {
+        super(context);
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.ingredientes = ingredientes;
     }
 
-    public Produto(String nome, float preco, ArrayList<Ingrediente> ingredientes) {
-		this.nome = nome;
+    public Produto(Context context, String nome, float preco, ArrayList<Ingrediente> ingredientes) {
+		super(context);
+        this.nome = nome;
 		this.preco = preco;
 		this.ingredientes = ingredientes;
         //TODO: criar no banco e gerar id
@@ -42,7 +46,15 @@ public class Produto {
     
 	public boolean validarProduto() {
 		for (int i = 0; i < ingredientes.size(); i++) {
-            if (ingredientes.get(i).getQuantidade() > ControleDeItem.consultarItem(ingredientes.get(i).getItem().getNome()).getQuantidade()) {
+            if (ingredientes.get(i).getQuantidade() > ControleDeItem.consultarItem(ingredientes.get(i).getItem().getNome(), new RequestCallback<Item>() {
+                @Override
+                public void execute(ArrayList<Item> itens) {
+                    BuscaItem.this.itens.clear();
+                    BuscaItem.this.itens.addAll(itens);
+                    adapter.notifyDataSetChanged();
+                    super.execute(itens);
+                }
+            }).getQuantidade()) {
 				return false;
 			}
         }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary"
     android:orientation="vertical"
-    tools:context="com.ds2.restaurante.MenuFornecedores">
+    tools:context="ds2.equipe1.restaurante.MenuFornecedores">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                         style="@style/menuSpan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Relatório de fornecedores cadastrados" />
+                        android:text="Relatório de produtos cadastrados" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -110,7 +110,7 @@
 
             <TextView
                 style="@style/requisito_funcional"
-                android:text="RF1. Inclusão de fornecedores\nRF2. Alteração de fornecedores\nRF3. Exclusão de fornecedores\nRF4. Consulta de fornecedores\nRF5. Geração de relatório de fornecedores\nRF6. Geração de relatórios de itens por fornecedor." />
+                android:text="RF1. Inclusão de produtos\nRF2. Alteração de produtos\nRF3. Exclusão de produtos\nRF4. Consulta de produtos\nRF5. Geração de relatório de produtos\nRF6. Geração de relatórios de itens por fornecedor." />
         </LinearLayout>
     </ScrollView>
 

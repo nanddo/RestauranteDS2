@@ -1,5 +1,6 @@
 package ds2.equipe1.restaurante;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,11 +21,13 @@ public class CadastroProduto extends AppCompatActivity {
     private EditText edtNome, edtPreco;
     private Button btnCadastrar, btnCancelar, btnAddIngrediente;
     private ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_produto);
+        //this.context = ??? PEGAR CONTEXTO;
 
         init();
 
@@ -64,7 +67,7 @@ public class CadastroProduto extends AppCompatActivity {
         final String nome = edtNome.getText().toString();
         final Float preco = Float.parseFloat(edtPreco.getText().toString());
 
-        Produto produto = new Produto(nome,preco,ingredientes);
+        Produto produto = new Produto(context,nome,preco,ingredientes);
 
 
         new Utils(this).toast("Produto cadastrado!");

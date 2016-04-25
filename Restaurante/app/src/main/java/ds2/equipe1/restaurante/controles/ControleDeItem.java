@@ -1,7 +1,12 @@
 package ds2.equipe1.restaurante.controles;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
+import ds2.equipe1.restaurante.BuscaItem;
+import ds2.equipe1.restaurante.helpers.RequestCallback;
+import ds2.equipe1.restaurante.listas.ItemAdapter;
 import ds2.equipe1.restaurante.modelos.Item;
 
 /**
@@ -10,7 +15,13 @@ import ds2.equipe1.restaurante.modelos.Item;
 public class ControleDeItem {
 	
 	private static ArrayList <Item> itens;
-	
+	private Context context;
+	private static ItemAdapter adapter;
+
+	public ControleDeItem (Context context){
+		this.context = context;
+	}
+
 	public static void cadastrarItem(Item item) {
 		itens.add(item);
 		// TODO: realizar consulta SQL
@@ -18,7 +29,15 @@ public class ControleDeItem {
 	}
 	
 	public static void alterarItemQuantidade(String nome, int quantidade) {
-		Item item = consultarItem(nome);
+		Item item = consultarItem(nome, new RequestCallback<Item>() {
+			@Override
+			public void execute(ArrayList<Item> itens) {
+				BuscaItem.this.itens.clear();
+				BuscaItem.this.itens.addAll(itens);
+				adapter.notifyDataSetChanged();
+				super.execute(itens);
+			}
+		});
 		
 		if (item != null) {
 			item.setQuantidade(quantidade);
@@ -28,7 +47,15 @@ public class ControleDeItem {
 	}
 	
 	public static void alterarItemLimiteMinimo(String nome, int limiteMinimo) {
-		Item item = consultarItem(nome);
+		Item item = consultarItem(nome, new RequestCallback<Item>() {
+			@Override
+			public void execute(ArrayList<Item> itens) {
+				BuscaItem.this.itens.clear();
+				BuscaItem.this.itens.addAll(itens);
+				adapter.notifyDataSetChanged();
+				super.execute(itens);
+			}
+		});
 		
 		if (item != null) {
 			item.setLimiteMinimo(limiteMinimo);
@@ -38,7 +65,15 @@ public class ControleDeItem {
 	}
 	
 	public static void alterarItem(String nome, int quantidade, int limiteMinimo) {
-		Item item = consultarItem(nome);
+		Item item = consultarItem(nome, new RequestCallback<Item>() {
+			@Override
+			public void execute(ArrayList<Item> itens) {
+				BuscaItem.this.itens.clear();
+				BuscaItem.this.itens.addAll(itens);
+				adapter.notifyDataSetChanged();
+				super.execute(itens);
+			}
+		});
 		
 		if (item != null) {
 			if (quantidade >= 0) {
@@ -56,7 +91,15 @@ public class ControleDeItem {
 	}
 	
 	public static void excluirItem(String nome) {
-		Item item = consultarItem(nome);
+		Item item = consultarItem(nome, new RequestCallback<Item>() {
+			@Override
+			public void execute(ArrayList<Item> itens) {
+				BuscaItem.this.itens.clear();
+				BuscaItem.this.itens.addAll(itens);
+				adapter.notifyDataSetChanged();
+				super.execute(itens);
+			}
+		});
 		if (item != null) {
 			itens.remove(item);
 			// TODO: realizar consulta SQL
@@ -64,7 +107,7 @@ public class ControleDeItem {
 		}
 	}
 	
-	public static Item consultarItem(String nome) {
+	public static Item consultarItem(String nome, RequestCallback<Item> requestCallback) {
 		for (int i = 0; i < itens.size(); i++) {
             if (itens.get(i).getNome() == nome) {
 				return itens.get(i);

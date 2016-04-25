@@ -22,7 +22,7 @@
             android:label="@string/busca_fornecedores" />
         <activity
             android:name=".MenuFornecedores"
-            android:label="@string/fornecedores" />
+            android:label="@string/produtos" />
         <activity
             android:name=".CadastroItem"
             android:label="Cadastro de itens" />
