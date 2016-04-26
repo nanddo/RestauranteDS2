@@ -7,27 +7,34 @@ import android.util.Log;
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
+import com.google.gson.Gson;
+import com.google.gson.internal.Excluder;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.MalformedJsonException;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import ds2.equipe1.restaurante.modelos.Fornecedor;
+import ds2.equipe1.restaurante.modelos.Ingrediente;
 import ds2.equipe1.restaurante.modelos.Model;
+import ds2.equipe1.restaurante.modelos.Produto;
 
 /**
  * Created by Fernando on 07/04/2016.
  */
 public class ServerRequest {
-    public static HashMap<String, ArrayList<Model>> bancoSimulado = new HashMap<>();
-
-    public static String SERVER_URL = "http://localhost/";
+    public static String SERVER_URL = "http://192.168.0.105/restaurante/";
     private static final String TAG = Utils.TAG;
 
     public enum Action {
-        INDEX, SAVE, DELETE, GET
+        INDEX, SAVE, DELETE, GET, FIND
     }
 
     private Context context;
@@ -36,61 +43,31 @@ public class ServerRequest {
         this.context = context;
     }
 
-    public void save(String controller, Model model, RequestCallback callback){
-        Log.d(TAG, "SAVE: " + controller);
-
-        if (!bancoSimulado.containsKey(controller)) {
-            bancoSimulado.put(controller, new ArrayList<Model>());
-        }
-        ArrayList<Model> dados = bancoSimulado.get(controller);
-        model.setId(dados.size()+1);
-        dados.add(model);
-
-        if (callback != null){
-            callback.execute();
-        }
-    }
-
-    public void find(RequestCallback callback, String controller, Integer id){
-        //modo correto quando tiver php
-        //find(callback, controller, id.toString());
-
-        Log.d(TAG, "FIND: " + controller);
-
-        if (!bancoSimulado.containsKey(controller)){
-            bancoSimulado.put(controller, new ArrayList<Model>());
-        }
-
-        ArrayList<Model> dados = bancoSimulado.get(controller);
-
-        if (id == null) {
-            if (callback != null) {
-                callback.execute(dados);
-            }
-        } else {
-            for (Model model : dados) {
-                if (model.getId() == id) {
-                    callback.execute(model);
-                    break;
-                }
-            }
-        }
-    }
-
-    public void find(RequestCallback callback, String controller, String where){
-        if (!bancoSimulado.containsKey(controller)){
-            bancoSimulado.put(controller, new ArrayList<Model>());
-        }
-
-        ArrayList<Model> dados = bancoSimulado.get(controller);
-        callback.execute(dados);
-    }
-
-    public void send(String controller, Action action, String data, AjaxCallback<Object> ajaxCallback){
+    public void sendRequest(String controller, Action action, String data, final RequestCallback<JSONObject> callback){
         Map<String, Object> params = getAuthParams();
         params.put("data", data);
 
-        new AQuery(context).ajax(buildURL(controller, action), params, Object.class, ajaxCallback);
+        new AQuery(context).ajax(buildURL(controller, action), params, JSONObject.class, new AjaxCallback<JSONObject>(){
+            @Override
+            public void callback(String url, JSONObject json, AjaxStatus status) {
+                try {
+                    Log.w(TAG, "[" + url + "]: " + json.toString());
+                    if (callback != null){
+                        callback.execute(json);
+                    }
+                } catch (Exception e){
+                    Log.e(TAG, "Erro no processamento de dados: ", e);
+                    Log.e(TAG, "AjaxStatus: " + status.getError() + " --- " + status.getCode() + " --- " + status.getMessage());
+                }
+                super.callback(url, json, status);
+            }
+
+            @Override
+            public void failure(int code, String message) {
+                Log.e(TAG, "Falha de conexão: " + message + " " + code);
+                super.failure(code, message);
+            }
+        });
     }
 
     private Map<String, Object> getAuthParams(){

@@ -1,6 +1,8 @@
 package ds2.equipe1.restaurante.helpers;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.StrictMode;
 import android.widget.Toast;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 public class Utils {
     public static final String TAG = "Restaurante";
     private Context context;
+    private static ProgressDialog progress;
 
     public Utils(Context context) {
         this.context = context;
@@ -83,6 +86,26 @@ public class Utils {
         SharedPreferences.Editor editor = settings.edit();
         editor.clear();
         editor.commit();
+    }
+
+    public static void launchProgress(Context context){
+        launchProgress(context, null, "Carregando...");
+    }
+
+    public static void launchProgress(Context context, String title, String text) {
+        launchProgress(context, title, text, null);
+    }
+
+    public static void launchProgress(Context context, String title, String text, DialogInterface.OnDismissListener func) {
+        progress = ProgressDialog.show(context, title, text, true);
+        progress.setCancelable(true);
+        if (func != null) progress.setOnDismissListener(func);
+    }
+
+    public static void dismissProgress() {
+        if (progress != null) {
+            progress.dismiss();
+        }
     }
 
     public void toast(String text){

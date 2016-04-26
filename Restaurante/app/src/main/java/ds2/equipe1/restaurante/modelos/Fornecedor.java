@@ -11,6 +11,10 @@ public class Fornecedor extends Model<Fornecedor> {
     private String cnpj;
     private String email;
 
+    public Fornecedor(Context context){
+        super(context);
+    }
+
     public Fornecedor(Context context, String nome, String telefone, String cnpj, String email){
         super(context);
         this.nome = nome;

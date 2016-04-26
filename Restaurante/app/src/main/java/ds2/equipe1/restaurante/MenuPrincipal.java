@@ -70,8 +70,8 @@ public class MenuPrincipal extends AppCompatActivity {
 
     public void preCadastroDeDados(){
         ControleDeFornecedor controleDeFornecedor = new ControleDeFornecedor(this);
-        controleDeFornecedor.cadastrarFornecedor(new Fornecedor(this, "Fernando LTDA.", "79 99999-9999", "00.000.000/0000-0", "contato@fernandos.cc"));
-        controleDeFornecedor.cadastrarFornecedor(new Fornecedor(this, "Arquimago Tecnology", "79 99999-9999", "00.000.000/0000-0", "contato@arquimago.cc"));
-        controleDeFornecedor.cadastrarFornecedor(new Fornecedor(this, "Padaria Jõao Ferreira.", "79 99999-9999", "00.000.000/0000-0", "contato@padaria.cc"));
+        //controleDeFornecedor.salvarFornecedor(new Fornecedor(this, "Fernando LTDA.", "79 99999-9999", "00.000.000/0000-0", "contato@fernandos.cc"));
+        //controleDeFornecedor.salvarFornecedor(new Fornecedor(this, "Arquimago Tecnology", "79 99999-9999", "00.000.000/0000-0", "contato@arquimago.cc"));
+        //controleDeFornecedor.salvarFornecedor(new Fornecedor(this, "Padaria Jõao Ferreira.", "79 99999-9999", "00.000.000/0000-0", "contato@padaria.cc"));
     }
 }
