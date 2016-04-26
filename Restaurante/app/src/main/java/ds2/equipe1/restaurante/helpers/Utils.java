@@ -5,7 +5,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.StrictMode;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutCompat;
+import android.view.LayoutInflater;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import ds2.equipe1.restaurante.R;
 
 /**
  * Created by Fernando on 28/03/2016.
@@ -110,5 +117,35 @@ public class Utils {
 
     public void toast(String text){
         Toast.makeText(context, text, Toast.LENGTH_LONG).show();
+    }
+
+    public void inputDialog(String title, String defValue, String hint, final DialogCallback callback){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+
+        // Set up the input
+        LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout linearLayout = (LinearLayout) li.inflate(R.layout.input_dialog, null);
+        final EditText edtInput = (EditText) linearLayout.findViewById(R.id.edtInput);
+        edtInput.setHint(hint);
+        edtInput.setText(defValue);
+        builder.setView(linearLayout);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (callback != null) {
+                    callback.execute(edtInput.getText().toString());
+                }
+            }
+        });
+        builder.setNegativeButton("Cancelar", null);
+
+        builder.show();
+    }
+
+    public interface DialogCallback {
+        public void execute(String text);
     }
 }

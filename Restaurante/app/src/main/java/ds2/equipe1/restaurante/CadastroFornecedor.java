@@ -18,7 +18,6 @@ public class CadastroFornecedor extends AppCompatActivity {
     private Button btnCadastrar, btnCadastrarEndereco, btnExcluir;
 
     private Fornecedor fornecedor;
-    private Endereco endereco;
     private boolean novoCadastro = true;
 
     @Override
@@ -132,9 +131,12 @@ public class CadastroFornecedor extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK){
-            edtEndereco.setText(data.getStringExtra("rua"));
-            //String enderecoSerializado = data.getStringExtra("endereco");
-            //this.endereco = new Gson().fromJson(enderecoSerializado, Endereco.class);
+            if (data.hasExtra("rua")) {
+                edtEndereco.setText(data.getStringExtra("rua"));
+            }
+            if (data.hasExtra("id_endereco")) {
+                fornecedor.setIdEndereco(data.getIntExtra("id_endereco", -1));
+            }
         }
     }
 }

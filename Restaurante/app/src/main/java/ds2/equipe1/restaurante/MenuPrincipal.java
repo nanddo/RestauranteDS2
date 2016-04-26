@@ -3,10 +3,13 @@ package ds2.equipe1.restaurante;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
 import ds2.equipe1.restaurante.controles.ControleDeImpressao;
+import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Fornecedor;
 import ds2.equipe1.restaurante.modelos.Funcionario;
 
@@ -61,7 +64,34 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == R.id.configurar_host) {
+            final Utils utils = new Utils(this);
+            utils.inputDialog("Configurar host", utils.getData("host", ""), "http://192.168.1.100/restaurante/", new Utils.DialogCallback() {
+                @Override
+                public void execute(String text) {
+                    utils.setData("host", text);
+                }
+            });
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void open(Class activity){

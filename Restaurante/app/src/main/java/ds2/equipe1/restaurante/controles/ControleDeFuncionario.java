@@ -24,7 +24,7 @@ public class ControleDeFuncionario {
 
         //Banco de Dados
         //SQL (Sem o Endereço)
-        //INSERT INTO funcionario (nome, telefone, cnpj, email) VALUES (funcionario.getNome(), funcionario.getTelefone(), funcionario.getCnpj(), funcionario.getEmail());
+        //INSERT INTO funcionario (nome, telefone, cnpj, email) VALUES (funcionario.getRua(), funcionario.getTelefone(), funcionario.getCnpj(), funcionario.getEmail());
     }
 
     public boolean alterarFuncionario(Funcionario funcionario){
@@ -35,7 +35,7 @@ public class ControleDeFuncionario {
 
         //Banco de Dados
         //SQL (Sem o Endereço)
-        //UPDATE funcionario SET nome = funcionario.getNome(), telefone = funcionario.getNome(), email = funcionario.getEmail WHERE cnpj = funcionario.getCnpj();
+        //UPDATE funcionario SET nome = funcionario.getRua(), telefone = funcionario.getRua(), email = funcionario.getEmail WHERE cnpj = funcionario.getCnpj();
     }
 
     public void excluirFuncionario(Funcionario funcionario){
@@ -56,7 +56,7 @@ public class ControleDeFuncionario {
         return resultado;
         //Banco de Dados
         //SQL
-        //SELECT id, nome, cnpj, telefone, email, id_endereco WHERE cnpj = funcionario.getCnpj() OR nome = funcionario.getNome();
+        //SELECT id, nome, cnpj, telefone, email, id_endereco WHERE cnpj = funcionario.getCnpj() OR nome = funcionario.getRua();
     }
 
     public void relatorioFuncionario(Funcionario funcionario){

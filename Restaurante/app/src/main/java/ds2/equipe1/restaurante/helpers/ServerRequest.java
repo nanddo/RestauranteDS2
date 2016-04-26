@@ -30,7 +30,6 @@ import ds2.equipe1.restaurante.modelos.Produto;
  * Created by Fernando on 07/04/2016.
  */
 public class ServerRequest {
-    public static String SERVER_URL = "http://192.168.0.105/restaurante/";
     private static final String TAG = Utils.TAG;
 
     public enum Action {
@@ -67,7 +66,7 @@ public class ServerRequest {
                 Log.e(TAG, "Falha de conexão: " + message + " " + code);
                 super.failure(code, message);
             }
-        });
+        }.timeout(5000));
     }
 
     private Map<String, Object> getAuthParams(){
@@ -78,6 +77,6 @@ public class ServerRequest {
     }
 
     private String buildURL(String controller, Action action){
-        return SERVER_URL + controller.toLowerCase() + "/" + action.name().toLowerCase() + "/";
+        return new Utils(context).getData("host", "http://192.168.0.105/restaurante/") + controller.toLowerCase() + "/" + action.name().toLowerCase() + "/";
     }
 }

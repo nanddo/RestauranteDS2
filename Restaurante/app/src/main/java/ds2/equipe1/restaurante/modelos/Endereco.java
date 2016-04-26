@@ -7,28 +7,28 @@ import android.content.Context;
  */
 public class Endereco extends Model<Endereco> {
     private String logradouro;
-    private String nome;
+    private String rua;
     private int numero;
     private String bairro;
     private String cidade;
-    private String CEP;
+    private String cep;
 
-    public Endereco(Context context, String logradouro, String nome, int numero, String bairro, String cidade, String CEP) {
+    public Endereco(Context context, String logradouro, String rua, int numero, String bairro, String cidade, String cep) {
         super(context);
         this.logradouro = logradouro;
-        this.nome = nome;
+        this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
         this.cidade = cidade;
-        this.CEP = CEP;
+        this.cep = cep;
     }
 
     public String getLogradouro() {
         return logradouro;
     }
 
-    public String getNome() {
-        return nome;
+    public String getRua() {
+        return rua;
     }
 
     public int getNumero() {
@@ -43,7 +43,7 @@ public class Endereco extends Model<Endereco> {
         return cidade;
     }
 
-    public String getCEP() {
-        return CEP;
+    public String getCep() {
+        return cep;
     }
 }
