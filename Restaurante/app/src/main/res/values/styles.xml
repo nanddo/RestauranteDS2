@@ -13,6 +13,7 @@
     </style>
 
     <style name="edtForm">
+        <item name="android:textCursorDrawable">@null</item>
         <item name="android:textColor">@color/editForm</item>
         <item name="android:textColorHint">@color/editFormHint</item>
     </style>

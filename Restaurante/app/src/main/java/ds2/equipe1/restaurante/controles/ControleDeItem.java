@@ -25,7 +25,7 @@ public class ControleDeItem {
 	public static void cadastrarItem(Item item) {
 		itens.add(item);
 		// TODO: realizar consulta SQL
-		// String sql = "INSERT INTO restaurante.item VALUES (" + item.getNome() + "," + item.getQuantidade() + "," + item.getLimiteMinimo()+ ")";
+		// String sql = "INSERT INTO restaurante.item VALUES (" + item.getRua() + "," + item.getQuantidade() + "," + item.getLimiteMinimo()+ ")";
 	}
 	
 	public static void alterarItemQuantidade(String nome, int quantidade) {

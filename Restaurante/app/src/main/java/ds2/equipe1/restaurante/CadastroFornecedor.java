@@ -6,12 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
-import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Endereco;
 import ds2.equipe1.restaurante.modelos.Fornecedor;
@@ -19,8 +15,10 @@ import ds2.equipe1.restaurante.modelos.Fornecedor;
 public class CadastroFornecedor extends AppCompatActivity {
     private ControleDeFornecedor controleDeFornecedor;
     private EditText edtNome, edtCNPJ, edtEndereco, edtEmail, edtTelefone;
-    private Button btnCadastrar, btnCadastrarEndereco;
-    private Endereco endereco;
+    private Button btnCadastrar, btnCadastrarEndereco, btnExcluir;
+
+    private Fornecedor fornecedor;
+    private boolean novoCadastro = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +27,20 @@ public class CadastroFornecedor extends AppCompatActivity {
 
         init();
 
+        fornecedor = new Fornecedor(this);
         controleDeFornecedor = new ControleDeFornecedor(this);
 
         Intent intent = getIntent();
-        if (intent.hasExtra("id")){
-            carregarFuncionario(intent.getIntExtra("id", -1));
+        if (intent.getBooleanExtra("alterar", false)){
+            novoCadastro = false;
+            carregarFuncionario();
+        }
+
+        if (novoCadastro){
+            btnExcluir.setVisibility(View.GONE);
+        } else {
+            btnCadastrar.setText("Alterar");
+            btnExcluir.setVisibility(View.VISIBLE);
         }
     }
 
@@ -45,6 +52,7 @@ public class CadastroFornecedor extends AppCompatActivity {
         edtTelefone = (EditText) findViewById(R.id.edtTelefone);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
         btnCadastrarEndereco = (Button) findViewById(R.id.btnCadastrarEndereco);
+        btnExcluir = (Button) findViewById(R.id.btnExcluir);
 
         btnCadastrarEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +60,19 @@ public class CadastroFornecedor extends AppCompatActivity {
                 onCadastrarEnderecoClick();
             }
         });
+
+        btnExcluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!novoCadastro && fornecedor.getId() != null) {
+                    fornecedor.delete();
+                    fornecedor.setId(null);
+                    new Utils(CadastroFornecedor.this).toast("Fornecedor excluído!");
+                    finish();
+                }
+            }
+        });
+
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,28 +95,34 @@ public class CadastroFornecedor extends AppCompatActivity {
 /*        endereco.save(new RequestCallback() {
             @Override
             public void execute() {
-                Fornecedor fornecedor = new Fornecedor(CadastroFornecedor.this, nome, telefone, CNPJ, email);
-                controleDeFornecedor.cadastrarFornecedor(fornecedor);
+                controleDeFornecedor.salvarFornecedor(fornecedor);
             }
         });*/
 
-        Fornecedor fornecedor = new Fornecedor(CadastroFornecedor.this, nome, telefone, CNPJ, email);
-        controleDeFornecedor.cadastrarFornecedor(fornecedor);
+        fornecedor.setNome(nome);
+        fornecedor.setCnpj(CNPJ);
+        fornecedor.setEmail(email);
+        fornecedor.setTelefone(telefone);
+        controleDeFornecedor.salvarFornecedor(fornecedor);
 
-        new Utils(this).toast("Fornecedor cadastrado!");
+        if (fornecedor.getId() == null) {
+            new Utils(this).toast("Fornecedor cadastrado!");
+        } else {
+            new Utils(this).toast("Fornecedor alterado!");
+        }
 
+        ControleDeFornecedor.deselecionar();
         finish();
     }
 
-    public void carregarFuncionario(int id){
-        Toast.makeText(CadastroFornecedor.this, "" + id, Toast.LENGTH_SHORT).show();
-        if (id > -1){
-            controleDeFornecedor.consultarFornecedor(id, new RequestCallback<Fornecedor>() {
-                @Override
-                public void execute(Fornecedor model) {
-                    Toast.makeText(CadastroFornecedor.this, "Fornecedor para editar: " + model.getNome(), Toast.LENGTH_LONG).show();
-                }
-            });
+    public void carregarFuncionario(){
+        if (ControleDeFornecedor.getSelecionado() != null) {
+            CadastroFornecedor.this.fornecedor = ControleDeFornecedor.getSelecionado();
+
+            edtNome.setText(fornecedor.getNome());
+            edtCNPJ.setText(fornecedor.getCnpj());
+            edtTelefone.setText(fornecedor.getTelefone());
+            edtEmail.setText(fornecedor.getEmail());
         }
     }
 
@@ -104,9 +131,12 @@ public class CadastroFornecedor extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK){
-            edtEndereco.setText(data.getStringExtra("rua"));
-            //String enderecoSerializado = data.getStringExtra("endereco");
-            //this.endereco = new Gson().fromJson(enderecoSerializado, Endereco.class);
+            if (data.hasExtra("rua")) {
+                edtEndereco.setText(data.getStringExtra("rua"));
+            }
+            if (data.hasExtra("id_endereco")) {
+                fornecedor.setIdEndereco(data.getIntExtra("id_endereco", -1));
+            }
         }
     }
 }

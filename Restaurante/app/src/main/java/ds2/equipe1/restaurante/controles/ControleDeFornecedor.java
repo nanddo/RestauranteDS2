@@ -3,7 +3,9 @@ package ds2.equipe1.restaurante.controles;
 import android.content.Context;
 
 import com.androidquery.callback.AjaxCallback;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.helpers.RequestCallback;
@@ -16,21 +18,17 @@ import ds2.equipe1.restaurante.modelos.Model;
  */
 
 public class ControleDeFornecedor {
+    //Essa variável serve para deixar uma referência na memória o tempo inteiro de qual está selecionado,
+    //para que quando haja uma edição, a alteração seja refletida em mais de uma tela (exemplo: editar um fornecedor e atualizar na tela de busca).
+    private static Fornecedor selecionado;
     private Context context;
 
     public ControleDeFornecedor(Context context){
         this.context = context;
     }
 
-    public void cadastrarFornecedor(Fornecedor fornecedor){
+    public void salvarFornecedor(Fornecedor fornecedor){
         fornecedor.save();
-    }
-
-    public boolean alterarFornecedor(Fornecedor fornecedor){
-        if (fornecedor.getId() != -1) {
-            fornecedor.save();
-            return true;
-        } else return false;
     }
 
     public boolean excluirFornecedor(Fornecedor fornecedor){
@@ -40,31 +38,8 @@ public class ControleDeFornecedor {
         } else return false;
     }
 
-    public void consultarFornecedor(final String consulta, final RequestCallback<Fornecedor> callback){
-        Model.find(context, Fornecedor.class, new RequestCallback<Fornecedor>() {
-            @Override
-            public void execute(ArrayList<Fornecedor> fornecedores) {
-                ArrayList<Fornecedor> filtrado = new ArrayList<>();
-
-                for (Fornecedor fornecedor : fornecedores) {
-                    if (consulta == null || consulta.isEmpty() || fornecedor.getNome().contains(consulta) || fornecedor.getCnpj().contains(consulta)) {
-                        filtrado.add(fornecedor);
-                    }
-                }
-
-                if (callback != null){
-                    callback.execute(filtrado);
-                }
-
-                super.execute(filtrado);
-            }
-        });
-    }
-
-    public void consultarFornecedor(final int id, final RequestCallback<Fornecedor> callback){
-        Model.find(context, Fornecedor.class, callback, id);
-
-        //SELECT id, nome, cnpj, telefone, email, id_endereco WHERE cnpj = funcionario.getCnpj() OR nome = funcionario.getNome();
+    public void consultarFornecedor(final RequestCallback<Fornecedor> callback){
+        Model.find(context, Fornecedor.class, new TypeToken<ArrayList<Fornecedor>>(){}.getType(), callback, null);
     }
 
     public void relatorioFornecedor(Fornecedor fornecedor){
@@ -77,4 +52,15 @@ public class ControleDeFornecedor {
         //Exibir Relatório
     }
 
+    public static void selecionarParaEditar(Fornecedor fornecedor){
+        ControleDeFornecedor.selecionado = fornecedor;
+    }
+
+    public static Fornecedor getSelecionado(){
+        return selecionado;
+    }
+
+    public static void deselecionar(){
+        selecionado = null;
+    }
 }
