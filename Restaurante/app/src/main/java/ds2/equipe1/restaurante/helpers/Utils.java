@@ -4,12 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import ds2.equipe1.restaurante.R;
@@ -129,6 +128,32 @@ public class Utils {
         final EditText edtInput = (EditText) linearLayout.findViewById(R.id.edtInput);
         edtInput.setHint(hint);
         edtInput.setText(defValue);
+        builder.setView(linearLayout);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (callback != null) {
+                    callback.execute(edtInput.getText().toString());
+                }
+            }
+        });
+        builder.setNegativeButton("Cancelar", null);
+
+        builder.show();
+    }
+
+    public void selectPopup(String title, final DialogCallback callback){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+
+        // Set up the input
+        LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout linearLayout = (LinearLayout) li.inflate(R.layout.select_popup, null);
+
+        final Spinner spinnerItens = (Spinner) linearLayout.findViewById(R.id.spinnerItens);
+        final EditText edtInput = (EditText) linearLayout.findViewById(R.id.edtInput);
         builder.setView(linearLayout);
 
         // Set up the buttons

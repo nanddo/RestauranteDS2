@@ -4,7 +4,9 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import ds2.equipe1.restaurante.BuscaItem;
 import ds2.equipe1.restaurante.controles.ControleDeItem;
+import ds2.equipe1.restaurante.helpers.RequestCallback;
 
 /**
  * Created by Th on 24/03/2016.
@@ -31,7 +33,7 @@ public class Produto extends Model<Produto> {
         //TODO: criar no banco e gerar id
     }
 
-	/*public static ArrayList<Produto> carrgarProdutos() {
+	/*public static ArrayList<Produto> carregarProdutos() {
 		ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
 
 		ArrayList<Produto> lista = new ArrayList<Produto>();
@@ -45,7 +47,7 @@ public class Produto extends Model<Produto> {
 	}*/
     
 	public boolean validarProduto() {
-		for (int i = 0; i < ingredientes.size(); i++) {
+		/*for (int i = 0; i < ingredientes.size(); i++) {
             if (ingredientes.get(i).getQuantidade() > ControleDeItem.consultarItem(ingredientes.get(i).getItem().getNome(), new RequestCallback<Item>() {
                 @Override
                 public void execute(ArrayList<Item> itens) {
@@ -57,7 +59,7 @@ public class Produto extends Model<Produto> {
             }).getQuantidade()) {
 				return false;
 			}
-        }
+        }*/
         return true;
     }
     

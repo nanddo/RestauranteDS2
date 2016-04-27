@@ -73,6 +73,7 @@ public class ServerRequest {
         Map<String, Object> params = new HashMap<>();
         //TODO: Remover padrao
         params.put("usuario", new Utils(context).getData("usuario", "user.default"));
+        params.put("senha", new Utils(context).getData("senha", "senha.default"));
         return params;
     }
 

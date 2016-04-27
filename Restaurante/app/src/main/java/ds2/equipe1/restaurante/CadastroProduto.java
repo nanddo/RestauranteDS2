@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,8 @@ public class CadastroProduto extends AppCompatActivity {
 
     private ControleDeProduto controleDeProduto;
     private EditText edtNome, edtPreco;
-    private Button btnCadastrar, btnCancelar, btnAddIngrediente;
+    private Button btnCadastrar, btnCancelar;
+    private ImageButton btnAddIngrediente;
     private ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
     private Context context;
 
@@ -39,7 +41,7 @@ public class CadastroProduto extends AppCompatActivity {
         edtPreco = (EditText) findViewById(R.id.edtPreco);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
         btnCancelar = (Button) findViewById(R.id.btnCancelar);
-        btnAddIngrediente = (Button) findViewById(R.id.btnAddIngrediente);
+        btnAddIngrediente = (ImageButton) findViewById(R.id.btnAddIngrediente);
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,14 +50,14 @@ public class CadastroProduto extends AppCompatActivity {
             }
         });
 
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onCancelarClick();
             }
         });
 
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+        btnAddIngrediente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onAddIngredienteClick();
@@ -79,11 +81,11 @@ public class CadastroProduto extends AppCompatActivity {
     }
 
     private void onAddIngredienteClick(){
-        Intent intent = new Intent(this, SelecionarIngredientes.class);
-        startActivityForResult(intent,1);
+        new Utils(this).selectPopup("Cadastrar ingrediente", null);
+
+        //Intent intent = new Intent(this, SelecionarIngredientes.class);
+        //startActivityForResult(intent,1);
 
         //Implementar lista de seleção de ingredientes
-
-        finish();
     }
 }

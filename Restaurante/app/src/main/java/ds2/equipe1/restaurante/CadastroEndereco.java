@@ -40,7 +40,7 @@ public class CadastroEndereco extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final Endereco endereco = new Endereco(CadastroEndereco.this, edtLogradouro.getText().toString(), edtRua.getText().toString(), Integer.parseInt(edtNumero.getText().toString()), edtBairro.getText().toString(), edtCidade.getText().toString(), edtCEP.getText().toString());
+                final Endereco endereco = new Endereco(CadastroEndereco.this, edtLogradouro.getText().toString(), edtRua.getText().toString(), Integer.parseInt(edtNumero.getText().toString()), edtBairro.getText().toString(), edtCidade.getText().toString(), edtEstado.getText().toString(), edtCEP.getText().toString());
 
                 endereco.save(new RequestCallback<Model>() {
                     @Override

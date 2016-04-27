@@ -49,16 +49,16 @@
                 android:hint="Digite o preço em reais" />
 
             <TextView
-                android:layout_marginTop="10dp"
                 style="@style/editFormSpan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Ingredientes:" />
 
             <ListView
                 android:id="@+id/lvIngredientes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,19 +94,21 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <Button
+                <ImageButton
                     android:id="@+id/btnAddIngrediente"
+                    style="@style/buttonForm"
+                    android:scaleType="centerCrop"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    style="@style/buttonForm"
-                    android:text="+" />
+                    android:background="@null"
+                    android:src="@drawable/ic_add" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:gravity="right"
                 android:orientation="horizontal">
 

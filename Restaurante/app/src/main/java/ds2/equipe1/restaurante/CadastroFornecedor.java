@@ -9,7 +9,6 @@ import android.widget.EditText;
 
 import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
 import ds2.equipe1.restaurante.helpers.Utils;
-import ds2.equipe1.restaurante.modelos.Endereco;
 import ds2.equipe1.restaurante.modelos.Fornecedor;
 
 public class CadastroFornecedor extends AppCompatActivity {
@@ -33,7 +32,7 @@ public class CadastroFornecedor extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getBooleanExtra("alterar", false)){
             novoCadastro = false;
-            carregarFuncionario();
+            carregarFornecedor();
         }
 
         if (novoCadastro){
@@ -115,7 +114,7 @@ public class CadastroFornecedor extends AppCompatActivity {
         finish();
     }
 
-    public void carregarFuncionario(){
+    public void carregarFornecedor(){
         if (ControleDeFornecedor.getSelecionado() != null) {
             CadastroFornecedor.this.fornecedor = ControleDeFornecedor.getSelecionado();
 

@@ -10,10 +10,12 @@ import java.util.ArrayList;
 public abstract class RequestCallback<T> {
     private Context context;
 
+    //cria request callback SEM tela de loading
     public RequestCallback(){
         onStart();
     }
 
+    //Cria request callback com uma tela de loading
     public RequestCallback(Context context){
         this.context = context;
         onStart();

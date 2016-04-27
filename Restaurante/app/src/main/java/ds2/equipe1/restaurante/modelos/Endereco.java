@@ -11,9 +11,10 @@ public class Endereco extends Model<Endereco> {
     private int numero;
     private String bairro;
     private String cidade;
+    private String estado;
     private String cep;
 
-    public Endereco(Context context, String logradouro, String rua, int numero, String bairro, String cidade, String cep) {
+    public Endereco(Context context, String logradouro, String rua, int numero, String bairro, String cidade, String estado, String cep) {
         super(context);
         this.logradouro = logradouro;
         this.rua = rua;
@@ -21,6 +22,7 @@ public class Endereco extends Model<Endereco> {
         this.bairro = bairro;
         this.cidade = cidade;
         this.cep = cep;
+        this.estado = estado;
     }
 
     public String getLogradouro() {
@@ -45,5 +47,13 @@ public class Endereco extends Model<Endereco> {
 
     public String getCep() {
         return cep;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

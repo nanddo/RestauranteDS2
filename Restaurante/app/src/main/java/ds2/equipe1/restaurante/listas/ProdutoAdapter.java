@@ -43,7 +43,7 @@ public class ProdutoAdapter extends BaseAdapter {
     public View getView(int position, View root, ViewGroup parent) {
         if (root == null) {
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            root = vi.inflate(R.layout.item_fornecedor, parent, false);
+            root = vi.inflate(R.layout.item_produto, parent, false);
         }
 
         TextView edtNome,edtPreco;

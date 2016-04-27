@@ -33,7 +33,7 @@ public class ControleDeProduto {
 	}
 
     public void cadastrarProduto(String nome, float preco, ArrayList <Ingrediente> ingredientes){
-		produtos.add(new Produto(nome, preco, ingredientes));
+		produtos.add(new Produto(context, nome, preco, ingredientes));
     }
     
     public void excluirProduto(String nome){

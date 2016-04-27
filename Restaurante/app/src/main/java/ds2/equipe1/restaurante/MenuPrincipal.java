@@ -20,8 +20,6 @@ public class MenuPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
-        preCadastroDeDados();
-
         findViewById(R.id.menu_fornecedores).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +61,6 @@ public class MenuPrincipal extends AppCompatActivity {
                 open(MenuFuncionarios.class);
             }
         });
-
     }
 
     @Override
@@ -96,12 +93,5 @@ public class MenuPrincipal extends AppCompatActivity {
 
     public void open(Class activity){
         this.startActivity(new Intent(this, activity));
-    }
-
-    public void preCadastroDeDados(){
-        ControleDeFornecedor controleDeFornecedor = new ControleDeFornecedor(this);
-        //controleDeFornecedor.salvarFornecedor(new Fornecedor(this, "Fernando LTDA.", "79 99999-9999", "00.000.000/0000-0", "contato@fernandos.cc"));
-        //controleDeFornecedor.salvarFornecedor(new Fornecedor(this, "Arquimago Tecnology", "79 99999-9999", "00.000.000/0000-0", "contato@arquimago.cc"));
-        //controleDeFornecedor.salvarFornecedor(new Fornecedor(this, "Padaria Jõao Ferreira.", "79 99999-9999", "00.000.000/0000-0", "contato@padaria.cc"));
     }
 }

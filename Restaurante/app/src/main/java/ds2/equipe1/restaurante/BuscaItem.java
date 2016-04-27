@@ -24,6 +24,7 @@ public class BuscaItem extends AppCompatActivity {
 
     private ListView lvItens;
     private ItemAdapter adapter;
+
     private ArrayList<Item> itens;
     private EditText edtProcurar;
     private ImageView ivProcurar;
@@ -38,7 +39,7 @@ public class BuscaItem extends AppCompatActivity {
         controleDeItem = new ControleDeItem(this);
 
         itens = new ArrayList<>();
-        adapter = new ItemAdapter(BuscaItem.this, BuscaItem.this.itens);
+        adapter = new ItemAdapter(BuscaItem.this, itens);
         lvItens.setAdapter(adapter);
 
         consultar("");
@@ -80,7 +81,7 @@ public class BuscaItem extends AppCompatActivity {
     private void consultar(String consulta){
         controleDeItem.consultarItem(consulta, new RequestCallback<Item>(){
             @Override
-            public void execute(ArrayList<Item> itens) {
+            public void execute(ArrayList<Item> itens) throws Exception {
                 BuscaItem.this.itens.clear();
                 BuscaItem.this.itens.addAll(itens);
                 adapter.notifyDataSetChanged();

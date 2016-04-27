@@ -21,48 +21,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnAdicionarPedido"
-                    style="@style/buttonForm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Adicionar Pedido" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/btnEncerrarComanda"
-                    style="@style/buttonForm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:text="Encerrar Comanda" />
-
-            </LinearLayout>
-
             <TextView
                 style="@style/editFormSpan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="ID da Comanda:" />
+                android:text="Nome:" />
 
             <EditText
-                android:id="@+id/edtID"
+                android:id="@+id/edtNome"
                 style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:focusable="false"
-                android:text="1" />
+                android:focusable="false" />
 
             <TextView
                 style="@style/editFormSpan"
@@ -79,20 +50,38 @@
                 android:focusable="false"
                 android:text="27/02/2016 às 13h40" />
 
-            <TextView
-                style="@style/editFormSpan"
+            <LinearLayout
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pedidos:" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/editFormSpan"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Pedidos:" />
+
+                <ImageButton
+                    style="@style/buttonForm"
+                    android:scaleType="centerCrop"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:id="@+id/btnAdicionarPedido"
+                    android:src="@drawable/ic_add" />
+            </LinearLayout>
 
             <LinearLayout
-                android:clickable="true"
-                android:onClick="onItemClick"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="onItemClick"
+                android:orientation="vertical"
                 android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:orientation="vertical">
+                android:paddingTop="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -100,16 +89,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:src="@drawable/ic_ingredients_red"
                         android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginRight="10dp"
-                        android:layout_height="40dp" />
+                        android:src="@drawable/ic_ingredients_red" />
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
@@ -128,25 +117,25 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_done"
                         android:layout_width="35dp"
-                        android:layout_height="35dp" />
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_done" />
 
                     <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_cancel"
                         android:layout_width="35dp"
-                        android:layout_height="35dp" />
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_cancel" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:orientation="vertical">
+                android:paddingTop="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -154,16 +143,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:src="@drawable/ic_ingredients_red"
                         android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginRight="10dp"
-                        android:layout_height="40dp" />
+                        android:src="@drawable/ic_ingredients_red" />
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
@@ -182,25 +171,25 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_done_green"
                         android:layout_width="35dp"
-                        android:layout_height="35dp" />
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_done_green" />
 
                     <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_cancel"
                         android:layout_width="35dp"
-                        android:layout_height="35dp" />
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_cancel" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:orientation="vertical">
+                android:paddingTop="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -208,16 +197,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:src="@drawable/ic_ingredients_red"
                         android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginRight="10dp"
-                        android:layout_height="40dp" />
+                        android:src="@drawable/ic_ingredients_red" />
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
@@ -236,26 +225,26 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_done_green"
                         android:layout_width="35dp"
-                        android:layout_height="35dp" />
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_done_green" />
 
                     <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_cancel"
                         android:layout_width="35dp"
-                        android:layout_height="35dp" />
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_cancel" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:background="#EEEEEE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#EEEEEE"
+                android:orientation="vertical"
                 android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:orientation="vertical">
+                android:paddingTop="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -263,16 +252,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:src="@drawable/ic_ingredients_gray"
                         android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginRight="10dp"
-                        android:layout_height="40dp" />
+                        android:src="@drawable/ic_ingredients_gray" />
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
@@ -290,18 +279,27 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_done"
                         android:layout_width="35dp"
-                        android:layout_height="35dp" />
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_done" />
 
                     <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_cancel_red"
                         android:layout_width="35dp"
-                        android:layout_height="35dp" />
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_cancel_red" />
                 </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btnEncerrarComanda"
+                style="@style/buttonForm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:text="Encerrar Comanda" />
 
             <TextView
                 style="@style/requisito_funcional"

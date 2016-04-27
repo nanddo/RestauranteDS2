@@ -1,144 +1,120 @@
 package ds2.equipe1.restaurante.controles;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
-import ds2.equipe1.restaurante.BuscaItem;
 import ds2.equipe1.restaurante.helpers.RequestCallback;
-import ds2.equipe1.restaurante.listas.ItemAdapter;
+import ds2.equipe1.restaurante.helpers.Utils;
+import ds2.equipe1.restaurante.modelos.Fornecedor;
 import ds2.equipe1.restaurante.modelos.Item;
+import ds2.equipe1.restaurante.modelos.Model;
 
 /**
  * Created by Th on 24/03/2016.
  */
 public class ControleDeItem {
-	
-	private static ArrayList <Item> itens;
-	private Context context;
-	private static ItemAdapter adapter;
+    //Lista com a consulta mais recente de itens no servidor.
+    private ArrayList<Item> itens = new ArrayList<>();
+    private Context context;
 
-	public ControleDeItem (Context context){
-		this.context = context;
-	}
+    public ControleDeItem(Context context) {
+        this.context = context;
+    }
 
-	public static void cadastrarItem(Item item) {
-		itens.add(item);
-		// TODO: realizar consulta SQL
-		// String sql = "INSERT INTO restaurante.item VALUES (" + item.getRua() + "," + item.getQuantidade() + "," + item.getLimiteMinimo()+ ")";
-	}
-	
-	public static void alterarItemQuantidade(String nome, int quantidade) {
-		Item item = consultarItem(nome, new RequestCallback<Item>() {
-			@Override
-			public void execute(ArrayList<Item> itens) {
-				BuscaItem.this.itens.clear();
-				BuscaItem.this.itens.addAll(itens);
-				adapter.notifyDataSetChanged();
-				super.execute(itens);
-			}
-		});
-		
-		if (item != null) {
-			item.setQuantidade(quantidade);
-			// TODO: realizar consulta SQL (na classe item fica melhor)
-			// String sql = "UPDATE restaurante.item SET quantidade = '" + quantidade + "' WHERE nome = '" + nome + "'";
-		}
-	}
-	
-	public static void alterarItemLimiteMinimo(String nome, int limiteMinimo) {
-		Item item = consultarItem(nome, new RequestCallback<Item>() {
-			@Override
-			public void execute(ArrayList<Item> itens) {
-				BuscaItem.this.itens.clear();
-				BuscaItem.this.itens.addAll(itens);
-				adapter.notifyDataSetChanged();
-				super.execute(itens);
-			}
-		});
-		
-		if (item != null) {
-			item.setLimiteMinimo(limiteMinimo);
-			// TODO: realizar consulta SQL (na classe item fica melhor)
-			// String sql = "UPDATE restaurante.item SET limiteMinimo = '" + limiteMinimo + "' WHERE nome = '" + nome + "'";
-		}
-	}
-	
-	public static void alterarItem(String nome, int quantidade, int limiteMinimo) {
-		Item item = consultarItem(nome, new RequestCallback<Item>() {
-			@Override
-			public void execute(ArrayList<Item> itens) {
-				BuscaItem.this.itens.clear();
-				BuscaItem.this.itens.addAll(itens);
-				adapter.notifyDataSetChanged();
-				super.execute(itens);
-			}
-		});
-		
-		if (item != null) {
-			if (quantidade >= 0) {
-				item.setQuantidade(quantidade);
-				// TODO: realizar consulta SQL (na classe item fica melhor)
-				// String sql = "UPDATE restaurante.item SET quantidade = '" + quantidade + "' WHERE nome = '" + nome + "'";
-			}
-			
-			if (limiteMinimo >= 0) {
-				item.setLimiteMinimo(limiteMinimo);
-				// TODO: realizar consulta SQL (na classe item fica melhor)
-				// String sql = "UPDATE restaurante.item SET limiteMinimo = '" + limiteMinimo + "' WHERE nome = '" + nome + "'";
-			}
-		}
-	}
-	
-	public static void excluirItem(String nome) {
-		Item item = consultarItem(nome, new RequestCallback<Item>() {
-			@Override
-			public void execute(ArrayList<Item> itens) {
-				BuscaItem.this.itens.clear();
-				BuscaItem.this.itens.addAll(itens);
-				adapter.notifyDataSetChanged();
-				super.execute(itens);
-			}
-		});
-		if (item != null) {
-			itens.remove(item);
-			// TODO: realizar consulta SQL
-			// String sql = "DELETE FROM restaurante.item WHERE nome = '" + nome + "'";
-		}
-	}
-	
-	public static Item consultarItem(String nome, RequestCallback<Item> requestCallback) {
-		for (int i = 0; i < itens.size(); i++) {
-            if (itens.get(i).getNome() == nome) {
-				return itens.get(i);
-			}
+    public static void salvarItem(Item item) {
+        item.save();
+    }
+
+    public static void alterarItemQuantidade(Item item, int quantidade) {
+        item.setQuantidade(quantidade);
+        salvarItem(item);
+    }
+
+    public static void alterarItemLimiteMinimo(Item item, int limiteMinimo) {
+        item.setLimiteMinimo(limiteMinimo);
+        salvarItem(item);
+    }
+
+    public static void alterarItem(Item item, int quantidade, int limiteMinimo) {
+        if (quantidade >= 0) {
+            item.setQuantidade(quantidade);
         }
-        return null;
-	}
-	
-	public static void relatorioItens() {
-		for (int i = 0; i < itens.size(); i++) {
-			Item item = itens.get(i);
-			// TODO: alterar para exibi��o na tela do android ou gerar pdf
-			System.out.println(
-				"Item: " + item.getNome() + 
-				", Quantidade Disponivel: " + item.getQuantidade() + 
-				", Limite Minimo: " + item.getLimiteMinimo()
-			);
+
+        if (limiteMinimo >= 0) {
+            item.setLimiteMinimo(limiteMinimo);
         }
-	}
-	
-	public static void relatorioItensEmFalta() {
-		for (int i = 0; i < itens.size(); i++) {
-			Item item = itens.get(i);
-			if (item.getQuantidade() < item.getLimiteMinimo()) {
-				// TODO: alterar para exibi��o na tela do android ou gerar pdf
-				System.out.println(
-					"Item em Falta: " + item.getNome() + 
-					", Quantidade Disponivel: " + item.getQuantidade() + 
-					", Limite Minimo: " + item.getLimiteMinimo()
-				);
-			}
+
+        salvarItem(item);
+    }
+
+    public static void excluirItem(Item item) {
+        item.delete();
+    }
+
+    public void consultarItem(String consulta, final RequestCallback<Item> callback) {
+        //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memória ram
+        if (consulta.isEmpty()) {
+            Model.find(context, Item.class, new TypeToken<ArrayList<Item>>() {
+            }.getType(), new RequestCallback<Item>() {
+                @Override
+                public void execute(ArrayList<Item> lista) throws Exception {
+                    super.execute(lista);
+
+                    itens.clear();
+                    itens.addAll(lista);
+
+                    if (callback != null) {
+                        callback.execute(lista);
+                    }
+                }
+            }, null);
+        } else {
+            //Se tiver consulta, faz a pesquisa nos itens que já estão na memória ram
+            try {
+                ArrayList<Item> itensFiltrados = new ArrayList<>();
+
+                for (Item item : itens) {
+                    if (item.getNome().contains(consulta)) {
+                        itensFiltrados.add(item);
+                    }
+                }
+
+                if (callback != null) {
+                    callback.execute(itensFiltrados);
+                }
+            } catch (Exception e) {
+                Log.e(Utils.TAG, "Erro ao consultar fornecedores: ", e);
+            }
         }
-	}
+    }
+
+    public static void relatorioItens(ArrayList<Item> itens) {
+        for (int i = 0; i < itens.size(); i++) {
+            Item item = itens.get(i);
+            // TODO: alterar para exibi��o na tela do android ou gerar pdf
+            System.out.println(
+                    "Item: " + item.getNome() +
+                            ", Quantidade Disponivel: " + item.getQuantidade() +
+                            ", Limite Minimo: " + item.getLimiteMinimo()
+            );
+        }
+    }
+
+    public static void relatorioItensEmFalta(ArrayList<Item> itens) {
+        for (int i = 0; i < itens.size(); i++) {
+            Item item = itens.get(i);
+            if (item.getQuantidade() < item.getLimiteMinimo()) {
+                // TODO: alterar para exibi��o na tela do android ou gerar pdf
+                System.out.println(
+                        "Item em Falta: " + item.getNome() +
+                                ", Quantidade Disponivel: " + item.getQuantidade() +
+                                ", Limite Minimo: " + item.getLimiteMinimo()
+                );
+            }
+        }
+    }
 }
