@@ -20,6 +20,14 @@ public class CriacaoComanda extends AppCompatActivity {
                 startActivity(new Intent(CriacaoComanda.this, BuscaProduto.class));
             }
         });
+
+        findViewById(R.id.btnEncerrarComanda).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //encerrar comanda
+                //imprimir comanda
+            }
+        });
     }
 
     @Override
