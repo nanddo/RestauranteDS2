@@ -39,7 +39,7 @@
             android:name=".MenuGarcom"
             android:label="Menu principal - Garçom" />
         <activity
-            android:name=".Pedido"
+            android:name=".ExibirPedido"
             android:label="Pedido" />
         <activity
             android:name=".MenuProdutos"

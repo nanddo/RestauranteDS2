@@ -33,7 +33,7 @@
                 style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Digite o rua" />
+                android:hint="Digite o nome" />
 
             <TextView
                 style="@style/editFormSpan"

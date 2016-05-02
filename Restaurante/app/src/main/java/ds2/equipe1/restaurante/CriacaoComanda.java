@@ -53,6 +53,6 @@ public class CriacaoComanda extends AppCompatActivity {
     }
 
     public void onItemClick(View v){
-        startActivity(new Intent(this, Pedido.class));
+        startActivity(new Intent(this, ExibirPedido.class));
     }
 }

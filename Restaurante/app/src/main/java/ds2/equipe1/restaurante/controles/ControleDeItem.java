@@ -20,6 +20,7 @@ public class ControleDeItem {
     //Lista com a consulta mais recente de itens no servidor.
     private ArrayList<Item> itens = new ArrayList<>();
     private Context context;
+    private static Item selecionado;
 
     public ControleDeItem(Context context) {
         this.context = context;
@@ -117,4 +118,17 @@ public class ControleDeItem {
             }
         }
     }
+
+    public static void selecionarParaEditar(Item item){
+        ControleDeItem.selecionado = item;
+    }
+
+    public static Item getSelecionado(){
+        return selecionado;
+    }
+
+    public static void deselecionar(){
+        selecionado = null;
+    }
+
 }

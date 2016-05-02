@@ -9,12 +9,19 @@ import ds2.equipe1.restaurante.controles.ControleDeAtendimento;
  */
 public class Item extends Model<Item> {
 	private String nome;
+	private String unidade;
 	private int quantidade;
 	private int limiteMinimo;
-	
-	public Item(Context context, String nome, int quantidade, int limiteMinimo){
+
+
+	public Item(Context context){
+		super(context);
+	}
+
+	public Item(Context context, String nome, int quantidade, String unidade, int limiteMinimo){
 		super(context);
 		this.nome = nome;
+		this.unidade = unidade;
 		this.quantidade = quantidade;
 		this.limiteMinimo = limiteMinimo;
     }
@@ -54,4 +61,12 @@ public class Item extends Model<Item> {
 		//alterar limiteMinimo no banco
 		this.limiteMinimo = limiteMinimo;
     }
+
+	public void setNome(String nome){
+		this.nome = nome;
+	}
+
+	public void setUnidade(String unidade){
+		this.unidade=unidade;
+	}
 }

@@ -20,6 +20,7 @@ import ds2.equipe1.restaurante.helpers.Utils;
 /**
  * Created by Fernando on 07/04/2016.
  */
+
 public class Model<T> {
     //transient para a serialação não incluir.
     private transient Context context;
