@@ -1,5 +1,6 @@
 package ds2.equipe1.restaurante;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,12 +8,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import ds2.equipe1.restaurante.controles.ControleDeAtendimento;
+import ds2.equipe1.restaurante.modelos.Comanda;
+
 public class CriacaoComanda extends AppCompatActivity {
+
+    private ControleDeAtendimento controleDeAtendimento;
+    Comanda comanda;
+    private Context context;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criacao_comanda);
+        controleDeAtendimento = new ControleDeAtendimento(this);
 
         findViewById(R.id.btnAdicionarPedido).setOnClickListener(new View.OnClickListener() {
             @Override

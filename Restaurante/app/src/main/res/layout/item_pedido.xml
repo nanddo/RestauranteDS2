@@ -48,16 +48,24 @@
                     android:text="R$ 30,00" />
             </LinearLayout>
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/btnConfirmaEntrega"
+                style="@style/buttonForm"
+                android:scaleType="centerCrop"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
+                android:background="@null"
                 android:src="@drawable/ic_done"
                 android:layout_gravity="center_vertical" />
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/btnCancelar"
+                style="@style/buttonForm"
+                android:scaleType="centerCrop"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
                 android:src="@drawable/ic_cancel" />
         </LinearLayout>
     </LinearLayout>
