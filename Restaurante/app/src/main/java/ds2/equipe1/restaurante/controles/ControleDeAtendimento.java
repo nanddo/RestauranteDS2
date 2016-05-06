@@ -25,7 +25,7 @@ public class ControleDeAtendimento {
         //inserir comando sql pra saber numero de mesas
         int numeroDeMesas = 20; //puxar número do sql
         for(int i = 1; i <= numeroDeMesas; i++) {
-            mesas.add(i, new Mesa(context, i));
+            mesas.add(new Mesa(context, i));
         }
     }
 

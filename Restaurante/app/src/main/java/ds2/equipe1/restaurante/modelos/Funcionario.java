@@ -6,7 +6,6 @@ import android.content.Context;
  * Created by Th on 24/03/2016.
  */
 public class Funcionario extends Model<Funcionario> {
-    private int id;
     private String nome;
     private Endereco endereco;
     private String telefone;
