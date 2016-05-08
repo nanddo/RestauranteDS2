@@ -14,7 +14,6 @@ public class Comanda extends Model<Comanda> {
     private ArrayList<Pedido> pedidos = new ArrayList<>();
     private String data;
     private boolean ativa = false;
-    private float total = 0;
     private String nome;
 
     public Comanda(Context context, String nome, Pedido primeiro){
@@ -24,12 +23,10 @@ public class Comanda extends Model<Comanda> {
         data = agora.toString();
         this.nome = nome;
         ativa = true;
-        total += primeiro.getCusto();
     }
 
     public void addPedido(Pedido outro){
         pedidos.add(outro);
-        total += outro.getCusto();
     }
 
     public void setNome(String nome){
@@ -56,8 +53,12 @@ public class Comanda extends Model<Comanda> {
         ativa = false;
     }
 
-    public float getTotal(){
-        return total;
+    public float getCustoTotal(){
+        float custo = 0;
+        for (Pedido pedido : pedidos){
+            custo+= pedido.getCusto();
+        };
+        return custo;
     }
 
 }

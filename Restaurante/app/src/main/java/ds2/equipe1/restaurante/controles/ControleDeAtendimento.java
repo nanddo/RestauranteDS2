@@ -53,7 +53,7 @@ public class ControleDeAtendimento {
                 saida += listaDeProdutos.get(i).getNome() + " " + listaDeProdutos.get(i).getPreco() + "\n";
             }
         }
-        float total = comanda.getTotal();
+        float total = comanda.getCustoTotal();
         saida += "Total de Pedidos" + total + "\n 10% = " + 0.1*total + "\n Total " + 1.1*total;
 
         controleDeImpressao.imprimir(saida);
