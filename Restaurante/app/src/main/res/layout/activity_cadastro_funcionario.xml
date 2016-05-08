@@ -36,6 +36,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/marginHintFormTop"
+                android:text="Login:" />
+
+            <EditText
+                android:id="@+id/edtNome_de_usuario"
+                style="@style/edtForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="fernando" />
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginHintFormTop"
                 android:text="CPF:" />
 
             <EditText

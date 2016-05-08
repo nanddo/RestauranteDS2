@@ -42,7 +42,7 @@ public class Funcionario extends Model<Funcionario> {
         return cpf;
     }
 
-    public String getNomeDeUsuario() {
+    public String getNome_de_usuario() {
         return nome_de_usuario;
     }
 
@@ -61,5 +61,7 @@ public class Funcionario extends Model<Funcionario> {
     public void setIdEndereco(Integer id_endereco) {
         this.id_endereco = id_endereco;
     }
+
+    public void setNome_de_usuario (String nome_de_usuario) { this.nome_de_usuario = nome_de_usuario; }
 
 }

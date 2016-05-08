@@ -14,7 +14,7 @@ import ds2.equipe1.restaurante.modelos.Funcionario;
 public class CadastroFuncionario extends AppCompatActivity {
 
     private ControleDeFuncionario controleDeFuncionario;
-    private EditText edtNome, edtCPF, edtEndereco, edtTelefone;
+    private EditText edtNome, edtCPF, edtEndereco, edtTelefone, edtNome_de_usuario;
     private Button btnCadastrar, btnCadastrarEndereco, btnExcluir;
 
     private Funcionario funcionario;
@@ -47,6 +47,7 @@ public class CadastroFuncionario extends AppCompatActivity {
     private void init(){
         edtNome = (EditText) findViewById(R.id.edtNome);
         edtCPF = (EditText) findViewById(R.id.edtCPF);
+        edtNome_de_usuario = (EditText) findViewById(R.id.edtNome_de_usuario);
         edtEndereco = (EditText) findViewById(R.id.edtEndereco);
         edtTelefone = (EditText) findViewById(R.id.edtTelefone);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
@@ -89,9 +90,11 @@ public class CadastroFuncionario extends AppCompatActivity {
         final String nome = edtNome.getText().toString();
         final String CPF = edtCPF.getText().toString();
         final String telefone = edtTelefone.getText().toString();
+        final String nome_de_usuario = edtNome_de_usuario.getText().toString();
 
         funcionario.setNome(nome);
         funcionario.setCpf(CPF);
+        funcionario.setNome_de_usuario(nome_de_usuario);
         funcionario.setTelefone(telefone);
         controleDeFuncionario.salvarFuncionario(funcionario);
 
@@ -111,6 +114,7 @@ public class CadastroFuncionario extends AppCompatActivity {
 
             edtNome.setText(funcionario.getNome());
             edtCPF.setText(funcionario.getCpf());
+            edtNome_de_usuario.setText(funcionario.getNome_de_usuario());
             edtTelefone.setText(funcionario.getTelefone());
         }
     }
