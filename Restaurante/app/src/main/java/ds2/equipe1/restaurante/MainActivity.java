@@ -10,6 +10,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TODO: Tela de log in e botão de log off
+        //TODO: Tela de log in e botao de log off
     }
 }
