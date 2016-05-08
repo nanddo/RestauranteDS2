@@ -4,33 +4,19 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-import ds2.equipe1.restaurante.BuscaItem;
-import ds2.equipe1.restaurante.controles.ControleDeItem;
-import ds2.equipe1.restaurante.helpers.RequestCallback;
-
 /**
  * Created by Th on 24/03/2016.
  */
 public class Produto extends Model<Produto> {
-	private int id;
 	private String nome;
 	private float preco;
     private ArrayList<Ingrediente> ingredientes;
 
-    public Produto(Context context, int id, String nome, float preco, ArrayList<Ingrediente> ingredientes) {
+    public Produto(Context context, String nome, float preco, ArrayList<Ingrediente> ingredientes) {
         super(context);
-        this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.ingredientes = ingredientes;
-    }
-
-    public Produto(Context context, String nome, float preco, ArrayList<Ingrediente> ingredientes) {
-		super(context);
-        this.nome = nome;
-		this.preco = preco;
-		this.ingredientes = ingredientes;
-        //TODO: criar no banco e gerar id
     }
 
 	/*public static ArrayList<Produto> carregarProdutos() {
@@ -62,6 +48,17 @@ public class Produto extends Model<Produto> {
         }*/
         return true;
     }
+
+    //Deve ser chamado quando o garçom conclui o pedido.
+    public boolean alertarSobreItensAbaixoDoLimite(){
+        for (Ingrediente ingrediente : getIngredientes()){
+            Item item = ingrediente.getItem();
+            if (item.getQuantidade()-ingrediente.getQuantidade() < item.getLimiteMinimo()){
+                //item.verificarItemAbaixoDoLimite();
+            }
+
+        }
+    }
     
 	public String getNome(){
         return nome;
@@ -71,7 +68,7 @@ public class Produto extends Model<Produto> {
         return preco;
     }
     
-    public ArrayList <Ingrediente> getItens(){
+    public ArrayList <Ingrediente> getIngredientes(){
         return ingredientes;
     }
     
