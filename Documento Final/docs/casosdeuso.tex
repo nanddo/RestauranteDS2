@@ -1,0 +1,90 @@
+\section{Casos de Uso}\label{casosdeuso}
+
+\useCase{Cadastrar Funcionário}{O Gerente cadastra um funcionário no sistema}{CDU1}{2}{Gerente}
+\begin{table}[H]
+	\centering
+	\begin{tabulary}{\textwidth}{|C|C|C|} \hline
+	Sistema                                       & Gerente                                       & Funcionário                  \\ \hline
+	                                              & 1 - Solicita dados do funcionário             &                              \\ \hline
+	                                              &                                               & 2 - Fornece dados ao Gerente \\ \hline
+	                                              & 3 - Insere os dados do funcionário no sistema &                              \\ \hline
+	4 - Solicita ao gerente confirmação dos dados &                                               &                              \\ \hline
+	                                              & 5a - Confirma dados \newline 5b - teste       &                              \\ \hline
+	6a - Registra os dados \newline 6b - Finaliza a operação &                                    &                              \\ \hline
+	7a - Finaliza a operação                      &                                               &                              \\ \hline
+	\end{tabulary}
+\end{table}
+
+
+
+\useCasePreCondition{Excluir Pedido}{O Garçom remove o pedido da comanda mediante solicitação do Cliente}{CDU2}{2}{Garçom}{O pedido deve ter sido incluído na comanda}
+\begin{table}[H]
+	\centering
+	\begin{tabulary}{\textwidth}{|C|C|C|} \hline
+	Sistema                          & Garçom                                     & Cliente                                     \\ \hline
+	                                 &                                            & 1 - Solicita ao Garçom a exclusão do pedido \\ \hline
+	                                 & 2 - Consulta a comanda no sistema          &                                             \\ \hline
+	3 - Retorna a comanda consultada &                                            &                                             \\ \hline
+	                                 & 4 - Solicita exclusão do pedido da comanda &                                             \\ \hline
+	5 - Realiza exclusão             &                                            &                                             \\ \hline
+	6 - Finaliza operação            &                                            &                                             \\ \hline
+	\end{tabulary}
+\end{table}
+
+
+
+\useCase{Alterar Cadastro de Funcionário}{O Gerente altera as informações de um funcionário no sistema}{CDU3}{2}{Gerente}
+\begin{table}[H]
+	\centering
+	\begin{tabulary}{\textwidth}{|C|C|C|} \hline
+	Sistema                                        & Gerente                                   & Funcionário                          \\ \hline
+	                                               & 1 - Solicita identificação do funcionário &                                      \\ \hline
+	                                               &                                           & 2 - Fornece identificação ao gerente \\ \hline
+	                                               & 3 - Solicita busca do cadastro do funcionário ao sistema &                       \\ \hline
+	4a - Retorna o cadastro do funcionário \newline 4b - Retorna aviso que o funcionário não está cadastrado no sistema &  &          \\ \hline
+	                                               & 5b - Solicita novos dados ao Funcionário  &          \\ \hline
+	                                               &                                           & 6b - Fornece dados ao Gerente        \\ \hline
+	                                               & 7b - Solicita a alteração do cadastro do funcionário ao sistema &                \\ \hline
+	8b - Altera os dados do funcionário no sistema &                                           &                                      \\ \hline
+	9b - Finaliza operação                         &                                           &                                      \\ \hline
+	\end{tabulary}
+\end{table}
+
+
+
+\useCase{Gerar relatório de itens em falta}{O gerente gera o relatório de itens em falta}{CDU4}{1}{Gerente}
+\begin{table}[H]
+	\centering
+	\begin{tabulary}{\textwidth}{|C|C|} \hline
+	Sistema                                 & Gerente                 \\ \hline
+	                                        & 1 - Solicita o relatório de itens em falta \\ \hline
+	2 - Realiza busca pelos itens em falta  &                                            \\ \hline
+	3 - Gera o relatório de itens em falta  &                                            \\ \hline
+	4 - Exibe relatório gerado              &                                            \\ \hline
+	                                        & 5a - Solicita impressão do relatório gerado \newline 5b - Solicita a gravação do relatório gerado \newline 5c - Descarta o relatório gerado    \\ \hline
+	6a - Envia relatório gerado para impressão \newline 6b - Salva o relatório \newline 6c - Exclui relatório & \\ \hline
+	7 - Finaliza operação                   &                                            \\ \hline
+	\end{tabulary}
+\end{table}
+
+
+
+\useCase{Alertar sobre itens abaixo do limite}{O gerente é alertado pelo sistema quando um item está abaixo do limite}{CDU5}{1}{Gerente}
+\begin{table}[H]
+	\centering
+	\begin{tabulary}{\textwidth}{|C|C|C|} \hline
+	Sistema                                                         & Garçom                                          & Gerente \\ \hline
+	                                                                & 1 - Indica ao sistema que o pedido foi entregue &         \\ \hline
+	2 - Sistema decrementa os itens dos produtos do pedido entregue &                                                 &         \\ \hline
+	3 - Compara a quantidade com o limite informado no cadastro do item &                                             &         \\ \hline
+	4a - O sistema emite um alerta para o Gerente \newline 4b - Finaliza a operação &                                 &         \\ \hline
+	                                                                &             & 5a - Recebe alerta de item abaixo do limite \\ \hline
+	6a - Finaliza operação                                          &                                                 &         \\ \hline
+	\end{tabulary}
+\end{table}
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth,,keepaspectratio]{polyurethane-original-combination.png}
+%	\caption{Renderização do Polyurethane. Esquerda -- original, Direita -- combinação.}\label{figure:polyurethane-render}
+%\end{figure}

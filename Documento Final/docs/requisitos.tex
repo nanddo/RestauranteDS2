@@ -1,0 +1,180 @@
+\section{Levantamento de Requisitos}\label{requisitos}
+
+\subsection{Propósito do Documento}
+Este documento contém a especificação de um sistema para controle e atendimento de um restaurante. Nas próximas seções, serão apresentadas de forma mais detalhada as características do sistema.
+
+
+
+\subsection{Escopo do Produto}
+O sistema destina-se à gerência de restaurantes, abrangendo os seguintes setores: financeiro, estoque, controle de funcionários e atendimento.
+
+
+
+\subsection{Definições e Abreviações}
+	\subsubsection{Definições}
+	\begin{itemize}
+	\item[] Item(ns): Cada mercadoria existente no estoque.
+	\item[] Produto(s): Mercadorias comercializadas pelo restaurante.
+	\item[] Pedidos: Requisição de produtos feitas pela comanda.
+	\item[] Comanda: Lista de pedidos vinculada a uma mesa.
+	\item[] Comanda Ativa: Comanda que permite a adesão de pedidos.
+	\item[] Comanda Fechada: Comanda que não permite a adesão de pedidos.
+	\item[] Restaurante: Estabelecimento comercial de venda de produtos.
+	\item[] Funcionário: Pessoa física com vínculo empregatício com o restaurante.
+	\item[] Relatório: Apresentação de um conjunto de informações específicas do restaurante.
+	\item[] Entrada de Itens: A aquisição de itens feita pelo restaurante, e inseridos no estoque.
+	\item[] Saída de Itens: A retirada de um item do estoque.
+	\item[] Arrecadação Líquida : Valor arrecadado subtraído dos gastos.
+	\end{itemize}
+
+	\subsubsection{Abreviações}
+	\begin{itemize}
+	\item[] RF: Requisito Funcional.
+	\item[] RNF: Requisito Não Funcional.
+	\item[] Prioridade do requisito. A prioridade é medida em uma escala de 0 a 2, onde 0 indica a menor prioridade e 2 indica a maior prioridade.
+	\end{itemize}
+
+
+
+\subsection{Referências}
+SOMMERVILLE, I. Engenharia de Software. Pearson/Prentice Hall.
+PRESSMAN, R. S. Engenharia de Software. McGraw Hill.
+
+
+
+\subsection{Visão Geral do Restante do Documento}
+Nas próximas seções serão apresentadas as características gerais do sistema e suas funcionalidades. Segue ainda, a descrição de restrições e dependências que devem ser consideradas para o devido funcionamento. Atrelado às funcionalidades do sistema, é apresentada também uma lista de requisitos funcionais e não funcionais que servirão como guia para o desenvolvimento do sistema.
+
+
+
+\subsection{Descrição Geral}
+
+	\subsubsection{Perspectiva do Produto}
+	Espera-se que o sistema seja desenvolvido, implementado e testado durante as disciplinas de Desenvolvimento de Software I, II e III da Universidade Federal de Sergipe.
+	
+	\subsubsection{Funções do Produto}
+	O produto permite a gestão de um restaurante, possibilitando o controle de estoque, controle do atendimento, gerenciando pedidos e comandas, permitindo também o controle financeiro e de funcionários.
+	
+	\subsubsection{Características do Usuário}
+	Segue abaixo a definição de cada tipo de usuário do sistema:
+	\begin{itemize}
+	\item[] Garçom: Usuário responsável pelo atendimento, solicitação, alteração, exclusão e entrega de pedidos, bem como o fechamento de comandas.
+	\item[] Gerente: Usuário com acesso a todas as funcionalidades do sistema.
+	\end{itemize}
+
+	\subsubsection{Restrições Gerais}
+	Os funcionários que utilizarão o sistema deverão ser treinados para que se tornem aptos para o uso do sistema.
+	
+	O restaurante deverá possuir dispositivos móveis (Smartphone ou Tablet) com configuração mínima de: processador de 1GHz, memória RAM 1GB, espaço de armazenamento interno de 500 MB e sistema operacional Android 4.2.
+	
+	O restaurante deverá possuir uma rede local WiFi (IEEE 802.11) disponível exclusivamente para os funcionários.
+	
+	O restaurante deverá possuir um computador central onde ficarão todos os dados do sistema.
+	
+	\subsubsection{Suposições e Dependências}
+	Faz-se necessário para o funcionamento do software a existência de tablets ou smartphones para que os garçons utilizem no atendimento.
+	
+	Rede WiFi para que os tablets ou smartphones se comuniquem com o sistema do restaurante, e um computador que funcione como servidor do sistema.
+	
+	
+\subsection{Requisitos específicos}
+
+\subsubsection{Requisitos Funcionais}
+\begin{enumerate}[
+	label=RF\arabic{*}, 
+	ref=(RF\arabic{*}),
+	leftmargin=1.5em,
+	itemindent=4.5em]
+\item Inclusão de fornecedores. (Pr.: 2)\par
+O sistema deve efetuar o cadastro dos fornecedores.\par
+\item Alteração de fornecedores. (Pr.: 2)\par
+O sistema deve efetuar a alteração dos dados cadastrais de fornecedores.\par
+\item Exclusão de fornecedores. (Pr.: 2)\par
+O sistema deve efetuar a exclusão de fornecedores.\par
+\item Consulta de fornecedores. (Pr.: 2)\par
+O sistema deve efetuar a consulta dos dados dos fornecedores.\par
+\item Geração de relatório de fornecedores. (Pr.: 0)\par
+O sistema deve gerar um relatório com os dados de todos os fornecedores.\par
+\item Geração de relatórios de itens por fornecedor. (Pr.: 1)\par
+O sistema deve efetuar a geração de relatórios de itens por fornecedor.\par
+\item Inclusão dos itens. (Pr.: 2)\par
+O sistema deve efetuar a inclusão dos dados dos itens fornecidos para o restaurante.\par
+\item Alteração de itens. (Pr.: 2)\par
+O sistema deve efetuar a alteração dos dados dos itens fornecidos para o restaurante.\par
+\item Exclusão de itens. (Pr.: 2)\par
+O sistema deve efetuar a exclusão dos itens fornecidos para o restaurante.\par
+\item Consultar de itens. (Pr.: 2)\par
+O sistema deve efetuar a consulta dos dados dos itens.\par
+\item Geração de relatório de itens. (Pr.: 1)\par
+O sistema deve gerar o relatório de todos os itens fornecidos por todos os fornecedores.\par
+\item Aviso de quantidade de itens abaixo do limite delimitado. (Pr.: 1)\par
+O sistema deve informar quando a quantidade de um item estiver abaixo do valor mínimo definido pelo gerente.\par
+\item Geração de relatório de Itens em falta. (Pr.: 1)\par
+O sistema deve efetuar geração de relatórios dos itens que estão em falta, ou seja, aqueles que a quantidade é igual a zero.\par
+\item Inclusão de comandas. (Pr.: 2)\par
+O sistema deve efetuar a inclusão de comandas, registrando a sua hora de abertura.\par
+\item Associar comanda a um funcionário. (Pr.: 2)\par
+O sistema deve associar uma comanda a um funcionário responsável.\par
+\item Encerramento de comandas. (Pr.: 2)\par
+O sistema deve efetuar o fechamento de comandas, incluindo a hora de encerramento.\par
+\item Alteração de comandas. (Pr.: 2)\par
+O sistema deve efetuar a alteração de comandas.\par
+\item Impressão de Pedidos (Pr: 2)\par
+O Sistema deve imprimir todos os pedidos adicionados às comandas.\par
+\item Gerar relatório de comandas ativas. (Pr.: 1)\par
+O sistema deve gerar o relatório de comandas ativas.\par
+\item Impressão de conta. (Pr.: 2)\par
+O sistema deve efetuar a impressão da conta.\par
+\item Consulta informações dos pedidos da comandas. (Pr.: 2)\par
+O sistema deve permitir a consulta de informações dos pedidos da comanda.\par
+\item Inclusão de pedido de produto na comanda. (Pr.: 2)\par
+O sistema deve efetuar a inclusão do pedido, incluindo a hora inicial do pedido.\par
+\item Entrega do pedido de Produto. (Pr.: 2)\par
+O sistema deve efetuar inclusão da hora da entrega do pedido.\par
+\item Cancelamento de pedidos. (Pr.: 2)\par
+O sistema deve permitir o cancelamento de pedidos que ainda não foram preparados.\par
+\item Informações de pedido. (Pr.: 2)\par
+O sistema deve permitir a consulta das informações dos pedidos.\par
+\item Opções de pagamento. (Pr.: 2)\par
+O sistema deverá informar sobre as opções de pagamento aceitas.\par
+\item Inclusão de produto. (Pr.: 2)\par
+O sistema deve efetuar o cadastro do produto.\par
+\item Alteração de produto. (Pr.: 2)\par
+O sistema deve efetuar a alteração do produto.\par
+\item Exclusão de produto. (Pr.: 2)\par
+O sistema deve efetuar a exclusão do produto.\par
+\item Consulta de produto. (Pr.: 2)\par
+O sistema deve efetuar a consulta de informações do produto.\par
+\item Geração de relatório de itens por produto. (Pr.: 1)\par
+O sistema deve efetuar a geração do relatório de itens que compõem um produto.\par
+\item Validação do produto a partir dos itens. (Pr.: 1)\par
+O sistema deve efetuar verificação da possibilidade de produção do produto a partir dos itens.\par
+\item Inclusão de funcionários. (Pr.: 2)\par
+O sistema deve efetuar o cadastro de funcionários.\par
+\item Alteração de funcionários. (Pr.: 2)\par
+O sistema deve efetuar a alteração de funcionários.\par
+\item Demissão de funcionários. (Pr.: 2)\par
+O sistema deve efetuar a demissão de funcionários.\par
+\item Consulta de funcionários. (Pr.: 2)\par
+O sistema deve efetuar consulta de funcionários.\par
+\item Gerar relatório de funcionários (Pr.: 0)\par
+O sistema deve gerar relatório com os dados de todos os funcionários.\par
+\item Geração de relatórios das comandas encerradas. (Pr.: 0)\par
+O sistema deve efetuar a geração de relatórios contendo as comandas encerradas do restaurante em um intervalo de tempo, em ordem de dias, definido pelo gerente.\par
+\item Geração de relatórios de despesas. (Pr.: 1)\par
+O Sistema deve efetuar a geração de relatórios contendo as despesas do restaurante em um intervalo de tempo, em ordem de dias, definido pelo gerente.\par
+\item Geração de relatórios da arrecadação líquida. (Pr.: 1)\par
+O Sistema deve efetuar a geração de relatórios contendo a arrecadação liquida do restaurante em um intervalo de tempo, em ordem de dias, definido pelo gerente.\par
+\end{enumerate}
+
+\subsubsection{Requisitos Não Funcionais}
+\begin{enumerate}[
+	label=RNF\arabic{*}, 
+	ref=(RNF\arabic{*}),
+	leftmargin=1.5em,
+	itemindent=4.5em]
+\item (Pr.: 1): O sistema deve retornar as consultas, ou seja, prover a exibição dos dados, em, no máximo, 6 segundos, em 90\% dos casos.
+\item (Pr.: 1): O sistema deve processar a inclusão de dados em, no máximo, 8 segundos, em 90\% dos casos.
+\item (Pr.: 0): O sistema deve processar a exclusão de dados em, no máximo, 8 segundos, em 90\% dos casos.
+\item (Pr.: 1): O sistema deve gerar relatórios em, no máximo, 8 segundos, em 90\% dos casos.
+\end{enumerate}

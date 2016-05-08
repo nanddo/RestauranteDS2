@@ -1,0 +1,62 @@
+%||||||%
+% Capa %
+%||||||%
+\begin{titlepage}
+% Se quiser uma figura de fundo na capa ative o pacote wallpaper e descomente a linha abaixo.
+%\ThisCenterWallPaper{0.8}{nomedafigura}
+
+\begin{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.25\linewidth,keepaspectratio]{ufs.png}
+\end{figure}
+{\large \textbf \universidade}
+\par
+{\large \textbf \centro}
+\par
+{\large \textbf \departamento}
+\par
+{\large \textbf \curso}
+\par
+\vspace{60pt}
+
+{\large \titulo}
+\par
+\vspace{60pt}
+
+{\large \professor}
+\par
+\vfill
+
+{\large São Cristóvão, Sergipe}\\
+{\large Maio -- 2016}
+\end{center}
+\end{titlepage}
+
+%Contra Capa
+\pagenumbering{arabic}
+\setcounter{page}{2}
+
+\begin{center}
+{\large \textbf {Componentes:}}
+\par
+\vspace{12pt}
+{\normalsize \alunoA}
+\par
+{\normalsize \alunoB}
+\par
+{\normalsize \alunoC}
+\par
+{\normalsize \alunoD}
+\par
+{\normalsize \alunoE}
+\par
+\end{center}
+\clearpage
+
+%Sumário
+\renewcommand{\contentsname}{Conteúdo}
+{
+\hypersetup{linkcolor=black}
+\tableofcontents
+}
