@@ -23,7 +23,7 @@ public class BuscaFornecedor extends AppCompatActivity {
 
     private ListView lvFornecedores;
     private FornecedorAdapter adapter;
-    //Fornecedores visiceis na tela. oi
+    //Fornecedores visiveis na tela
     private ArrayList<Fornecedor> fornecedores;
     private EditText edtProcurar;
     private ImageView ivProcurar;
@@ -45,7 +45,7 @@ public class BuscaFornecedor extends AppCompatActivity {
     }
 
     private void init(){
-        //pegar referências dos componentes xml
+        //pegar referencias dos componentes xml
         lvFornecedores = (ListView) findViewById(R.id.lvFornecedores);
         edtProcurar = (EditText) findViewById(R.id.edtProcurar);
         ivProcurar = (ImageView) findViewById(R.id.ivProcurar);
@@ -62,8 +62,8 @@ public class BuscaFornecedor extends AppCompatActivity {
 
         lvFornecedores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            //no clique do item o android nos dá a view, a posição do item na lista e o ID do item (que nós configuramos)
-            //então passamos esse ID para
+            // no clique do item o android nos da a view, a posicao do item na lista e o ID do item
+            // (que nos configuramos) entao passamos esse ID para
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ControleDeFornecedor.selecionarParaEditar(fornecedores.get(position));
 
@@ -97,7 +97,7 @@ public class BuscaFornecedor extends AppCompatActivity {
             }
         }
 
-        //Quando a tela reabrir, atualizar a interface com as informações alteradas do item selecionado.
+        //Quando a tela reabrir, atualizar a interface com as informacoes alteradas do item selecionado.
         adapter.notifyDataSetChanged();
 
         super.onResume();

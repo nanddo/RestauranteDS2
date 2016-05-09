@@ -86,6 +86,6 @@ public class CadastroProduto extends AppCompatActivity {
         //Intent intent = new Intent(this, SelecionarIngredientes.class);
         //startActivityForResult(intent,1);
 
-        //Implementar lista de seleção de ingredientes
+        //Implementar lista de selecao de ingredientes
     }
 }

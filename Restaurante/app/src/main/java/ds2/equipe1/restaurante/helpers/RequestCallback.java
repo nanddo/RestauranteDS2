@@ -4,9 +4,6 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-/**
- * Created by Fernando on 13/04/2016.
- */
 public abstract class RequestCallback<T> {
     private Context context;
 
@@ -15,7 +12,7 @@ public abstract class RequestCallback<T> {
         onStart();
     }
 
-    //Cria request callback com uma tela de loading
+    //Cria request callback COM uma tela de loading
     public RequestCallback(Context context){
         this.context = context;
         onStart();

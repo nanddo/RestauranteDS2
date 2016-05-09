@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import ds2.equipe1.restaurante.R;
 import ds2.equipe1.restaurante.modelos.Produto;
 
-/**
- * Created by Fernando on 08/04/2016.
- */
 public class ProdutoAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Produto> produtos;

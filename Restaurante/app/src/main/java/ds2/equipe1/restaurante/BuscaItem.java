@@ -46,7 +46,7 @@ public class BuscaItem extends AppCompatActivity {
     }
 
     private void init(){
-        //pegar referências dos componentes xml
+        //pegar referencias dos componentes xml
         lvItens = (ListView) findViewById(R.id.lvFornecedores);
         edtProcurar = (EditText) findViewById(R.id.edtProcurar);
         ivProcurar = (ImageView) findViewById(R.id.ivProcurar);
@@ -67,8 +67,6 @@ public class BuscaItem extends AppCompatActivity {
 
         lvItens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            //no clique do item o android nos dá a view, a posição do item na lista e o ID do item (que nós configuramos)
-            //então passamos esse ID para
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(BuscaItem.this, CadastroItem.class);
                 Toast.makeText(BuscaItem.this, "" + id, Toast.LENGTH_SHORT).show();

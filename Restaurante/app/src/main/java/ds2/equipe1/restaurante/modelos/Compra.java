@@ -7,13 +7,19 @@ public class Compra extends Model<Compra> {
 	private int quantidade;
 	private float preco;
 	private String data;
-	
-	public Compra(Context context, Item item, int quantidade, float preco, String data) {
+	private Fornecedor fornecedor;
+
+	public Compra(Context context){
+		super(context);
+	}
+
+	public Compra(Context context, Item item, int quantidade, float preco, String data, Fornecedor fornecedor) {
 		super(context);
 		this.item = item;
 		this.quantidade = quantidade;
 		this.preco = preco;
 		this.data = data;
+		this.fornecedor = fornecedor;
 	}
 	
 	public String getNomeDoItem(){
@@ -31,4 +37,6 @@ public class Compra extends Model<Compra> {
     public String getData() {
     	return this.data;
     }
+
+	public Fornecedor getFornecedor() { return this.fornecedor; }
 }

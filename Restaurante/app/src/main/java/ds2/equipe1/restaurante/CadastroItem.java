@@ -59,7 +59,7 @@ public class CadastroItem extends AppCompatActivity {
                 if (!novoCadastro && item.getId() != null) {
                     item.delete();
                     item.setId(null);
-                    new Utils(CadastroItem.this).toast("Item excluído!");
+                    new Utils(CadastroItem.this).toast("Item excluido!");
                     finish();
                 }
             }

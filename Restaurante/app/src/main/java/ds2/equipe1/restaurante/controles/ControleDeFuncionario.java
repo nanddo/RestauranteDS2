@@ -12,9 +12,6 @@ import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Funcionario;
 import ds2.equipe1.restaurante.modelos.Model;
 
-/**
- * Created by Th on 24/03/2016.
- */
 public class ControleDeFuncionario {
     private ArrayList<Funcionario> funcionarios = new ArrayList<>();
 
@@ -58,7 +55,7 @@ public class ControleDeFuncionario {
     }
 
     public void consultarFuncionario(String consulta, final RequestCallback<Funcionario> callback){
-        //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memoria ram
+        //Se a consulta for vazia, pega todos os itens do banco de dados e coloca na memoria ram
         if (consulta.isEmpty()) {
             Model.find(context, Funcionario.class, new TypeToken<ArrayList<Funcionario>>() {
             }.getType(), new RequestCallback<Funcionario>() {

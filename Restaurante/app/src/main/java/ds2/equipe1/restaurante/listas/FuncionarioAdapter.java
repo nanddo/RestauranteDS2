@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import ds2.equipe1.restaurante.R;
 import ds2.equipe1.restaurante.modelos.Funcionario;
 
-/**
- * Created by elton on 07/05/2016.
- */
-
 public class FuncionarioAdapter  extends BaseAdapter {
     private Context context;
     private ArrayList<Funcionario> funcionarios;

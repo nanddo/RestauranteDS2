@@ -9,9 +9,6 @@ import ds2.equipe1.restaurante.modelos.Mesa;
 import ds2.equipe1.restaurante.modelos.Pedido;
 import ds2.equipe1.restaurante.modelos.Produto;
 
-/**
- * Created by Th on 24/03/2016.
- */
 public class ControleDeAtendimento {
     private Context context;
     private ControleDeImpressao controleDeImpressao;

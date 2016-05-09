@@ -19,7 +19,7 @@ public class TelaRelatorios extends AppCompatActivity {
         if (i.hasExtra("dados")){
             tvImpressora.setText(i.getStringExtra("dados"));
         } else {
-            tvImpressora.setText("Nenhum dado passado como parâmetro");
+            tvImpressora.setText("Nenhum dado passado como parametro");
         }
     }
 

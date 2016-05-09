@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import ds2.equipe1.restaurante.R;
 import ds2.equipe1.restaurante.modelos.Item;
 
-/**
- * Created by Fernando on 08/04/2016.
- */
 public class ItemAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Item> itens;

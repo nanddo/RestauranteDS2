@@ -9,9 +9,6 @@ import ds2.equipe1.restaurante.modelos.Item;
 import ds2.equipe1.restaurante.modelos.Produto;
 import java.sql.*;
 
-/**
- * Created by Th on 24/03/2016.
- */
 public class ControleDeProduto {
 
 	private ArrayList <Produto> produtos;

@@ -5,9 +5,6 @@ import android.content.Intent;
 
 import ds2.equipe1.restaurante.TelaRelatorios;
 
-/**
- * Created by Fernando on 28/03/2016.
- */
 public class ControleDeImpressao {
     private Context context;
 

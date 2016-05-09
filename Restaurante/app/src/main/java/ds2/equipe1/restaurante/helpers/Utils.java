@@ -13,9 +13,6 @@ import android.widget.Toast;
 
 import ds2.equipe1.restaurante.R;
 
-/**
- * Created by Fernando on 28/03/2016.
- */
 public class Utils {
     public static final String TAG = "Restaurante";
     private Context context;

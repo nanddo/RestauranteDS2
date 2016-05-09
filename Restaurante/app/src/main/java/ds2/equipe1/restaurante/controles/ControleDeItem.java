@@ -13,9 +13,6 @@ import ds2.equipe1.restaurante.modelos.Fornecedor;
 import ds2.equipe1.restaurante.modelos.Item;
 import ds2.equipe1.restaurante.modelos.Model;
 
-/**
- * Created by Th on 24/03/2016.
- */
 public class ControleDeItem {
     //Lista com a consulta mais recente de itens no servidor.
     private ArrayList<Item> itens = new ArrayList<>();
@@ -57,7 +54,7 @@ public class ControleDeItem {
     }
 
     public void consultarItem(String consulta, final RequestCallback<Item> callback) {
-        //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memória ram
+        //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memoria ram
         if (consulta.isEmpty()) {
             Model.find(context, Item.class, new TypeToken<ArrayList<Item>>() {
             }.getType(), new RequestCallback<Item>() {
@@ -74,7 +71,7 @@ public class ControleDeItem {
                 }
             }, null);
         } else {
-            //Se tiver consulta, faz a pesquisa nos itens que já estão na memória ram
+            //Se tiver consulta, faz a pesquisa nos itens que ja estao na memoria ram
             try {
                 ArrayList<Item> itensFiltrados = new ArrayList<>();
 
@@ -96,7 +93,7 @@ public class ControleDeItem {
     public static void relatorioItens(ArrayList<Item> itens) {
         for (int i = 0; i < itens.size(); i++) {
             Item item = itens.get(i);
-            // TODO: alterar para exibi��o na tela do android ou gerar pdf
+            // TODO: alterar para exibicao na tela do android ou gerar pdf
             System.out.println(
                     "Item: " + item.getNome() +
                             ", Quantidade Disponivel: " + item.getQuantidade() +
@@ -109,7 +106,7 @@ public class ControleDeItem {
         for (int i = 0; i < itens.size(); i++) {
             Item item = itens.get(i);
             if (item.getQuantidade() < item.getLimiteMinimo()) {
-                // TODO: alterar para exibi��o na tela do android ou gerar pdf
+                // TODO: alterar para exibicao na tela do android ou gerar pdf
                 System.out.println(
                         "Item em Falta: " + item.getNome() +
                                 ", Quantidade Disponivel: " + item.getQuantidade() +

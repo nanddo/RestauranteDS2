@@ -16,15 +16,11 @@ import ds2.equipe1.restaurante.modelos.Fornecedor;
 import ds2.equipe1.restaurante.modelos.Item;
 import ds2.equipe1.restaurante.modelos.Model;
 
-/**
- * Created by Th on 24/03/2016.
- */
-
 public class ControleDeFornecedor {
     //Lista com a consulta mais recente de fornecedores no servidor.
     private ArrayList<Fornecedor> fornecedores = new ArrayList<>();
-    //Essa variável serve para deixar uma referência na memória o tempo inteiro de qual está selecionado,
-    //para que quando haja uma edição, a alteração seja refletida em mais de uma tela (exemplo: editar um fornecedor e atualizar na tela de busca).
+    //Essa variavel serve para deixar uma referencia na memoria o tempo inteiro de qual esta selecionado,
+    //para que quando haja uma edicao, a alteracao seja refletida em mais de uma tela (exemplo: editar um fornecedor e atualizar na tela de busca).
     private static Fornecedor selecionado;
     private Context context;
 
@@ -44,7 +40,7 @@ public class ControleDeFornecedor {
     }
 
     public void consultarFornecedor(String consulta, final RequestCallback<Fornecedor> callback){
-        //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memória ram
+        //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memoria ram
         if (consulta.isEmpty()) {
             Model.find(context, Fornecedor.class, new TypeToken<ArrayList<Fornecedor>>() {
                     }.getType(), new RequestCallback<Fornecedor>() {
@@ -61,7 +57,7 @@ public class ControleDeFornecedor {
                         }
                     }, null);
         } else {
-            //Se tiver consulta, faz a pesquisa nos itens que já estão na memória ram
+            //Se tiver consulta, faz a pesquisa nos itens que ja estao na memoria ram
             try {
                 ArrayList<Fornecedor> fornecedoresFiltrados = new ArrayList<>();
 
@@ -82,12 +78,12 @@ public class ControleDeFornecedor {
 
     public void relatorioFornecedor(Fornecedor fornecedor){
         //Banco de dados
-        //Exibir Relatório
+        //Exibir Relatorio
     }
 
     public void relatorioItensPorFornecedor(Item item, Fornecedor fornecedor){
         //Banco de Dados
-        //Exibir Relatório
+        //Exibir Relatorio
     }
 
     public static void selecionarParaEditar(Fornecedor fornecedor){
