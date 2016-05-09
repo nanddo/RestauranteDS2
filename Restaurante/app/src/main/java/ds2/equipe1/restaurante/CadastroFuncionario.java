@@ -67,7 +67,7 @@ public class CadastroFuncionario extends AppCompatActivity {
                 if (!novoCadastro && funcionario.getId() != null) {
                     funcionario.delete();
                     funcionario.setId(null);
-                    new Utils(CadastroFuncionario.this).toast("Funcionário excluído!");
+                    new Utils(CadastroFuncionario.this).toast("Funcionario excluido!");
                     finish();
                 }
             }
@@ -99,9 +99,9 @@ public class CadastroFuncionario extends AppCompatActivity {
         controleDeFuncionario.salvarFuncionario(funcionario);
 
         if (funcionario.getId() == null) {
-            new Utils(this).toast("Funcionário cadastrado!");
+            new Utils(this).toast("Funcionario cadastrado!");
         } else {
-            new Utils(this).toast("Funcionário alterado!");
+            new Utils(this).toast("Funcionario alterado!");
         }
 
         ControleDeFuncionario.deselecionar();

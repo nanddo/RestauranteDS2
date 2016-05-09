@@ -35,7 +35,7 @@ public class ControleDeFuncionario {
         funcionario.save();
 
         //Banco de Dados
-        //SQL (Sem o Endereço)
+        //SQL (Sem o Endereco)
         //INSERT INTO funcionario (nome, telefone, cnpj, email) VALUES (funcionario.getRua(), funcionario.getTelefone(), funcionario.getCnpj(), funcionario.getEmail());
     }
 
@@ -46,7 +46,7 @@ public class ControleDeFuncionario {
         } else return false;
 
         //Banco de Dados
-        //SQL (Sem o Endereço)
+        //SQL (Sem o Endereco)
         //UPDATE funcionario SET nome = funcionario.getRua(), telefone = funcionario.getRua(), email = funcionario.getEmail WHERE cnpj = funcionario.getCnpj();
     }
 
@@ -58,7 +58,7 @@ public class ControleDeFuncionario {
     }
 
     public void consultarFuncionario(String consulta, final RequestCallback<Funcionario> callback){
-        //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memória ram
+        //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memoria ram
         if (consulta.isEmpty()) {
             Model.find(context, Funcionario.class, new TypeToken<ArrayList<Funcionario>>() {
             }.getType(), new RequestCallback<Funcionario>() {
@@ -75,7 +75,7 @@ public class ControleDeFuncionario {
                 }
             }, null);
         } else {
-            //Se tiver consulta, faz a pesquisa nos itens que já estão na memória ram
+            //Se tiver consulta, faz a pesquisa nos itens que ja estao na memoria ram
             try {
                 ArrayList<Funcionario> funcionariosFiltrados = new ArrayList<>();
 
@@ -96,7 +96,7 @@ public class ControleDeFuncionario {
 
     public void relatorioFuncionario(Funcionario funcionario){
         //Banco de dados
-        //Exibir Relatório
+        //Exibir Relatorio
     }
 
     public static void selecionarParaEditar(Funcionario funcionario){

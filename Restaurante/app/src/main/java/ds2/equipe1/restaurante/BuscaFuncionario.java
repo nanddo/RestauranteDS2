@@ -41,7 +41,7 @@ public class BuscaFuncionario extends AppCompatActivity {
         consultar("");
     }
     private void init(){
-        //pegar referências dos componentes xml
+        //pegar referencias dos componentes xml
         lvFuncionarios = (ListView) findViewById(R.id.lvFuncionarios);
         edtProcurar = (EditText) findViewById(R.id.edtProcurar);
         ivProcurar = (ImageView) findViewById(R.id.ivProcurar);
@@ -58,8 +58,8 @@ public class BuscaFuncionario extends AppCompatActivity {
 
         lvFuncionarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            //no clique do item o android nos dá a view, a posição do item na lista e o ID do item (que nós configuramos)
-            //então passamos esse ID para
+            //no clique do item o android nos da a view, a posicao do item na lista e o ID do item (que nos configuramos)
+            //entao passamos esse ID para
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ControleDeFuncionario.selecionarParaEditar(funcionarios.get(position));
 
@@ -86,14 +86,14 @@ public class BuscaFuncionario extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        //verificar se o Funcionário foi excluido para remover da tela.
+        //verificar se o Funcionario foi excluido para remover da tela.
         for (int i = 0; i < funcionarios.size(); i++){
             if (funcionarios.get(i).getId() == null){
                 funcionarios.remove(i--);
             }
         }
 
-        //Quando a tela reabrir, atualizar a interface com as informações alteradas do item selecionado.
+        //Quando a tela reabrir, atualizar a interface com as informacoes alteradas do item selecionado.
         adapter.notifyDataSetChanged();
 
         super.onResume();
