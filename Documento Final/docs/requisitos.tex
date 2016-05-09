@@ -6,7 +6,7 @@ Este documento contém a especificação de um sistema para controle e atendimen
 
 
 \subsection{Escopo do Produto}
-O sistema destina-se à gerência de restaurantes, abrangendo os seguintes setores: financeiro, estoque, controle de funcionários e atendimento.
+O sistema destina-se à gerência de restaurantes, abrangendo os seguintes setores: estoque, controle de funcionários e atendimento.
 
 
 
@@ -24,20 +24,20 @@ O sistema destina-se à gerência de restaurantes, abrangendo os seguintes setor
 	\item[] Relatório: Apresentação de um conjunto de informações específicas do restaurante.
 	\item[] Entrada de Itens: A aquisição de itens feita pelo restaurante, e inseridos no estoque.
 	\item[] Saída de Itens: A retirada de um item do estoque.
-	\item[] Arrecadação Líquida : Valor arrecadado subtraído dos gastos.
 	\end{itemize}
 
 	\subsubsection{Abreviações}
 	\begin{itemize}
 	\item[] RF: Requisito Funcional.
 	\item[] RNF: Requisito Não Funcional.
-	\item[] Prioridade do requisito. A prioridade é medida em uma escala de 0 a 2, onde 0 indica a menor prioridade e 2 indica a maior prioridade.
+	\item[] Pr.: Prioridade do requisito. A prioridade é medida em uma escala de 0 a 2, onde 0 indica a menor prioridade e 2 indica a maior prioridade.
 	\end{itemize}
 
 
 
 \subsection{Referências}
 SOMMERVILLE, I. Engenharia de Software. Pearson/Prentice Hall.
+
 PRESSMAN, R. S. Engenharia de Software. McGraw Hill.
 
 
@@ -53,7 +53,7 @@ Nas próximas seções serão apresentadas as características gerais do sistema
 	Espera-se que o sistema seja desenvolvido, implementado e testado durante as disciplinas de Desenvolvimento de Software I, II e III da Universidade Federal de Sergipe.
 	
 	\subsubsection{Funções do Produto}
-	O produto permite a gestão de um restaurante, possibilitando o controle de estoque, controle do atendimento, gerenciando pedidos e comandas, permitindo também o controle financeiro e de funcionários.
+	O produto permite a gestão de um restaurante, possibilitando o controle de estoque, controle do atendimento, gerenciando pedidos e comandas, permitindo também o controle de funcionários.
 	
 	\subsubsection{Características do Usuário}
 	Segue abaixo a definição de cada tipo de usuário do sistema:
@@ -108,7 +108,7 @@ O sistema deve efetuar a consulta dos dados dos itens.\par
 \item Geração de relatório de itens. (Pr.: 1)\par
 O sistema deve gerar o relatório de todos os itens fornecidos por todos os fornecedores.\par
 \item Aviso de quantidade de itens abaixo do limite delimitado. (Pr.: 1)\par
-O sistema deve informar quando a quantidade de um item estiver abaixo do valor mínimo definido pelo gerente.\par
+O sistema deve informar a um gerente quando a quantidade de um item estiver abaixo do valor mínimo definido pelo gerente.\par
 \item Geração de relatório de Itens em falta. (Pr.: 1)\par
 O sistema deve efetuar geração de relatórios dos itens que estão em falta, ou seja, aqueles que a quantidade é igual a zero.\par
 \item Inclusão de comandas. (Pr.: 2)\par
