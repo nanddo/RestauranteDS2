@@ -56,9 +56,9 @@ public class ComandaAdapter extends BaseAdapter {
         Comanda comanda = comandas.get(position);
 
         //Corrigir
-        //edtComanda.setText(comanda.getNome());
-        //edtMesa.setText(comanda.getCnpj());
-        //edtConta.setText(comanda.getTelefone());
+        edtComanda.setText(comanda.getNome());
+        edtMesa.setText(comanda.getMesa());
+        edtConta.setText("R$"+comanda.getCustoTotal());
 
         new Utils(context).addFuncaoRemover(this, root.findViewById(R.id.ivRemover), comandas, position);
 

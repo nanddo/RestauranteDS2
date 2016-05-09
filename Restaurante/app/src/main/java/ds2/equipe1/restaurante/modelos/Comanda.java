@@ -11,11 +11,13 @@ public class Comanda extends Model<Comanda> {
     private String data;
     private boolean ativa = false;
     private String nome;
+    private int mesa;
 
-    public Comanda(Context context, String nome, Pedido primeiro){
+    public Comanda(Context context, String nome, int mesa, Pedido primeiro){
         super(context);
         Date agora = new Date();
         pedidos.add(primeiro);
+        this.mesa = mesa;
         data = agora.toString();
         this.nome = nome;
         ativa = true;
@@ -55,5 +57,21 @@ public class Comanda extends Model<Comanda> {
             custo+= pedido.getCusto();
         };
         return custo;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public int getMesa() {
+        return mesa;
+    }
+
+    public boolean isAtiva() {
+        return ativa;
+    }
+
+    public String getNome() {
+        return nome;
     }
 }

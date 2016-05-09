@@ -27,7 +27,7 @@ public class ControleDeAtendimento {
     }
 
     public void criarComanda(Mesa mesa, Pedido pedido, String nome){
-        mesa.addComanda(new Comanda(context, nome, pedido));
+        mesa.addComanda(new Comanda(context, nome, mesa.getNumero(), pedido));
     }
 
     public void encerrarComanda(Comanda comanda){

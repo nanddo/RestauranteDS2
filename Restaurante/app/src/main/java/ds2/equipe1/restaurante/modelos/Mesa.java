@@ -33,6 +33,10 @@ public class Mesa extends Model<Mesa> {
         return ativas;
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
     public Comanda getComanda(int indice){
         return comandas.get(indice);
     }
