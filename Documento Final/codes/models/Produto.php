@@ -10,6 +10,10 @@ class Produto extends Model {
     public $nome;
     public $preco;
 	
+   	public function initialize(){
+	    $this->hasMany("id", "Ingrediente", "id_produto");
+	}
+
 	public function getSchema()  {
         return "public";
     }

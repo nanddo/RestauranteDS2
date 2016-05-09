@@ -36,9 +36,9 @@ class FuncionarioController extends BaseController {
             foreach ($funcionarios as $funcionario){
                 $endereco = $funcionario->endereco;
                 $funcionario = get_object_vars($funcionario);
-                if ($endereco){
+                /*if ($endereco){
                     $funcionario["endereco"] = $endereco;
-                }
+                }*/
                 $arr[] = $funcionario;
             }
             return ["data" => $arr];

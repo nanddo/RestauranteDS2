@@ -3,13 +3,6 @@
 <?php
 
 class ProdutoController extends BaseController {
-    public function testeAction(){
-        $message = json_decode($_GET['message']);
-        header("Content-type: text/html; charset=utf-8");
-        echo "Message recebida as ".$message->date." de ".$message->name.":\n".$message->message;
-        exit;
-    }
-
     public function saveAction(){
         try {
             $produto = new Produto();
@@ -34,7 +27,7 @@ class ProdutoController extends BaseController {
 		                return ["success" => false, "errors" => $errors];		
             		}
             	}
-                return ["id" => $instance->id];
+                return ["id" => $produto->id];
             } else {
                 $errors = [];
                 foreach ($produto->getMessages() as $error) {
@@ -46,8 +39,27 @@ class ProdutoController extends BaseController {
             print_r($e);
         }
     }
-}
 
-/*
-{"ingredientes":[{"item":{"limiteMinimo":2,"nome":"Item 1","quantidade":5},"quantidade":2},{"item":{"limiteMinimo":3,"nome":"Item 2","quantidade":10},"quantidade":4},{"item":{"limiteMinimo":2,"nome":"Item 1","quantidade":5},"quantidade":2},{"item":{"limiteMinimo":3,"nome":"Item 2","quantidade":10},"quantidade":4}],"nome":"Pizza","preco":50.0}
-*/
+    public function findAction(){
+        try {
+            $produtos = Produto::find();
+            $arr = [];
+            foreach ($produtos as $produto){
+                $ingredientes = $produto->getIngrediente();
+                $ingredientes_arr = $ingredientes->toArray();
+                for ($i = 0; $i < count($ingredientes_arr); $i++){
+                    $ingredientes_arr[$i]["item"] = $ingredientes[$i]->getItem();
+                }
+                $produto = get_object_vars($produto);
+                if ($ingredientes){
+                    $produto["ingredientes"] = $ingredientes_arr;
+                }
+                $arr[] = $produto;
+            }
+            return ["data" => $arr];
+        } catch (Exception $e){           
+            print_r($e);
+        }
+        exit;
+    }
+}

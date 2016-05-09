@@ -34,11 +34,8 @@ class FornecedorController extends BaseController {
             $fornecedores = Fornecedor::find();
             $arr = [];
             foreach ($fornecedores as $fornecedor){
-            	$endereco = $fornecedor->endereco;
+            	$fornecedor->endereco;
             	$fornecedor = get_object_vars($fornecedor);
-            	if ($endereco){
-	            	$fornecedor["endereco"] = $endereco;
-	            }
             	$arr[] = $fornecedor;
             }
             return ["data" => $arr];
