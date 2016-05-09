@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
+import ds2.equipe1.restaurante.controles.ControleDeEndereco;
 import ds2.equipe1.restaurante.controles.ControleDeFuncionario;
 import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Funcionario;
@@ -15,10 +18,13 @@ public class CadastroFuncionario extends AppCompatActivity {
 
     private ControleDeFuncionario controleDeFuncionario;
     private EditText edtNome, edtCPF, edtEndereco, edtTelefone, edtNome_de_usuario;
+    private Spinner edtTipo;
+
     private Button btnCadastrar, btnCadastrarEndereco, btnExcluir;
 
     private Funcionario funcionario;
     private boolean novoCadastro = true;
+    private String[] arraySpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +56,26 @@ public class CadastroFuncionario extends AppCompatActivity {
         edtNome_de_usuario = (EditText) findViewById(R.id.edtNome_de_usuario);
         edtEndereco = (EditText) findViewById(R.id.edtEndereco);
         edtTelefone = (EditText) findViewById(R.id.edtTelefone);
+        edtTipo = (Spinner) findViewById(R.id.edtTipo);
+
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
         btnCadastrarEndereco = (Button) findViewById(R.id.btnCadastrarEndereco);
         btnExcluir = (Button) findViewById(R.id.btnExcluir);
+
+        this.arraySpinner = new String[]{
+                "Garcom", "Gerente"
+        };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arraySpinner);
+        edtTipo.setAdapter(adapter);
+
+        btnCadastrarEndereco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCadastrarEnderecoClick();
+            }
+        });
 
         btnCadastrarEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,12 +147,9 @@ public class CadastroFuncionario extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK){
-            if (data.hasExtra("rua")) {
-                edtEndereco.setText(data.getStringExtra("rua"));
-            }
-            if (data.hasExtra("id_endereco")) {
-                funcionario.setIdEndereco(data.getIntExtra("id_endereco", -1));
-            }
+            funcionario.setEndereco(ControleDeEndereco.getSelecionado());
+            edtEndereco.setText(funcionario.getEndereco().getRua());
+            btnCadastrarEndereco.setText("Alterar");
         }
     }
 }

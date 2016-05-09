@@ -57,7 +57,7 @@
                 style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="668.589.023-91" />
+                android:hint="66.589.023-91" />
 
             <TextView
                 style="@style/editFormSpan"
@@ -101,7 +101,19 @@
                 style="@style/edtForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="(79) 9 9999-9999" />
+                android:hint="(79) 99999-9999" />
+
+            <TextView
+                style="@style/editFormSpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginHintFormTop"
+                android:text="Cargo:" />
+
+            <Spinner
+                android:id="@+id/edtTipo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="match_parent"

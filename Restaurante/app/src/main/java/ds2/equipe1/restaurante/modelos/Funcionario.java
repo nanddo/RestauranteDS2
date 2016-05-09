@@ -18,11 +18,12 @@ public class Funcionario extends Model<Funcionario> {
         super(context);
     }
 
-    public Funcionario(Context context, String nome, String telefone, String cpf, String nome_de_usuario, Integer tipo) {
+    public Funcionario(Context context, String nome, Endereco endereco, String telefone, String cpf, String nome_de_usuario, Integer tipo) {
         super(context);
         this.nome = nome;
         this.telefone = telefone;
         this.cpf = cpf;
+        this.endereco = endereco;
         this.nome_de_usuario = nome_de_usuario;
         this.tipo = tipo;
     }
