@@ -63,12 +63,12 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnCancelar"
+                android:id="@+id/btnExcluir"
                 style="@style/buttonForm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:text="Cancelar" />
+                android:text="Excluir" />
 
             <Button
                 android:id="@+id/btnCadastrar"

@@ -100,8 +100,4 @@ public class BuscaProduto extends AppCompatActivity {
 
         super.onResume();
     }
-
-    public void onItemClick(View v){
-        startActivity(new Intent(this, CadastroProduto.class));
-    }
 }

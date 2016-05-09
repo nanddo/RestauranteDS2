@@ -1,5 +1,6 @@
 package ds2.equipe1.restaurante;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
 import ds2.equipe1.restaurante.controles.ControleDeItem;
 import ds2.equipe1.restaurante.controles.ControleDeProduto;
 import ds2.equipe1.restaurante.helpers.RequestCallback;
@@ -27,7 +29,7 @@ public class CadastroProduto extends AppCompatActivity {
     private EditText edtNome, edtPreco;
     private ListView lvIngredientes;
     private IngredienteAdapter adapter;
-    private Button btnCadastrar, btnCancelar;
+    private Button btnCadastrar, btnExcluir;
     private ImageButton btnAddIngrediente;
     private ArrayList<Item> itens = new ArrayList<>(); //apenas para o dropdown
     private ArrayList<Ingrediente> ingredientes = new ArrayList<>();
@@ -53,6 +55,21 @@ public class CadastroProduto extends AppCompatActivity {
                 super.execute(lista);
             }
         });
+
+
+        boolean novoCadastro = true;
+        Intent intent = getIntent();
+        if (intent.getBooleanExtra("alterar", false)){
+            novoCadastro = false;
+            carregarProduto();
+        }
+
+        if (novoCadastro){
+            btnExcluir.setVisibility(View.GONE);
+        } else {
+            btnCadastrar.setText("Alterar");
+            btnExcluir.setVisibility(View.VISIBLE);
+        }
     }
 
     private void init(){
@@ -60,7 +77,7 @@ public class CadastroProduto extends AppCompatActivity {
         edtPreco = (EditText) findViewById(R.id.edtPreco);
         lvIngredientes = (ListView) findViewById(R.id.lvIngredientes);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
-        btnCancelar = (Button) findViewById(R.id.btnCancelar);
+        btnExcluir = (Button) findViewById(R.id.btnExcluir);
         //btnAddIngrediente = (ImageButton) findViewById(R.id.btnAddIngrediente);
 
         adapter = new IngredienteAdapter(this, ingredientes);
@@ -73,19 +90,12 @@ public class CadastroProduto extends AppCompatActivity {
             }
         });
 
-        btnCancelar.setOnClickListener(new View.OnClickListener() {
+        btnExcluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onCancelarClick();
             }
         });
-
-//        btnAddIngrediente.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onAddIngredienteClick();
-//            }
-//        });
     }
 
     private void onCadastrarClick(){
@@ -119,5 +129,17 @@ public class CadastroProduto extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         }, itens);
+    }
+
+    private void carregarProduto(){
+        if (ControleDeProduto.getSelecionado() != null) {
+            produto = ControleDeProduto.getSelecionado();
+
+            edtNome.setText(produto.getNome());
+            edtPreco.setText(""+produto.getPreco());
+            ingredientes.clear();
+            ingredientes.addAll(produto.getIngredientes());
+            adapter.notifyDataSetChanged();
+        }
     }
 }
