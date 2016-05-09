@@ -72,6 +72,7 @@ CREATE TABLE item (
 	nome varchar(128),
 	quantidade integer,
 	limite integer,
+	unidade varchar(3),
 	CONSTRAINT pk_item PRIMARY KEY (id)
 );
 
