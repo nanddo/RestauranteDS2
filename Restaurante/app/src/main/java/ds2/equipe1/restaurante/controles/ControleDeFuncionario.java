@@ -21,6 +21,7 @@ public class ControleDeFuncionario {
     private ControleDeImpressao controleDeImpressao;
 
     public ControleDeFuncionario(Context context){
+        this.context = context;
         controleDeImpressao = new ControleDeImpressao(context);
     }
 

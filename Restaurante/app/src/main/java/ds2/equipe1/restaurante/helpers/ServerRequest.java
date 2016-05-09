@@ -35,7 +35,7 @@ public class ServerRequest {
     private static final String TAG = Utils.TAG;
 
     public enum Action {
-        INDEX, SAVE, DELETE, GET, FIND
+        INDEX, SAVE, DELETE, GET, FIND, LOGIN
     }
 
     private Context context;

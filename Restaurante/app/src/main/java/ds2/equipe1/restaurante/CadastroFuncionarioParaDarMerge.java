@@ -11,10 +11,8 @@ import android.widget.Toast;
 import ds2.equipe1.restaurante.controles.ControleDeEndereco;
 import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
 import ds2.equipe1.restaurante.controles.ControleDeFuncionario;
-import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Funcionario;
-import ds2.equipe1.restaurante.modelos.Model;
 
 public class CadastroFuncionarioParaDarMerge extends AppCompatActivity {
 
@@ -108,7 +106,7 @@ public class CadastroFuncionarioParaDarMerge extends AppCompatActivity {
 
         funcionario.setNome(nome.trim());
         funcionario.setCpf(CPF.trim());
-        funcionario.setNome_de_usuario(nome_de_usuario.trim());
+        funcionario.setNome_usuario(nome_de_usuario.trim());
         funcionario.setTelefone(telefone.replaceAll(" ", ""));
 
         controleDeFuncionario.salvarFuncionario(funcionario, null);
@@ -131,7 +129,7 @@ public class CadastroFuncionarioParaDarMerge extends AppCompatActivity {
 
             edtNome.setText(funcionario.getNome());
             edtCPF.setText(funcionario.getCpf());
-            edtNome_de_usuario.setText(funcionario.getNome_de_usuario());
+            edtNome_de_usuario.setText(funcionario.getNome_usuario());
             edtTelefone.setText(funcionario.getTelefone());
             if (funcionario.getEndereco() != null) {
                 btnCadastrarEndereco.setText("Alterar");

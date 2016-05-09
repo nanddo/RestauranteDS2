@@ -57,11 +57,7 @@
             android:name=".BuscaFuncionario"
             android:label="Buscar funcionários" />
         <activity android:name=".MenuPrincipal">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".TelaGarcom" />
         <activity android:name=".TelaRelatorios" />
@@ -71,6 +67,15 @@
         <activity
             android:name=".MenuFuncionarios"
             android:label="Funcionários" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

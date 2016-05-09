@@ -20,24 +20,23 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:gravity="center|bottom"
             android:id="@+id/viewLogin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginBottom="30dp"
                 android:src="@drawable/ic_ingredients_red" />
 
             <LinearLayout
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="20dp"
                 android:gravity="center|bottom"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
 
@@ -53,7 +52,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/edtUsername"
+                    android:id="@+id/edtLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -67,6 +66,7 @@
                     android:textSize="16sp" />
 
                 <Button
+                    android:onClick="onLoginButtonClick"
                     android:id="@+id/btnLogin"
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="wrap_content"
