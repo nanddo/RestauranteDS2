@@ -1,12 +1,13 @@
 package ds2.equipe1.restaurante;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import ds2.equipe1.restaurante.controles.ControleDeEndereco;
 import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
 import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Fornecedor;
@@ -66,7 +67,7 @@ public class CadastroFornecedor extends AppCompatActivity {
                 if (!novoCadastro && fornecedor.getId() != null) {
                     fornecedor.delete();
                     fornecedor.setId(null);
-                    new Utils(CadastroFornecedor.this).toast("Fornecedor excluido!");
+                    new Utils(CadastroFornecedor.this).toast("Fornecedor excluído!");
                     finish();
                 }
             }
@@ -82,6 +83,10 @@ public class CadastroFornecedor extends AppCompatActivity {
 
     private void onCadastrarEnderecoClick(){
         Intent intent = new Intent(this, CadastroEndereco.class);
+        if (fornecedor.getEndereco() != null) {
+            ControleDeEndereco.selecionarParaEditar(fornecedor.getEndereco());
+            intent.putExtra("alterar", true);
+        }
         startActivityForResult(intent,1);
     }
 
@@ -111,7 +116,10 @@ public class CadastroFornecedor extends AppCompatActivity {
         }
 
         ControleDeFornecedor.deselecionar();
-        finish();
+        ControleDeEndereco.deselecionar();
+
+
+        //finish();
     }
 
     public void carregarFornecedor(){
@@ -122,6 +130,12 @@ public class CadastroFornecedor extends AppCompatActivity {
             edtCNPJ.setText(fornecedor.getCnpj());
             edtTelefone.setText(fornecedor.getTelefone());
             edtEmail.setText(fornecedor.getEmail());
+            if (fornecedor.getEndereco() != null) {
+                btnCadastrarEndereco.setText("Alterar");
+                edtEndereco.setText(fornecedor.getEndereco().getRua());
+            } else {
+                btnCadastrarEndereco.setText("Cadastrar");
+            }
         }
     }
 
@@ -130,12 +144,9 @@ public class CadastroFornecedor extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK){
-            if (data.hasExtra("rua")) {
-                edtEndereco.setText(data.getStringExtra("rua"));
-            }
-            /*if (data.hasExtra("id_endereco")) {
-                fornecedor.setIdEndereco(data.getIntExtra("id_endereco", -1));
-            }*/
+            fornecedor.setEndereco(ControleDeEndereco.getSelecionado());
+            edtEndereco.setText(fornecedor.getEndereco().getRua());
+            btnCadastrarEndereco.setText("Alterar");
         }
     }
 }
