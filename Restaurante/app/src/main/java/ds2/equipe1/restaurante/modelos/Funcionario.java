@@ -4,21 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 
 public class Funcionario extends Model<Funcionario> {
+    public static final int GARCOM = 1;
+    public static final int GERENTE = 1;
+
     private String nome;
-    private Integer id_endereco;
     private String telefone;
     private String cpf;
     private String nome_de_usuario;
     private Integer tipo;
+    private Endereco endereco;
 
     public Funcionario(Context context){
         super(context);
     }
 
-    public Funcionario(Context context, String nome, Integer id_endereco, String telefone, String cpf, String nome_de_usuario, Integer tipo) {
+    public Funcionario(Context context, String nome, String telefone, String cpf, String nome_de_usuario, Integer tipo) {
         super(context);
         this.nome = nome;
-        this.id_endereco = id_endereco;
         this.telefone = telefone;
         this.cpf = cpf;
         this.nome_de_usuario = nome_de_usuario;
@@ -29,8 +31,8 @@ public class Funcionario extends Model<Funcionario> {
         return nome;
     }
 
-    public Integer getIdEndereco() {
-        return id_endereco;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
     public String getTelefone() {
@@ -59,8 +61,8 @@ public class Funcionario extends Model<Funcionario> {
         this.cpf = cnpj;
     }
 
-    public void setIdEndereco(Integer id_endereco) {
-        this.id_endereco = id_endereco;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public void setNome_de_usuario (String nome_de_usuario) { this.nome_de_usuario = nome_de_usuario; }

@@ -36,16 +36,20 @@ public class Item extends Model<Item> {
     public int getQuantidade(){
         return quantidade;
     }
-    
+
 	public int getLimiteMinimo(){
         return limiteMinimo;
     }
+
+	public String getUnidade() {
+		return unidade;
+	}
 
     public void setQuantidade(int quantidade){
 		//alterar quantidade no banco
 		this.quantidade = quantidade;
     }
-    
+
     public void setLimiteMinimo(int limiteMinimo){
 		//alterar limiteMinimo no banco
 		this.limiteMinimo = limiteMinimo;

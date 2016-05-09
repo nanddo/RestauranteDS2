@@ -23,69 +23,69 @@ public class Utils {
     }
 
     public void deleteData(String key){
-        SharedPreferences settings = context.getSharedPreferences("EsporteNet", 0);
+        SharedPreferences settings = context.getSharedPreferences(TAG, 0);
         SharedPreferences.Editor e = settings.edit();
         e.remove(key);
         e.commit();
     }
 
     public float getData(String key, float defValue) {
-        SharedPreferences settings = context.getSharedPreferences("EsporteNet", 0);
+        SharedPreferences settings = context.getSharedPreferences(TAG, 0);
         return settings.getFloat(key, defValue);
     }
 
     public String getData(String key, String defValue) {
-        SharedPreferences settings = context.getSharedPreferences("EsporteNet", 0);
+        SharedPreferences settings = context.getSharedPreferences(TAG, 0);
         return settings.getString(key, defValue);
     }
 
     public int getData(String key, int defValue) {
-        SharedPreferences settings = context.getSharedPreferences("EsporteNet", 0);
+        SharedPreferences settings = context.getSharedPreferences(TAG, 0);
         return settings.getInt(key, defValue);
     }
 
     public long getData(String key, long defValue) {
-        SharedPreferences settings = context.getSharedPreferences("EsporteNet", 0);
+        SharedPreferences settings = context.getSharedPreferences(TAG, 0);
         return settings.getLong(key, defValue);
     }
 
     public boolean getData(String key, boolean defValue) {
-        SharedPreferences settings = context.getSharedPreferences("EsporteNet", 0);
+        SharedPreferences settings = context.getSharedPreferences(TAG, 0);
         return settings.getBoolean(key, defValue);
     }
 
     public void setData(String key, float value) {
-        SharedPreferences.Editor settings = context.getSharedPreferences("EsporteNet", 0).edit();
+        SharedPreferences.Editor settings = context.getSharedPreferences(TAG, 0).edit();
         settings.putFloat(key, value);
         settings.commit();
     }
 
     public void setData(String key, String value) {
-        SharedPreferences.Editor settings = context.getSharedPreferences("EsporteNet", 0).edit();
+        SharedPreferences.Editor settings = context.getSharedPreferences(TAG, 0).edit();
         settings.putString(key, value);
         settings.commit();
     }
 
     public void setData(String key, int value) {
-        SharedPreferences.Editor settings = context.getSharedPreferences("EsporteNet", 0).edit();
+        SharedPreferences.Editor settings = context.getSharedPreferences(TAG, 0).edit();
         settings.putInt(key, value);
         settings.commit();
     }
 
     public void setData(String key, long value) {
-        SharedPreferences.Editor settings = context.getSharedPreferences("EsporteNet", 0).edit();
+        SharedPreferences.Editor settings = context.getSharedPreferences(TAG, 0).edit();
         settings.putLong(key, value);
         settings.commit();
     }
 
     public void setData(String key, boolean value) {
-        SharedPreferences.Editor settings = context.getSharedPreferences("EsporteNet", 0).edit();
+        SharedPreferences.Editor settings = context.getSharedPreferences(TAG, 0).edit();
         settings.putBoolean(key, value);
         settings.commit();
     }
 
     public void clearData(){
-        SharedPreferences settings = context.getSharedPreferences("EsporteNet", 0);
+        SharedPreferences settings = context.getSharedPreferences(TAG, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.clear();
         editor.commit();
