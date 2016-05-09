@@ -1,12 +1,17 @@
 package ds2.equipe1.restaurante.helpers;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SearchView;
 import android.text.InputType;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -220,6 +225,33 @@ public class Utils {
 
     public interface DialogCallback {
         public void execute(String text);
+    }
+
+    public static void prepararSearchMenu(Activity activity, Menu menu, final DialogCallback dialogCallback){
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchManager searchManager = (SearchManager) activity.getSystemService(Context.SEARCH_SERVICE);
+
+        SearchView searchView = null;
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(activity.getComponentName()));
+            SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
+                public boolean onQueryTextChange(String search) {
+                    dialogCallback.execute(search);
+                    return true;
+                }
+
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+            };
+
+            searchView.setOnQueryTextListener(queryTextListener);
+        }
     }
 
     public <T> void addFuncaoRemover(final BaseAdapter adapter, View view, final ArrayList<T> arr, final int position){

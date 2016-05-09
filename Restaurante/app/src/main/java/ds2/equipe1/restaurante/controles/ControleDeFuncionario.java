@@ -24,9 +24,10 @@ public class ControleDeFuncionario {
         controleDeImpressao = new ControleDeImpressao(context);
     }
 
-    public void salvarFuncionario(Funcionario funcionario){
-        funcionario.save();
+    public void salvarFuncionario(Funcionario funcionario, RequestCallback<Model> callback){
+        funcionario.save(callback);
     }
+
     public void cadastrarFuncionario(Funcionario funcionario){
         funcionarios.add(funcionario);
         funcionario.save();
@@ -56,7 +57,7 @@ public class ControleDeFuncionario {
 
     public void consultarFuncionario(String consulta, final RequestCallback<Funcionario> callback){
         //Se a consulta for vazia, pega todos os itens do banco de dados e coloca na memoria ram
-        if (consulta.isEmpty()) {
+        if (consulta == null || funcionarios == null) {
             Model.find(context, Funcionario.class, new TypeToken<ArrayList<Funcionario>>() {
             }.getType(), new RequestCallback<Funcionario>() {
                 @Override

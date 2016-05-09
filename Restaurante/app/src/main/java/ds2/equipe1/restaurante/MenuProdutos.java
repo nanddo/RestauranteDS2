@@ -25,13 +25,6 @@ public class MenuProdutos extends AppCompatActivity {
                 open(BuscaProduto.class);
             }
         });
-
-        findViewById(R.id.menu_alterar_produto).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                open(CadastroProduto.class);
-            }
-        });
     }
 
     public void open(Class activity){

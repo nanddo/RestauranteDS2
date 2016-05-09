@@ -2,12 +2,9 @@ package ds2.equipe1.restaurante.controles;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.androidquery.callback.AjaxCallback;
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.helpers.RequestCallback;
@@ -41,7 +38,7 @@ public class ControleDeFornecedor {
 
     public void consultarFornecedor(String consulta, final RequestCallback<Fornecedor> callback){
         //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memoria ram
-        if (consulta.isEmpty()) {
+        if (consulta == null || fornecedores == null) {
             Model.find(context, Fornecedor.class, new TypeToken<ArrayList<Fornecedor>>() {
                     }.getType(), new RequestCallback<Fornecedor>() {
                         @Override

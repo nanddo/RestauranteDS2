@@ -1,14 +1,14 @@
 package ds2.equipe1.restaurante;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -41,24 +41,11 @@ public class BuscaFornecedor extends AppCompatActivity {
         adapter = new FornecedorAdapter(BuscaFornecedor.this, fornecedores);
         lvFornecedores.setAdapter(adapter);
 
-        consultar("");
+        consultar(null);
     }
 
     private void init(){
-        //pegar referencias dos componentes xml
         lvFornecedores = (ListView) findViewById(R.id.lvFornecedores);
-        edtProcurar = (EditText) findViewById(R.id.edtProcurar);
-        ivProcurar = (ImageView) findViewById(R.id.ivProcurar);
-
-        //atribuir funcionalidades para alguns componentes
-        ivProcurar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String texto = edtProcurar.getText().toString();
-
-                consultar(texto);
-            }
-        });
 
         lvFornecedores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -86,6 +73,18 @@ public class BuscaFornecedor extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.busca, menu);
+        Utils.prepararSearchMenu(this, menu, new Utils.DialogCallback() {
+            @Override
+            public void execute(String text) {
+                consultar(text);
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

@@ -1,18 +1,18 @@
 package ds2.equipe1.restaurante;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.controles.ControleDeFuncionario;
 import ds2.equipe1.restaurante.helpers.RequestCallback;
+import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.listas.FuncionarioAdapter;
 import ds2.equipe1.restaurante.modelos.Funcionario;
 
@@ -22,8 +22,6 @@ public class BuscaFuncionario extends AppCompatActivity {
     private ListView lvFuncionarios;
     private FuncionarioAdapter adapter;
     private ArrayList<Funcionario> funcionarios;
-    private EditText edtProcurar;
-    private ImageView ivProcurar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,23 +36,11 @@ public class BuscaFuncionario extends AppCompatActivity {
         adapter = new FuncionarioAdapter(BuscaFuncionario.this, funcionarios);
         lvFuncionarios.setAdapter(adapter);
 
-        consultar("");
+        consultar(null);
     }
     private void init(){
         //pegar referencias dos componentes xml
         lvFuncionarios = (ListView) findViewById(R.id.lvFuncionarios);
-        edtProcurar = (EditText) findViewById(R.id.edtProcurar);
-        ivProcurar = (ImageView) findViewById(R.id.ivProcurar);
-
-        //atribuir funcionalidades para alguns componentes
-        ivProcurar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String texto = edtProcurar.getText().toString();
-
-                consultar(texto);
-            }
-        });
 
         lvFuncionarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -82,6 +68,18 @@ public class BuscaFuncionario extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.busca, menu);
+        Utils.prepararSearchMenu(this, menu, new Utils.DialogCallback() {
+            @Override
+            public void execute(String text) {
+                consultar(text);
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

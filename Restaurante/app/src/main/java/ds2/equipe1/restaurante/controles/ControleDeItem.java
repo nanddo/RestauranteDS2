@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.helpers.Utils;
-import ds2.equipe1.restaurante.modelos.Fornecedor;
 import ds2.equipe1.restaurante.modelos.Item;
 import ds2.equipe1.restaurante.modelos.Model;
 
@@ -58,7 +57,7 @@ public class ControleDeItem {
 
     public void consultarItem(String consulta, final RequestCallback<Item> callback) {
         //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memoria ram
-        if (consulta.isEmpty()) {
+        if (consulta == null || itens == null) {
             Model.find(context, Item.class, new TypeToken<ArrayList<Item>>() {
             }.getType(), new RequestCallback<Item>() {
                 @Override
