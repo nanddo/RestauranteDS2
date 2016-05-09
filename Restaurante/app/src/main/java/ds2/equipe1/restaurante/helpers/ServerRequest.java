@@ -3,6 +3,7 @@ package ds2.equipe1.restaurante.helpers;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -12,6 +13,7 @@ import com.google.gson.internal.Excluder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.MalformedJsonException;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,10 +53,24 @@ public class ServerRequest {
             public void callback(String url, JSONObject json, AjaxStatus status) {
                 try {
                     Log.w(TAG, "[" + url + "]: " + json.toString());
-                    if (callback != null){
-                        callback.execute(json);
+                    if (json.getBoolean("success")) {
+                        if (callback != null) {
+                            callback.execute(json);
+                        }
+                    } else {
+                        String errors = "";
+                        if (json.has("errors")) {
+                            JSONArray msgs = json.getJSONArray("errors");
+                            for (int i = 0; i < msgs.length(); i++){
+                                errors += " " + msgs.getString(i);
+                            }
+                        } else {
+                            errors = "Erro desconhecido no servidor";
+                        }
+                        Toast.makeText(context, errors, Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e){
+                    Toast.makeText(context, "Falha ao processar resposta:\n\n" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     Log.e(TAG, "Erro no processamento de dados: ", e);
                     Log.e(TAG, "AjaxStatus: " + status.getError() + " --- " + status.getCode() + " --- " + status.getMessage());
                 }

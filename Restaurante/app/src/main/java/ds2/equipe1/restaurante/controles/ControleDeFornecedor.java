@@ -28,8 +28,8 @@ public class ControleDeFornecedor {
         this.context = context;
     }
 
-    public void salvarFornecedor(Fornecedor fornecedor){
-        fornecedor.save();
+    public void salvarFornecedor(Fornecedor fornecedor, RequestCallback<Model> callback){
+        fornecedor.save(callback);
     }
 
     public boolean excluirFornecedor(Fornecedor fornecedor){

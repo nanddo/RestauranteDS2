@@ -6,11 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import ds2.equipe1.restaurante.controles.ControleDeEndereco;
 import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
+import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Fornecedor;
+import ds2.equipe1.restaurante.modelos.Model;
 
 public class CadastroFornecedor extends AppCompatActivity {
     private ControleDeFornecedor controleDeFornecedor;
@@ -96,30 +99,31 @@ public class CadastroFornecedor extends AppCompatActivity {
         final String email = edtEmail.getText().toString();
         final String telefone = edtTelefone.getText().toString();
 
-/*        endereco.save(new RequestCallback() {
-            @Override
-            public void execute() {
-                controleDeFornecedor.salvarFornecedor(fornecedor);
-            }
-        });*/
+        if (fornecedor.getEndereco() == null || nome.isEmpty() || CNPJ.isEmpty() || email.isEmpty() || telefone.isEmpty()){
+            Toast.makeText(CadastroFornecedor.this, "Necessário todos os campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         fornecedor.setNome(nome);
         fornecedor.setCnpj(CNPJ);
         fornecedor.setEmail(email);
         fornecedor.setTelefone(telefone);
-        controleDeFornecedor.salvarFornecedor(fornecedor);
+        controleDeFornecedor.salvarFornecedor(fornecedor, new RequestCallback<Model>() {
+            @Override
+            public void execute(Model object) throws Exception {
+                if (fornecedor.getId() == null) {
+                    new Utils(CadastroFornecedor.this).toast("Fornecedor cadastrado!");
+                } else {
+                    new Utils(CadastroFornecedor.this).toast("Fornecedor alterado!");
+                }
 
-        if (fornecedor.getId() == null) {
-            new Utils(this).toast("Fornecedor cadastrado!");
-        } else {
-            new Utils(this).toast("Fornecedor alterado!");
-        }
+                ControleDeFornecedor.deselecionar();
+                ControleDeEndereco.deselecionar();
 
-        ControleDeFornecedor.deselecionar();
-        ControleDeEndereco.deselecionar();
-
-
-        //finish();
+                finish();
+                super.execute(object);
+            }
+        });
     }
 
     public void carregarFornecedor(){
