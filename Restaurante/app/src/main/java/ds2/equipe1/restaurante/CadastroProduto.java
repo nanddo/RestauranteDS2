@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import ds2.equipe1.restaurante.controles.ControleDeItem;
 import ds2.equipe1.restaurante.controles.ControleDeProduto;
 import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.helpers.Utils;
+import ds2.equipe1.restaurante.listas.IngredienteAdapter;
 import ds2.equipe1.restaurante.modelos.Ingrediente;
 import ds2.equipe1.restaurante.modelos.Item;
 import ds2.equipe1.restaurante.modelos.Produto;
@@ -23,6 +25,8 @@ public class CadastroProduto extends AppCompatActivity {
     private ControleDeProduto controleDeProduto;
     private ControleDeItem controleDeItem;
     private EditText edtNome, edtPreco;
+    private ListView lvIngredientes;
+    private IngredienteAdapter adapter;
     private Button btnCadastrar, btnCancelar;
     private ImageButton btnAddIngrediente;
     private ArrayList<Item> itens = new ArrayList<>(); //apenas para o dropdown
@@ -54,9 +58,13 @@ public class CadastroProduto extends AppCompatActivity {
     private void init(){
         edtNome = (EditText) findViewById(R.id.edtNome);
         edtPreco = (EditText) findViewById(R.id.edtPreco);
+        lvIngredientes = (ListView) findViewById(R.id.lvIngredientes);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
         btnCancelar = (Button) findViewById(R.id.btnCancelar);
-        btnAddIngrediente = (ImageButton) findViewById(R.id.btnAddIngrediente);
+        //btnAddIngrediente = (ImageButton) findViewById(R.id.btnAddIngrediente);
+
+        adapter = new IngredienteAdapter(this, ingredientes);
+        lvIngredientes.setAdapter(adapter);
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +80,12 @@ public class CadastroProduto extends AppCompatActivity {
             }
         });
 
-        btnAddIngrediente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onAddIngredienteClick();
-            }
-        });
+//        btnAddIngrediente.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onAddIngredienteClick();
+//            }
+//        });
     }
 
     private void onCadastrarClick(){
@@ -91,6 +99,7 @@ public class CadastroProduto extends AppCompatActivity {
 
         produto.setNome(nome);
         produto.setPreco(preco);
+        produto.setIngredientes(ingredientes);
 
         produto.save();
 
@@ -102,17 +111,13 @@ public class CadastroProduto extends AppCompatActivity {
         finish();
     }
 
-    private void onAddIngredienteClick(){
+    public void onAddIngredienteClick(){
         new Utils(this).selectPopup("Cadastrar ingrediente", new Utils.IngredienteCallback() {
             @Override
             public void execute(Item item, int quantidade) {
-                produto.addIngrediente(new Ingrediente(CadastroProduto.this, item, quantidade));
+                ingredientes.add(new Ingrediente(CadastroProduto.this, item, quantidade));
+                adapter.notifyDataSetChanged();
             }
         }, itens);
-
-        //Intent intent = new Intent(this, SelecionarIngredientes.class);
-        //startActivityForResult(intent,1);
-
-        //Implementar lista de selecao de ingredientes
     }
 }

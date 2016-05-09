@@ -54,10 +54,8 @@ public class Produto extends Model<Produto> {
         return true;
     }
 
-    public void addIngrediente(Ingrediente ingrediente){
-        if (ingredientes == null)
-            ingredientes = new ArrayList<>();
-        ingredientes.add(ingrediente);
+    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
+        this.ingredientes = ingredientes;
     }
 
     //Deve ser chamado quando o garcom conclui o pedido.
