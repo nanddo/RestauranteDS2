@@ -4,9 +4,6 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-/**
- * Created by Th on 24/03/2016.
- */
 public class Produto extends Model<Produto> {
 	private String nome;
 	private float preco;
@@ -49,7 +46,7 @@ public class Produto extends Model<Produto> {
         return true;
     }
 
-    //Deve ser chamado quando o garçom conclui o pedido.
+    //Deve ser chamado quando o garcom conclui o pedido.
     public void alertarSobreItensAbaixoDoLimite(){
         for (Ingrediente ingrediente : getIngredientes()){
             Item item = ingrediente.getItem();

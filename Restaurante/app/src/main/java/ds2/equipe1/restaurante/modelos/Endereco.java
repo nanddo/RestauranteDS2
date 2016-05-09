@@ -2,9 +2,6 @@ package ds2.equipe1.restaurante.modelos;
 
 import android.content.Context;
 
-/**
- * Created by Th on 24/03/2016.
- */
 public class Endereco extends Model<Endereco> {
     private String logradouro;
     private String rua;

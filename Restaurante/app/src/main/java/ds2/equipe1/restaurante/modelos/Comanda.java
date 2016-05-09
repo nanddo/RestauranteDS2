@@ -5,10 +5,6 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by Th on 24/03/2016.
- */
-
 public class Comanda extends Model<Comanda> {
 
     private ArrayList<Pedido> pedidos = new ArrayList<>();
@@ -60,5 +56,4 @@ public class Comanda extends Model<Comanda> {
         };
         return custo;
     }
-
 }

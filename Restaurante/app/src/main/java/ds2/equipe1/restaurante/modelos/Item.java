@@ -4,9 +4,6 @@ import android.content.Context;
 
 import ds2.equipe1.restaurante.controles.ControleDeAtendimento;
 
-/**
- * Created by Th on 24/03/2016.
- */
 public class Item extends Model<Item> {
 	private String nome;
 	private String unidade;
@@ -43,13 +40,7 @@ public class Item extends Model<Item> {
 	public int getLimiteMinimo(){
         return limiteMinimo;
     }
-    
-    /* Nome deve ser imutavel
-	public void setNome(String nome){
-		this.nome = nome;
-    }
-    */
-    
+
     public void setQuantidade(int quantidade){
 		//alterar quantidade no banco
 		this.quantidade = quantidade;

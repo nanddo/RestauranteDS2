@@ -2,9 +2,6 @@ package ds2.equipe1.restaurante.modelos;
 
 import android.content.Context;
 
-/**
- * Created by Th on 24/03/2016.
- */
 public class Compra extends Model<Compra> {
 	private Item item;
 	private int quantidade;

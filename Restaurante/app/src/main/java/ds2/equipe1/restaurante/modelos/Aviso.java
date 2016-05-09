@@ -4,9 +4,6 @@ import android.content.Context;
 
 import java.util.Date;
 
-/**
- * Created by Fernando on 06/05/2016.
- */
 public class Aviso extends Model<Aviso> {
     private Item item;
     private Date data;

@@ -4,10 +4,6 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-/**
- * Created by Th on 24/03/2016.
- */
-
 public class Pedido extends Model<Pedido> {
 
     int quantidadeDeProdutos;
@@ -44,5 +40,4 @@ public class Pedido extends Model<Pedido> {
     public Produto getProduto(int indice){
         return produtos.get(indice);
     }
-
 }

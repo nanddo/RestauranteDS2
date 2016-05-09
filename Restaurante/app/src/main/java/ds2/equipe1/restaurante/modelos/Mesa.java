@@ -4,10 +4,6 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-/**
- * Created by Th on 24/03/2016.
- */
-
 public class Mesa extends Model<Mesa> {
     private int numero;
     private ArrayList<Comanda> comandas = new ArrayList< Comanda >();
@@ -40,5 +36,4 @@ public class Mesa extends Model<Mesa> {
     public Comanda getComanda(int indice){
         return comandas.get(indice);
     }
-
 }

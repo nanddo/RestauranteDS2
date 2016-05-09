@@ -17,13 +17,9 @@ import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.helpers.ServerRequest;
 import ds2.equipe1.restaurante.helpers.Utils;
 
-/**
- * Created by Fernando on 07/04/2016.
- */
-
 public class Model<T> {
     protected Integer id;
-    //transient para a serialação não incluir.
+    //transient para a serializacao nao incluir.
     protected transient Context context;
 
     public Model(Context context){

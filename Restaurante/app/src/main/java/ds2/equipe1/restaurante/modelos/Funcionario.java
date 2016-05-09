@@ -3,9 +3,6 @@ package ds2.equipe1.restaurante.modelos;
 import android.content.Context;
 import android.content.Intent;
 
-/**
- * Created by Th on 24/03/2016.
- */
 public class Funcionario extends Model<Funcionario> {
     private String nome;
     private Integer id_endereco;
