@@ -54,12 +54,13 @@ public class ControleDeFornecedor {
                         }
                     }, null);
         } else {
+            consulta = consulta.toLowerCase();
             //Se tiver consulta, faz a pesquisa nos itens que ja estao na memoria ram
             try {
                 ArrayList<Fornecedor> fornecedoresFiltrados = new ArrayList<>();
 
                 for (Fornecedor fornecedor : fornecedores) {
-                    if (fornecedor.getNome().contains(consulta) || fornecedor.getCnpj().contains(consulta)) {
+                    if (fornecedor.getNome().toLowerCase().contains(consulta) || fornecedor.getCnpj().contains(consulta)) {
                         fornecedoresFiltrados.add(fornecedor);
                     }
                 }

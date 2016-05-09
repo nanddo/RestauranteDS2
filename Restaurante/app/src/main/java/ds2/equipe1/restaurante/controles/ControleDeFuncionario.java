@@ -73,12 +73,13 @@ public class ControleDeFuncionario {
                 }
             }, null);
         } else {
+            consulta = consulta.toLowerCase();
             //Se tiver consulta, faz a pesquisa nos itens que ja estao na memoria ram
             try {
                 ArrayList<Funcionario> funcionariosFiltrados = new ArrayList<>();
 
                 for (Funcionario funcionario : funcionarios) {
-                    if (funcionario.getNome().contains(consulta) || funcionario.getCpf().contains(consulta)) {
+                    if (funcionario.getNome().toLowerCase().contains(consulta) || funcionario.getCpf().contains(consulta)) {
                         funcionariosFiltrados.add(funcionario);
                     }
                 }

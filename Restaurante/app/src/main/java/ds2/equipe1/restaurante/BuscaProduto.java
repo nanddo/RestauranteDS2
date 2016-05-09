@@ -13,6 +13,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.controles.ControleDeProduto;
+import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.listas.ProdutoAdapter;
 import ds2.equipe1.restaurante.modelos.Produto;
