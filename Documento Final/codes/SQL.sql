@@ -1,4 +1,4 @@
-﻿DROP TABLE endereco CASCADE;
+DROP TABLE endereco CASCADE;
 DROP TABLE funcionario CASCADE;
 DROP TABLE mesa CASCADE;
 DROP TABLE comanda CASCADE;
@@ -39,7 +39,7 @@ CREATE TABLE mesa (
 	CONSTRAINT pk_mesa PRIMARY KEY (numero)
 );
 
---uma comanda está sempre associada a uma mesa
+--uma comanda esta sempre associada a uma mesa
 CREATE TABLE comanda (
 	id serial,
 	data timestamp,

@@ -23,7 +23,7 @@ public class ControleDeAtendimento {
         this.controleDeImpressao = new ControleDeImpressao(context);
 
         //inserir comando sql pra saber numero de mesas
-        int numeroDeMesas = 20; //puxar número do sql
+        int numeroDeMesas = 20; //puxar numero do sql
         for(int i = 1; i <= numeroDeMesas; i++) {
             mesas.add(new Mesa(context, i));
         }
@@ -77,8 +77,8 @@ public class ControleDeAtendimento {
 
     public ArrayList < Produto > consultarCardapio() {
         ArrayList < Produto > cardapio = new ArrayList < Produto >();
-        //Aqui só com consulta ao DB né? pq precisa pegar a lista de produtos.
-        //fica pra outra hora beijo no coração!
+        //Aqui so com consulta ao DB ne? pq precisa pegar a lista de produtos.
+        //fica pra outra hora beijo no coracao!
         return cardapio;
     }
 
