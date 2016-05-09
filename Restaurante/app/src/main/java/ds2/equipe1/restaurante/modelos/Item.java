@@ -2,14 +2,17 @@ package ds2.equipe1.restaurante.modelos;
 
 import android.content.Context;
 
+import com.google.gson.annotations.SerializedName;
+
 import ds2.equipe1.restaurante.controles.ControleDeAtendimento;
+import ds2.equipe1.restaurante.helpers.RequestCallback;
 
 public class Item extends Model<Item> {
 	private String nome;
 	private String unidade;
 	private int quantidade;
+	@SerializedName("limite")
 	private int limiteMinimo;
-
 
 	public Item(Context context){
 		super(context);
@@ -36,16 +39,20 @@ public class Item extends Model<Item> {
     public int getQuantidade(){
         return quantidade;
     }
-    
+
 	public int getLimiteMinimo(){
         return limiteMinimo;
     }
+
+	public String getUnidade() {
+		return unidade;
+	}
 
     public void setQuantidade(int quantidade){
 		//alterar quantidade no banco
 		this.quantidade = quantidade;
     }
-    
+
     public void setLimiteMinimo(int limiteMinimo){
 		//alterar limiteMinimo no banco
 		this.limiteMinimo = limiteMinimo;
@@ -58,4 +65,16 @@ public class Item extends Model<Item> {
 	public void setUnidade(String unidade){
 		this.unidade=unidade;
 	}
+
+    @Override
+    public void save() {
+        unidade = unidade.toUpperCase();
+        super.save();
+    }
+
+    @Override
+    public void save(RequestCallback<Model> callback) {
+        unidade = unidade.toUpperCase();
+        super.save(callback);
+    }
 }

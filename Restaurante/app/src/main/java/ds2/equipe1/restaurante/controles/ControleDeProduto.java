@@ -1,71 +1,99 @@
 package ds2.equipe1.restaurante.controles;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
-import ds2.equipe1.restaurante.modelos.Ingrediente;
-import ds2.equipe1.restaurante.modelos.Item;
+import ds2.equipe1.restaurante.helpers.RequestCallback;
+import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Produto;
-import java.sql.*;
+import ds2.equipe1.restaurante.modelos.Item;
+import ds2.equipe1.restaurante.modelos.Model;
+import ds2.equipe1.restaurante.modelos.Produto;
 
 public class ControleDeProduto {
-
-	private ArrayList <Produto> produtos;
+    //Lista com a consulta mais recente de produtos no servidor.
+    private ArrayList<Produto> produtos = new ArrayList<>();
+    //Essa variavel serve para deixar uma referencia na memoria o tempo inteiro de qual esta selecionado,
+    //para que quando haja uma edicao, a alteracao seja refletida em mais de uma tela (exemplo: editar um produto e atualizar na tela de busca).
+    private static Produto selecionado;
     private Context context;
 
     public ControleDeProduto(Context context){
         this.context = context;
     }
 
+    public void salvarProduto(Produto produto, RequestCallback<Model> callback){
+        produto.save(callback);
+    }
 
-    public void carregarProdutosDoBanco(){
-		produtos = new ArrayList <Produto>();
-		int tamanhoDoCardapio = 5; //Ler o tamanho do banco
-		
-		for (int i = 0; i < tamanhoDoCardapio; i++) {
-			String nome = "teste"; //Ler o nome do banco
-            //produtos.add(new Produto(nome));
-        }
-	}
+    public boolean excluirProduto(Produto produto){
+        if (produto.getId() != -1) {
+            produto.delete();
+            return true;
+        } else return false;
+    }
 
-    public void cadastrarProduto(String nome, float preco, ArrayList <Ingrediente> ingredientes){
-		produtos.add(new Produto(context, nome, preco, ingredientes));
-    }
-    
-    public void excluirProduto(String nome){
-        for (int i = 0; i < produtos.size(); i++) {
-            if (produtos.get(i).getNome() == nome) {
-				//Remover do banco
-				produtos.remove(i); //ver se e este mesmo o metodo de remocao
-			}
+    public void consultarProduto(String consulta, final RequestCallback<Produto> callback){
+        //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memoria ram
+        if (consulta == null || produtos == null) {
+            Model.find(context, Produto.class, new TypeToken<ArrayList<Produto>>() {
+            }.getType(), new RequestCallback<Produto>() {
+                @Override
+                public void execute(ArrayList<Produto> lista) throws Exception {
+                    super.execute(lista);
+
+                    produtos.clear();
+                    produtos.addAll(lista);
+
+                    if (callback != null){
+                        callback.execute(lista);
+                    }
+                }
+            }, null);
+        } else {
+            consulta = consulta.toLowerCase();
+            //Se tiver consulta, faz a pesquisa nos itens que ja estao na memoria ram
+            try {
+                ArrayList<Produto> produtosFiltrados = new ArrayList<>();
+
+                for (Produto produto : produtos) {
+                    if (produto.getNome().toLowerCase().contains(consulta)) {
+                        produtosFiltrados.add(produto);
+                    }
+                }
+
+                if (callback != null) {
+                    callback.execute(produtosFiltrados);
+                }
+            } catch (Exception e){
+                Log.e(Utils.TAG, "Erro ao consultar produtos: ", e);
+            }
         }
     }
-    
-    public void alterarPrecoDeProduto(String nome, float novoPreco){
-        for (int i = 0; i < produtos.size(); i++) {
-            if (produtos.get(i).getNome() == nome) {
-				//Alterar preco no banco
-				produtos.get(i).setPreco(novoPreco);
-			}
-        }
+
+    public void relatorioProduto(Produto produto){
+        //Banco de dados
+        //Exibir Relatorio
     }
-    
-    public Produto consultarProduto(String nome){
-        for (int i = 0; i < produtos.size(); i++) {
-            if (produtos.get(i).getNome() == nome) {
-				return produtos.get(i);
-			}
-        }
-        return null;
+
+    public void relatorioItensPorProduto(Item item, Produto produto){
+        //Banco de Dados
+        //Exibir Relatorio
     }
-    
-	public void relatorioProdutos(){
-        //Gerar pdf?
+
+    public static void selecionarParaEditar(Produto produto){
+        ControleDeProduto.selecionado = produto;
     }
-    
-	public void relatorioItensPorProduto(){
-        //Gerar pdf?
+
+    public static Produto getSelecionado(){
+        return selecionado;
     }
-	
+
+    public static void deselecionar(){
+        selecionado = null;
+    }
 }

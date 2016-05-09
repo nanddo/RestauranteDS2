@@ -6,32 +6,6 @@
     android:orientation="vertical"
     tools:context="ds2.equipe1.restaurante.BuscaItem">
 
-    <LinearLayout
-        android:padding="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
-
-            <EditText
-                style="@style/edtForm"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Nome do item" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/search_icon_32" />
-
-        </LinearLayout>
 
         <ListView
             android:id="@+id/lvItens"
@@ -41,5 +15,4 @@
     <TextView
         style="@style/requisito_funcional"
         android:text="RF4. Consulta de produtos" />
-    </LinearLayout>
 </LinearLayout>

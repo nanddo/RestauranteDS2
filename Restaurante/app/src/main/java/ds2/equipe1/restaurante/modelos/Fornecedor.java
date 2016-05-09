@@ -57,7 +57,7 @@ public class Fornecedor extends Model<Fornecedor> {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(Endereco endereco){
         this.endereco = endereco;
     }
 }

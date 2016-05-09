@@ -1,32 +1,29 @@
 package ds2.equipe1.restaurante;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import ds2.equipe1.restaurante.controles.ControleDeEndereco;
+import ds2.equipe1.restaurante.controles.ControleDeFornecedor;
 import ds2.equipe1.restaurante.controles.ControleDeFuncionario;
+import ds2.equipe1.restaurante.helpers.RequestCallback;
 import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Funcionario;
-import ds2.equipe1.restaurante.modelos.Garcom;
+import ds2.equipe1.restaurante.modelos.Model;
 
-public class CadastroFuncionario extends AppCompatActivity {
+public class CadastroFuncionarioParaDarMerge extends AppCompatActivity {
 
     private ControleDeFuncionario controleDeFuncionario;
     private EditText edtNome, edtCPF, edtEndereco, edtTelefone, edtNome_de_usuario;
-    private Spinner spTipo;
-
     private Button btnCadastrar, btnCadastrarEndereco, btnExcluir;
 
     private Funcionario funcionario;
     private boolean novoCadastro = true;
-    private String[] arraySpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,20 +55,9 @@ public class CadastroFuncionario extends AppCompatActivity {
         edtNome_de_usuario = (EditText) findViewById(R.id.edtNome_de_usuario);
         edtEndereco = (EditText) findViewById(R.id.edtEndereco);
         edtTelefone = (EditText) findViewById(R.id.edtTelefone);
-        spTipo = (Spinner) findViewById(R.id.edtTipo);
-
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
         btnCadastrarEndereco = (Button) findViewById(R.id.btnCadastrarEndereco);
         btnExcluir = (Button) findViewById(R.id.btnExcluir);
-
-        this.arraySpinner = new String[]{
-                "Garcom", "Gerente"
-        };
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spTipo.setAdapter(adapter);
 
         btnCadastrarEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +72,7 @@ public class CadastroFuncionario extends AppCompatActivity {
                 if (!novoCadastro && funcionario.getId() != null) {
                     funcionario.delete();
                     funcionario.setId(null);
-                    new Utils(CadastroFuncionario.this).toast("Funcionario excluido!");
+                    new Utils(CadastroFuncionarioParaDarMerge.this).toast("Funcionario excluido!");
                     finish();
                 }
             }
@@ -115,33 +101,33 @@ public class CadastroFuncionario extends AppCompatActivity {
         final String telefone = edtTelefone.getText().toString();
         final String nome_de_usuario = edtNome_de_usuario.getText().toString();
 
-        if (!spTipo.isSelected() || funcionario.getEndereco() == null || nome.isEmpty() || CPF.isEmpty() || nome_de_usuario.isEmpty() || telefone.isEmpty()){
-            Toast.makeText(CadastroFuncionario.this, "Necessario todos os campos", Toast.LENGTH_SHORT).show();
+        if (funcionario.getEndereco() == null || nome.isEmpty() || CPF.isEmpty() || nome_de_usuario.isEmpty() || telefone.isEmpty()){
+            Toast.makeText(CadastroFuncionarioParaDarMerge.this, "Necessario todos os campos", Toast.LENGTH_SHORT).show();
             return;
         }
-        final int tipo = spTipo.getSelectedItemPosition() + 1;
 
         funcionario.setNome(nome.trim());
         funcionario.setCpf(CPF.trim());
         funcionario.setNome_de_usuario(nome_de_usuario.trim());
         funcionario.setTelefone(telefone.replaceAll(" ", ""));
-        funcionario.setTipo(tipo);
+
         controleDeFuncionario.salvarFuncionario(funcionario, null);
 
         if (funcionario.getId() == null) {
-            new Utils(this).toast("Funcionario cadastrado!");
+            new Utils(CadastroFuncionarioParaDarMerge.this).toast("Funcionario cadastrado!");
         } else {
-            new Utils(this).toast("Funcionario alterado!");
+            new Utils(CadastroFuncionarioParaDarMerge.this).toast("Funcionario alterado!");
         }
 
-        ControleDeFuncionario.deselecionar();
+        ControleDeFornecedor.deselecionar();
         ControleDeEndereco.deselecionar();
+
         finish();
     }
 
     public void carregarFuncionario(){
         if (ControleDeFuncionario.getSelecionado() != null) {
-            CadastroFuncionario.this.funcionario = ControleDeFuncionario.getSelecionado();
+            CadastroFuncionarioParaDarMerge.this.funcionario = ControleDeFuncionario.getSelecionado();
 
             edtNome.setText(funcionario.getNome());
             edtCPF.setText(funcionario.getCpf());

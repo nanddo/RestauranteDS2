@@ -50,6 +50,7 @@ public class Model<T> {
 
     public void delete(){
         new ServerRequest(context).sendRequest(getControllerName(), ServerRequest.Action.DELETE, new Gson().toJson(this), null);
+        setId(null);
     }
 
     public static <T extends Model> void find(Context context, Class<T> klass, final Type typeArray, final RequestCallback<T> callback, int id){

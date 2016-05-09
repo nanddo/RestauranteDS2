@@ -5,12 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.R;
+import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Item;
 
 public class ItemAdapter extends BaseAdapter {
@@ -34,14 +34,14 @@ public class ItemAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return itens.get(position).getId();
+        return position;
     }
 
     @Override
     public View getView(int position, View root, ViewGroup parent) {
         if (root == null) {
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            root = vi.inflate(R.layout.item_itens, parent, false);
+            root = vi.inflate(R.layout.item_item, parent, false);
         }
 
         TextView edtNome,edtEstoque;
@@ -50,7 +50,9 @@ public class ItemAdapter extends BaseAdapter {
 
         Item item = itens.get(position);
         edtNome.setText(item.getNome());
-        edtEstoque.setText(item.getQuantidade());
+        edtEstoque.setText(""+item.getQuantidade() + item.getUnidade());
+
+        new Utils(context).addFuncaoRemover(this, root.findViewById(R.id.ivRemover), itens, position);
 
         return root;
     }

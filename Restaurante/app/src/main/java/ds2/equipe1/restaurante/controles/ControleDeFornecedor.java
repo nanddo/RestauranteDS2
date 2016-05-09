@@ -2,12 +2,9 @@ package ds2.equipe1.restaurante.controles;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.androidquery.callback.AjaxCallback;
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.helpers.RequestCallback;
@@ -28,8 +25,8 @@ public class ControleDeFornecedor {
         this.context = context;
     }
 
-    public void salvarFornecedor(Fornecedor fornecedor){
-        fornecedor.save();
+    public void salvarFornecedor(Fornecedor fornecedor, RequestCallback<Model> callback){
+        fornecedor.save(callback);
     }
 
     public boolean excluirFornecedor(Fornecedor fornecedor){
@@ -41,7 +38,7 @@ public class ControleDeFornecedor {
 
     public void consultarFornecedor(String consulta, final RequestCallback<Fornecedor> callback){
         //Se a consulta for vazio, pega todos os itens do banco de dados, e coloca na memoria ram
-        if (consulta.isEmpty()) {
+        if (consulta == null || fornecedores == null) {
             Model.find(context, Fornecedor.class, new TypeToken<ArrayList<Fornecedor>>() {
                     }.getType(), new RequestCallback<Fornecedor>() {
                         @Override
@@ -57,12 +54,13 @@ public class ControleDeFornecedor {
                         }
                     }, null);
         } else {
+            consulta = consulta.toLowerCase();
             //Se tiver consulta, faz a pesquisa nos itens que ja estao na memoria ram
             try {
                 ArrayList<Fornecedor> fornecedoresFiltrados = new ArrayList<>();
 
                 for (Fornecedor fornecedor : fornecedores) {
-                    if (fornecedor.getNome().contains(consulta) || fornecedor.getCnpj().contains(consulta)) {
+                    if (fornecedor.getNome().toLowerCase().contains(consulta) || fornecedor.getCnpj().contains(consulta)) {
                         fornecedoresFiltrados.add(fornecedor);
                     }
                 }

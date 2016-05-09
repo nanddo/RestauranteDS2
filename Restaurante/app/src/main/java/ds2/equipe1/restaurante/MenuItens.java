@@ -19,13 +19,6 @@ public class MenuItens extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.menu_alterar_item).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                open(CadastroItem.class);
-            }
-        });
-
         findViewById(R.id.menu_buscar_item).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

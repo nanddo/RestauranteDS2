@@ -7,7 +7,11 @@ import java.util.ArrayList;
 public class Produto extends Model<Produto> {
 	private String nome;
 	private float preco;
-    private ArrayList<Ingrediente> ingredientes;
+    private ArrayList<Ingrediente> ingredientes = new ArrayList<>();
+
+    public Produto(Context context){
+        super(context);
+    }
 
     public Produto(Context context, String nome, float preco, ArrayList<Ingrediente> ingredientes) {
         super(context);
@@ -16,7 +20,11 @@ public class Produto extends Model<Produto> {
         this.ingredientes = ingredientes;
     }
 
-	/*public static ArrayList<Produto> carregarProdutos() {
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /*public static ArrayList<Produto> carregarProdutos() {
 		ArrayList<Produto> listaDeProdutos = new ArrayList<Produto>();
 
 		ArrayList<Produto> lista = new ArrayList<Produto>();
@@ -44,6 +52,10 @@ public class Produto extends Model<Produto> {
 			}
         }*/
         return true;
+    }
+
+    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
+        this.ingredientes = ingredientes;
     }
 
     //Deve ser chamado quando o garcom conclui o pedido.

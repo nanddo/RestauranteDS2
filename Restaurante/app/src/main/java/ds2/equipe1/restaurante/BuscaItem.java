@@ -1,19 +1,18 @@
 package ds2.equipe1.restaurante;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.controles.ControleDeItem;
 import ds2.equipe1.restaurante.helpers.RequestCallback;
+import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.listas.ItemAdapter;
 import ds2.equipe1.restaurante.modelos.Item;
 
@@ -26,8 +25,6 @@ public class BuscaItem extends AppCompatActivity {
     private ItemAdapter adapter;
 
     private ArrayList<Item> itens;
-    private EditText edtProcurar;
-    private ImageView ivProcurar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,38 +39,34 @@ public class BuscaItem extends AppCompatActivity {
         adapter = new ItemAdapter(BuscaItem.this, itens);
         lvItens.setAdapter(adapter);
 
-        consultar("");
+        consultar(null);
     }
 
     private void init(){
         //pegar referencias dos componentes xml
         lvItens = (ListView) findViewById(R.id.lvFornecedores);
-        edtProcurar = (EditText) findViewById(R.id.edtProcurar);
-        ivProcurar = (ImageView) findViewById(R.id.ivProcurar);
-
-        //atribuir funcionalidades para alguns componentes
-        ivProcurar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String texto = edtProcurar.getText().toString();
-
-                consultar(texto);
-
-                if (itens.size() == 0){
-                    Toast.makeText(BuscaItem.this, "Nenhum resultado para \"" + texto + "\"", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
         lvItens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ControleDeItem.selecionarParaEditar(adapter.getItem(position));
                 Intent intent = new Intent(BuscaItem.this, CadastroItem.class);
-                Toast.makeText(BuscaItem.this, "" + id, Toast.LENGTH_SHORT).show();
-                intent.putExtra("id", id);
+                intent.putExtra("alterar", true);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.busca, menu);
+        Utils.prepararSearchMenu(this, menu, new Utils.DialogCallback() {
+            @Override
+            public void execute(String text) {
+                consultar(text);
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void consultar(String consulta){

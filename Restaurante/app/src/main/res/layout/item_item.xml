@@ -15,6 +15,7 @@
         android:paddingTop="8dp">
 
         <ImageView
+            android:id="@+id/ivIcone"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
@@ -46,8 +47,9 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:id="@+id/ivRemover"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_cancel" />
     </LinearLayout>
