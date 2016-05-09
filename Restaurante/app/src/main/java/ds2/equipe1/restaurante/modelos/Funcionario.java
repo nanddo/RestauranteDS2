@@ -12,18 +12,20 @@ public class Funcionario extends Model<Funcionario> {
     private String telefone;
     private String cpf;
     private String nome_de_usuario;
+    private Integer tipo;
 
     public Funcionario(Context context){
         super(context);
     }
 
-    public Funcionario(Context context, String nome, Integer id_endereco, String telefone, String cpf, String nome_de_usuario) {
+    public Funcionario(Context context, String nome, Integer id_endereco, String telefone, String cpf, String nome_de_usuario, Integer tipo) {
         super(context);
         this.nome = nome;
         this.id_endereco = id_endereco;
         this.telefone = telefone;
         this.cpf = cpf;
         this.nome_de_usuario = nome_de_usuario;
+        this.tipo = tipo;
     }
 
     public String getNome() {
@@ -46,6 +48,8 @@ public class Funcionario extends Model<Funcionario> {
         return nome_de_usuario;
     }
 
+    public Integer getTipo () { return tipo; };
+
     public void setNome(String nome){
         this.nome = nome;
     }
@@ -64,4 +68,5 @@ public class Funcionario extends Model<Funcionario> {
 
     public void setNome_de_usuario (String nome_de_usuario) { this.nome_de_usuario = nome_de_usuario; }
 
+    public void setTipo (Integer tipo) {this.tipo = tipo; };
 }

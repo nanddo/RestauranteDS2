@@ -6,7 +6,7 @@ import android.content.Context;
  * Created by Th on 24/03/2016.
  */
 public class Gerente extends Funcionario {
-    public Gerente(Context context, String nome, Integer id_endereco, String telefone, String cpf, String nome_de_usuario) {
-        super(context, nome, id_endereco, telefone, cpf, nome_de_usuario);
+    public Gerente(Context context, String nome, Integer id_endereco, String telefone, String cpf, String nome_de_usuario, Integer tipo) {
+        super(context, nome, id_endereco, telefone, cpf, nome_de_usuario, tipo);
     }
 }
