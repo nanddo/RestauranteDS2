@@ -8,6 +8,7 @@ class Item extends Model {
 	
     public $id;
     public $nome;
+    public $unidade;
     public $quantidade;
     public $limite;
 	

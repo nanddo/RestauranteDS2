@@ -118,9 +118,13 @@ class BaseController extends Controller {
         try {
             $model = ucfirst($this->router->getControllerName());
             $data = json_decode($this->request->get("data"), true);
-            
-            $item = $model::findFirst($data["id"]);
-            $item->delete();
+            if (!$data){
+                $data = ["id" => $this->request->get("id")];
+            }
+            if ($data["id"]){
+                $item = $model::findFirst($data["id"]);
+                $item->delete();
+            }
         } catch (Exception $e){
             print_r($e);
         }

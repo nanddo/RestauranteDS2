@@ -7,6 +7,7 @@ use Phalcon\Mvc\Model\Message;
 class Funcionario extends Model {
 	
     public $id;
+    public $tipo;
     public $nome;
     public $id_endereco;
     public $telefone;

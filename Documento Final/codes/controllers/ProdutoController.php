@@ -3,6 +3,13 @@
 <?php
 
 class ProdutoController extends BaseController {
+    public function testeAction(){
+        $message = json_decode($_GET['message']);
+        header("Content-type: text/html; charset=utf-8");
+        echo "Message recebida as ".$message->date." de ".$message->name.":\n".$message->message;
+        exit;
+    }
+
     public function saveAction(){
         try {
             $produto = new Produto();

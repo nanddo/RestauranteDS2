@@ -15,6 +15,12 @@ class Endereco extends Model {
     public $estado;
     public $cep;
 
+    /*public function beforeSave(){
+        if (!$rua || !$logradouro || !$bairro){
+            return false;
+        }
+    }*/
+
     public function initialize(){
         $this->hasMany("id", "Fornecedor", "id_endereco");
         $this->hasMany("id", "Funcionario", "id_endereco");
