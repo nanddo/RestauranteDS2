@@ -63,7 +63,7 @@ public class ServerRequest {
 
             @Override
             public void failure(int code, String message) {
-                Log.e(TAG, "Falha de conexão: " + message + " " + code);
+                Log.e(TAG, "Falha de conexao: " + message + " " + code);
                 super.failure(code, message);
             }
         }.timeout(5000));
