@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.R;
+import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Funcionario;
 
 public class FuncionarioAdapter  extends BaseAdapter {
@@ -33,7 +34,7 @@ public class FuncionarioAdapter  extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return funcionarios.get(position).getId();
+        return position;
     }
 
     @Override
@@ -53,6 +54,8 @@ public class FuncionarioAdapter  extends BaseAdapter {
         edtNome.setText(funcionario.getNome());
         edtCPF.setText(funcionario.getCpf());
         edtTelefone.setText(funcionario.getTelefone());
+
+        new Utils(context).addFuncaoRemover(this, root.findViewById(R.id.ivRemover), funcionarios, position);
 
         return root;
     }

@@ -68,9 +68,9 @@ public class BuscaItem extends AppCompatActivity {
         lvItens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ControleDeItem.selecionarParaEditar(adapter.getItem(position));
                 Intent intent = new Intent(BuscaItem.this, CadastroItem.class);
-                Toast.makeText(BuscaItem.this, "" + id, Toast.LENGTH_SHORT).show();
-                intent.putExtra("id", id);
+                intent.putExtra("alterar", true);
                 startActivity(intent);
             }
         });

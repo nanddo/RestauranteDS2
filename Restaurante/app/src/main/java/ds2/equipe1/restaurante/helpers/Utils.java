@@ -5,13 +5,22 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ds2.equipe1.restaurante.R;
+import ds2.equipe1.restaurante.modelos.Item;
+import ds2.equipe1.restaurante.modelos.Model;
 
 public class Utils {
     public static final String TAG = "Restaurante";
@@ -141,7 +150,7 @@ public class Utils {
         builder.show();
     }
 
-    public void selectPopup(String title, final DialogCallback callback){
+    public void selectPopup(String title, final IngredienteCallback callback, final ArrayList<Item> itens){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);
 
@@ -150,7 +159,19 @@ public class Utils {
         LinearLayout linearLayout = (LinearLayout) li.inflate(R.layout.select_popup, null);
 
         final Spinner spinnerItens = (Spinner) linearLayout.findViewById(R.id.spinnerItens);
+        List<String> spinnerArray =  new ArrayList<>();
+        for (Item item : itens) {
+            spinnerArray.add(item.getNome());
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                context, android.R.layout.simple_spinner_item, spinnerArray);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerItens.setAdapter(adapter);
+
         final EditText edtInput = (EditText) linearLayout.findViewById(R.id.edtInput);
+        edtInput.setInputType(InputType.TYPE_CLASS_NUMBER);
         builder.setView(linearLayout);
 
         // Set up the buttons
@@ -158,7 +179,7 @@ public class Utils {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (callback != null) {
-                    callback.execute(edtInput.getText().toString());
+                    callback.execute(itens.get(spinnerItens.getSelectedItemPosition()), Integer.parseInt(edtInput.getText().toString()));
                 }
             }
         });
@@ -167,7 +188,55 @@ public class Utils {
         builder.show();
     }
 
+    public void simNaoDialog(String titulo, String mensagem, final DialogCallback callbackSim, final DialogCallback callbackNao){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(titulo);
+        builder.setMessage(mensagem);
+
+        // Set up the buttons
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (callbackSim != null) {
+                    callbackSim.execute("");
+                }
+            }
+        });
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (callbackNao != null){
+                    callbackNao.execute("");
+                }
+            }
+        });
+
+        builder.show();
+    }
+
+    public interface IngredienteCallback {
+        public void execute(Item item, int quantidade);
+    }
+
     public interface DialogCallback {
         public void execute(String text);
+    }
+
+    public <T> void addFuncaoRemover(final BaseAdapter adapter, View view, final ArrayList<T> arr, final int position){
+        if (view != null)
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    simNaoDialog("Excluir", "Deseja excluir este item?", new DialogCallback() {
+                        @Override
+                        public void execute(String text) {
+                            Model model = (Model) arr.get(position);
+                            model.delete();
+                            arr.remove(position);
+                            adapter.notifyDataSetChanged();
+                        }
+                    }, null);
+                }
+            });
     }
 }

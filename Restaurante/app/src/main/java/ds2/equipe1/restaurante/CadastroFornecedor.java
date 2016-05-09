@@ -104,26 +104,22 @@ public class CadastroFornecedor extends AppCompatActivity {
             return;
         }
 
-        fornecedor.setNome(nome);
-        fornecedor.setCnpj(CNPJ);
-        fornecedor.setEmail(email);
-        fornecedor.setTelefone(telefone);
-        controleDeFornecedor.salvarFornecedor(fornecedor, new RequestCallback<Model>() {
-            @Override
-            public void execute(Model object) throws Exception {
-                if (fornecedor.getId() == null) {
-                    new Utils(CadastroFornecedor.this).toast("Fornecedor cadastrado!");
-                } else {
-                    new Utils(CadastroFornecedor.this).toast("Fornecedor alterado!");
-                }
+        fornecedor.setNome(nome.trim());
+        fornecedor.setCnpj(CNPJ.trim());
+        fornecedor.setEmail(email.trim());
+        fornecedor.setTelefone(telefone.replaceAll(" ", ""));
+        controleDeFornecedor.salvarFornecedor(fornecedor, null);
 
-                ControleDeFornecedor.deselecionar();
-                ControleDeEndereco.deselecionar();
+        if (fornecedor.getId() == null) {
+            new Utils(CadastroFornecedor.this).toast("Fornecedor cadastrado!");
+        } else {
+            new Utils(CadastroFornecedor.this).toast("Fornecedor alterado!");
+        }
 
-                finish();
-                super.execute(object);
-            }
-        });
+        ControleDeFornecedor.deselecionar();
+        ControleDeEndereco.deselecionar();
+
+        finish();
     }
 
     public void carregarFornecedor(){

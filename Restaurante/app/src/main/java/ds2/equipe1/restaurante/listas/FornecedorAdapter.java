@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ds2.equipe1.restaurante.R;
+import ds2.equipe1.restaurante.helpers.Utils;
 import ds2.equipe1.restaurante.modelos.Fornecedor;
 
 public class FornecedorAdapter extends BaseAdapter {
@@ -34,7 +35,7 @@ public class FornecedorAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return fornecedores.get(position).getId();
+        return position;
     }
 
     @Override
@@ -54,6 +55,8 @@ public class FornecedorAdapter extends BaseAdapter {
         edtNome.setText(fornecedor.getNome());
         edtCNPJ.setText(fornecedor.getCnpj());
         edtTelefone.setText(fornecedor.getTelefone());
+
+        new Utils(context).addFuncaoRemover(this, root.findViewById(R.id.ivRemover), fornecedores, position);
 
         return root;
     }

@@ -65,7 +65,7 @@ public class BuscaFornecedor extends AppCompatActivity {
             // no clique do item o android nos da a view, a posicao do item na lista e o ID do item
             // (que nos configuramos) entao passamos esse ID para
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ControleDeFornecedor.selecionarParaEditar(fornecedores.get(position));
+                ControleDeFornecedor.selecionarParaEditar(adapter.getItem(position));
 
                 Intent intent = new Intent(BuscaFornecedor.this, CadastroFornecedor.class);
                 intent.putExtra("alterar", true);

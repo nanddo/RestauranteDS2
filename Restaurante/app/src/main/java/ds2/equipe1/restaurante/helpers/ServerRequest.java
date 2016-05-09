@@ -44,15 +44,17 @@ public class ServerRequest {
         this.context = context;
     }
 
-    public void sendRequest(String controller, Action action, String data, final RequestCallback<JSONObject> callback){
+    public void sendRequest(final String controller, Action action, String data, final RequestCallback<JSONObject> callback){
         Map<String, Object> params = getAuthParams();
         params.put("data", data);
 
-        new AQuery(context).ajax(buildURL(controller, action), params, JSONObject.class, new AjaxCallback<JSONObject>(){
+        new AQuery(context).ajax(buildURL(controller, action), params, String.class, new AjaxCallback<String>(){
             @Override
-            public void callback(String url, JSONObject json, AjaxStatus status) {
+            public void callback(String url, String str, AjaxStatus status) {
                 try {
-                    Log.w(TAG, "[" + url + "]: " + json.toString());
+                    Log.w(TAG, "[" + url + "]:");
+                    JSONObject json = new JSONObject(str);
+                    Log.w(TAG, json.toString());
                     if (json.getBoolean("success")) {
                         if (callback != null) {
                             callback.execute(json);
@@ -72,9 +74,14 @@ public class ServerRequest {
                 } catch (Exception e){
                     Toast.makeText(context, "Falha ao processar resposta:\n\n" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     Log.e(TAG, "Erro no processamento de dados: ", e);
+                    if (str != null)
+                        Log.e(TAG, str);
                     Log.e(TAG, "AjaxStatus: " + status.getError() + " --- " + status.getCode() + " --- " + status.getMessage());
+                    if (status.getMessage().contains("netword")){
+                        Toast.makeText(context, "Falha na conexão com " + url, Toast.LENGTH_LONG).show();
+                    }
                 }
-                super.callback(url, json, status);
+                super.callback(url, str, status);
             }
 
             @Override
@@ -94,6 +101,6 @@ public class ServerRequest {
     }
 
     private String buildURL(String controller, Action action){
-        return new Utils(context).getData("host", "http://192.168.0.105/restaurante/") + controller.toLowerCase() + "/" + action.name().toLowerCase() + "/";
+        return new Utils(context).getData("host", "http://179.232.16.215:8080/") + controller.toLowerCase() + "/" + action.name().toLowerCase() + "/";
     }
 }

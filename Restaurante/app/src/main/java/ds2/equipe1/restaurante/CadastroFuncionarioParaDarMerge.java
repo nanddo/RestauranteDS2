@@ -106,28 +106,23 @@ public class CadastroFuncionarioParaDarMerge extends AppCompatActivity {
             return;
         }
 
-        funcionario.setNome(nome);
-        funcionario.setCpf(CPF);
-        funcionario.setNome_de_usuario(nome_de_usuario);
-        funcionario.setTelefone(telefone);
+        funcionario.setNome(nome.trim());
+        funcionario.setCpf(CPF.trim());
+        funcionario.setNome_de_usuario(nome_de_usuario.trim());
+        funcionario.setTelefone(telefone.replaceAll(" ", ""));
 
-        controleDeFuncionario.salvarFuncionario(funcionario, new RequestCallback<Model>() {
-            @Override
-            public void execute(Model object) throws Exception {
-                if (funcionario.getId() == null) {
-                    new Utils(CadastroFuncionarioParaDarMerge.this).toast("Funcionario cadastrado!");
-                } else {
-                    new Utils(CadastroFuncionarioParaDarMerge.this).toast("Funcionario alterado!");
-                }
+        controleDeFuncionario.salvarFuncionario(funcionario, null);
 
-                ControleDeFornecedor.deselecionar();
-                ControleDeEndereco.deselecionar();
+        if (funcionario.getId() == null) {
+            new Utils(CadastroFuncionarioParaDarMerge.this).toast("Funcionario cadastrado!");
+        } else {
+            new Utils(CadastroFuncionarioParaDarMerge.this).toast("Funcionario alterado!");
+        }
 
-                finish();
-                super.execute(object);
-            }
-        });
+        ControleDeFornecedor.deselecionar();
+        ControleDeEndereco.deselecionar();
 
+        finish();
     }
 
     public void carregarFuncionario(){

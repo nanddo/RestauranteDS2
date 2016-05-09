@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import ds2.equipe1.restaurante.controles.ControleDeItem;
 import ds2.equipe1.restaurante.helpers.Utils;
@@ -75,14 +76,29 @@ public class CadastroItem extends AppCompatActivity {
 
 
     private void onCadastrarClick() {
-        final String nome = edtNome.getText().toString();
-        final int quantidade = Integer.parseInt(edtQuantidade.getText().toString());
-        final String unidade = edtUnidade.getText().toString();
-        final int limite = Integer.parseInt(edtLimiteMinimo.getText().toString());
+        String nome = edtNome.getText().toString();
+        String unidade = edtUnidade.getText().toString();
+        int quantidade;
+        try {
+            quantidade = Integer.parseInt(edtQuantidade.getText().toString());
+        } catch (Exception e){
+            quantidade = 0;
+        }
+        int limite;
+        try {
+            limite = Integer.parseInt(edtLimiteMinimo.getText().toString());
+        } catch (Exception e){
+            limite = 0;
+        }
 
-        item.setNome(nome);
+        if (nome.isEmpty() || unidade.isEmpty()){
+            Toast.makeText(CadastroItem.this, "Necessario todos os campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        item.setNome(nome.trim());
         item.setQuantidade(quantidade);
-        item.setUnidade(unidade);
+        item.setUnidade(unidade.trim());
         item.setLimiteMinimo(limite);
 
         controleDeItem.salvarItem(item);
@@ -92,7 +108,7 @@ public class CadastroItem extends AppCompatActivity {
         } else {
             new Utils(this).toast("Item alterado!");
         }
-
+        finish();
     }
 
     private void carregarItem(){
@@ -100,9 +116,9 @@ public class CadastroItem extends AppCompatActivity {
             CadastroItem.this.item = ControleDeItem.getSelecionado();
 
             edtNome.setText(item.getNome());
-            edtQuantidade.setText(item.getQuantidade());
-            edtUnidade.setText(item.getQuantidade());
-            edtLimiteMinimo.setText(item.getLimiteMinimo());
+            edtQuantidade.setText(""+item.getQuantidade());
+            edtUnidade.setText(item.getUnidade());
+            edtLimiteMinimo.setText(""+item.getLimiteMinimo());
         }
     }
 
