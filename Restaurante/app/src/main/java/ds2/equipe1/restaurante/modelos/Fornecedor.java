@@ -10,7 +10,7 @@ public class Fornecedor extends Model<Fornecedor> {
     private String telefone;
     private String cnpj;
     private String email;
-    private Integer id_endereco;
+    private Endereco endereco;
 
     public Fornecedor(Context context){
         super(context);
@@ -56,11 +56,11 @@ public class Fornecedor extends Model<Fornecedor> {
         this.email = email;
     }
 
-    public Integer getIdEndereco() {
-        return id_endereco;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setIdEndereco(Integer id_endereco) {
-        this.id_endereco = id_endereco;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }

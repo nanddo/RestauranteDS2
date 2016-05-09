@@ -50,13 +50,10 @@ public class Produto extends Model<Produto> {
     }
 
     //Deve ser chamado quando o garçom conclui o pedido.
-    public boolean alertarSobreItensAbaixoDoLimite(){
+    public void alertarSobreItensAbaixoDoLimite(){
         for (Ingrediente ingrediente : getIngredientes()){
             Item item = ingrediente.getItem();
-            if (item.getQuantidade()-ingrediente.getQuantidade() < item.getLimiteMinimo()){
-                //item.verificarItemAbaixoDoLimite();
-            }
-
+            item.verificarItemAbaixoDoLimite(ingrediente.getQuantidade());
         }
     }
     

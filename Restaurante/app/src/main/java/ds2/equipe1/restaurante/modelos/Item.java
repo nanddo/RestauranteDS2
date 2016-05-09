@@ -26,11 +26,9 @@ public class Item extends Model<Item> {
 		this.limiteMinimo = limiteMinimo;
     }
     
-    public boolean AlertarItemAbaixoDoLimite(){
-        if (quantidade < limiteMinimo) {
-			return true;
-		} else {
-			return false;
+    public void verificarItemAbaixoDoLimite(int quantidadeParaReduzir){
+		if (getQuantidade()-quantidadeParaReduzir < getLimiteMinimo()){
+			new Aviso(context, this).save();
 		}
     }
     

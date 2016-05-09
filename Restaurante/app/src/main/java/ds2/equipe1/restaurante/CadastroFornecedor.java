@@ -133,9 +133,9 @@ public class CadastroFornecedor extends AppCompatActivity {
             if (data.hasExtra("rua")) {
                 edtEndereco.setText(data.getStringExtra("rua"));
             }
-            if (data.hasExtra("id_endereco")) {
+            /*if (data.hasExtra("id_endereco")) {
                 fornecedor.setIdEndereco(data.getIntExtra("id_endereco", -1));
-            }
+            }*/
         }
     }
 }

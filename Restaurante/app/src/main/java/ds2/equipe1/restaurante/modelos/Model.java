@@ -22,10 +22,9 @@ import ds2.equipe1.restaurante.helpers.Utils;
  */
 
 public class Model<T> {
+    protected Integer id;
     //transient para a serialação não incluir.
-    private transient Context context;
-
-    private Integer id;
+    protected transient Context context;
 
     public Model(Context context){
         this.context = context;
