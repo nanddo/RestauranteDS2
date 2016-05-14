@@ -78,7 +78,7 @@ public class ServerRequest {
                         Log.e(TAG, str);
                     Log.e(TAG, "AjaxStatus: " + status.getError() + " --- " + status.getCode() + " --- " + status.getMessage());
                     if (status.getMessage().contains("netword")){
-                        Toast.makeText(context, "Falha na conexão com " + url, Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Falha na conexao com " + url, Toast.LENGTH_LONG).show();
                     }
                 }
                 super.callback(url, str, status);

@@ -207,7 +207,7 @@ public class Utils {
                 }
             }
         });
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Nao", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (callbackNao != null){

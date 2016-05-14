@@ -70,7 +70,7 @@ public class CadastroFornecedor extends AppCompatActivity {
                 if (!novoCadastro && fornecedor.getId() != null) {
                     fornecedor.delete();
                     fornecedor.setId(null);
-                    new Utils(CadastroFornecedor.this).toast("Fornecedor excluído!");
+                    new Utils(CadastroFornecedor.this).toast("Fornecedor excluido!");
                     finish();
                 }
             }
